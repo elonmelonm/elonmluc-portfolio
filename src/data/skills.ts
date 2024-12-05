@@ -36,6 +36,12 @@ export const skills = [
     level: 75
   },
   {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    title: 'Next.js',
+    description: 'Full-stack framework for React with server-side rendering and static site generation',
+    level: 75
+  },
+  {
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
     title: 'Framer Motion',
     description: 'Production-ready animations',
@@ -58,6 +64,12 @@ export const skills = [
     title: "Node.js",
     description: "JavaScript runtime environment for building scalable server-side applications.",
     level: 80
+},
+{
+  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+  title: 'express.js',
+  description: 'Lightweight backend framework for building RESTful APIs with Node.js',
+  level: 75
 },
 {
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
