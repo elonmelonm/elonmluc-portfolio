@@ -11,5 +11,12 @@ export const experiences = [
         company: "3d tech africa",
         description: "Intern at 3d tech africa in frontend development"
     },
+    ,
+    {
+        period: "Frebruary - May 2023",
+        title: "Web development intern",
+        company: "TPAPY EDUCATIONAL CONSULT",
+        description: "Academic internship in Web development"
+    },
 
 ]
