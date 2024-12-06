@@ -19,12 +19,12 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#Home" className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-black dark:hover:bg-slate-300">Home</a>
-            <a href="#about" className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-black dark:hover:bg-slate-300">About</a>
-            <a href="#projets" className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-black dark:hover:bg-slate-300">Projets</a>
-            <a href="#skills" className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-black dark:hover:bg-slate-300">Skills</a>
-            <a href="#journey" className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-black dark:hover:bg-slate-300">Journey</a>
-            <a href="#contact" className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-black dark:hover:bg-slate-300">Contact</a>
+            <a href="#Home" className="p-2 rounded-md text-gray-600 hover:text-white hover:bg-gray-600 dark:text-gray-300 dark:hover:text-black dark:hover:bg-slate-300">Home</a>
+            <a href="#about" className="p-2 rounded-md text-gray-600 hover:text-white hover:bg-gray-600 dark:text-gray-300 dark:hover:text-black dark:hover:bg-slate-300">About</a>
+            <a href="#projets" className="p-2 rounded-md text-gray-600 hover:text-white hover:bg-gray-600 dark:text-gray-300 dark:hover:text-black dark:hover:bg-slate-300">Projets</a>
+            <a href="#skills" className="p-2 rounded-md text-gray-600 hover:text-white hover:bg-gray-600 dark:text-gray-300 dark:hover:text-black dark:hover:bg-slate-300">Skills</a>
+            <a href="#journey" className="p-2 rounded-md text-gray-600 hover:text-white hover:bg-gray-600 dark:text-gray-300 dark:hover:text-black dark:hover:bg-slate-300">Journey</a>
+            <a href="#contact" className="p-2 rounded-md text-gray-600 hover:text-white hover:bg-gray-600 dark:text-gray-300 dark:hover:text-black dark:hover:bg-slate-300">Contact</a>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
