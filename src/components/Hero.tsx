@@ -2,6 +2,8 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import image from '../img/elonmluc2.jpg'
+import HeroLeft from './Hero/HeroLeft';
+import HeroRight from './Hero/HeroRight';
 
 const Hero = () => {
   const containerVariants = {
@@ -69,7 +71,7 @@ const Hero = () => {
   
 
   return (
-    <section id="accueil" className="pt-24 pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="home" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 pt-8 pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div 
           className="flex flex-col-reverse md:flex-row items-center justify-between gap-12"
@@ -77,7 +79,8 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          <div className="flex-1 ">
+          <HeroLeft />
+          {/* <div className="flex-1 ">
             <motion.h1 
               variants={itemVariants}
               className="text-5xl ld:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300 flex space-x-5"
@@ -86,7 +89,7 @@ const Hero = () => {
                 <span>Luc Elonm</span>  <br /> <span className='text-7xl lg:text-7xl lg:tracking-widest'>Akakpo</span>
               </div>
               
-              {/* <motion.span 
+              <motion.span 
                 className="text-blue-600 dark:text-blue-400 inline-block"
                 animate={{ 
                   scale: [1, 1.2, 1],
@@ -100,7 +103,7 @@ const Hero = () => {
               >
                 
                 .
-              </motion.span> */}
+              </motion.span>
               <motion.svg
                 className="w-14 h-14 mt-7 md:w-20 md:h-20 md:mt-5 lg:w-32 lg:h-32 text-gray-800"
                 width="36"
@@ -222,10 +225,12 @@ const Hero = () => {
                 </svg>
               </motion.a>
             </motion.div>
-          </div>
-          <div className='flex-1 size-2/3'>
-            <motion.div 
-              className="mx-auto w-11/12 -mb-3 md:mb-0 rounded-full shadow-2xl overflow-hidden"
+          </div> */}
+          {/* <div className='flex-1 size-2/3'> */}
+          
+          <HeroRight />
+            {/* <motion.div 
+              className="mx-auto  -mb-3 md:mb-0 rounded-full shadow-2xl overflow-hidden"
               variants={imageVariants}
               whileHover="hover"
               {...borderRadiusAnimation}
@@ -238,8 +243,8 @@ const Hero = () => {
                 />
               
 
-            </motion.div>
-          </div>
+            </motion.div> */}
+          {/* </div> */}
         </motion.div>
         
       </div>

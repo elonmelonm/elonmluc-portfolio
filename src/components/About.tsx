@@ -49,7 +49,7 @@ const Hero = () => {
   
 
   return (
-    <section id="about" className="pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="about" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.h2 
           className="text-4xl font-bold text-center mb-2 text-gray-900 dark:text-white transition-colors duration-300"
@@ -66,8 +66,8 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-            <motion.div 
-            className="flex-1"
+          <motion.div 
+            className="flex-1 lg:hidden"
             variants={imageVariants}
             whileHover="hover"
           >
@@ -79,26 +79,6 @@ const Hero = () => {
 
           </motion.div>
           <div className="flex-1">
-            {/* <motion.h1 
-            variants={itemVariants}
-            className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300"
-            >
-            Développeur Full Stack
-            <motion.span 
-                className="text-blue-600 dark:text-blue-400 inline-block"
-                animate={{ 
-                scale: [1, 1.2, 1],
-                rotate: [0, 5, 0]
-                }}
-                transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 3
-                }}
-            >
-                .
-            </motion.span>
-            </motion.h1> */}
             <motion.p 
               variants={itemVariants}
               className="text-xl text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300"

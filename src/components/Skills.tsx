@@ -4,9 +4,9 @@ import SkillCard from "./SkillCard";
 
 export default function Skills () {
     return (
-        <section id="skills" className="py-16 mb-10 md:py-20 2xl:py-20 rounded-xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br bg-gray-50 dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
-            <div className="container mx-auto px-4 md:px-20 relative z-10">
+        <section id="skills" className="lg:mx-32 lg:mr-[330px] xl:mx-16 xl:mr-64 lg:min-h-screen bg-gray-50 py-16 mb-10 md:py-20 2xl:py-12 rounded-xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
+            <div className="container mx-auto lg:px-4  rounded-xl py-10 px-4 md:px-20 relative z-10">
                 <motion.h2
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}

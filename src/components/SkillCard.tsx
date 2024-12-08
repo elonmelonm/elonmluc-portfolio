@@ -16,7 +16,7 @@ export default function SkillCard ({ skill } : SkillCardProps) {
             <div className="flex gap-6">
                 <div className="p-4 flex items-center justify-center">
                     <img 
-                        className="size-16 rounded-xl" 
+                        className="size-16 lg:size-10 rounded-xl" 
                         src={skill.icon} 
                         alt={skill.title.toLowerCase()} 
                     />

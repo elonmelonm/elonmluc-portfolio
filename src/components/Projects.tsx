@@ -73,8 +73,8 @@ const Projects = () => {
   };
 
   return (
-    <section id="projets" className="py-16 mb-10  bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-      <div className="container mx-auto px-4">
+    <section id="projets" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 lg:min-h-screen bg-gray-50 py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300">
+      <div className="container mx-auto px-4 py-10 rounded-xl ">
         <motion.h2 
           className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-colors duration-300"
           initial={{ opacity: 0, y: -20 }}

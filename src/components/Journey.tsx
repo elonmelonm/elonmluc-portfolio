@@ -14,7 +14,7 @@ export default function Experience () {
     }
 
     return (
-        <section id="journey" className="py-16 mb-10 md:py-20 2xl:py-20 rounded-xl relative overflow-hidden">
+        <section id="journey" className="lg:mx-32 lg:mr-[330px] xl:mx-16 xl:mr-64 lg:min-h-screen py-16 lg:mb-0 mb-10 md:py-20 2xl:py-20 rounded-xl relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br bg-gray-50 dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
             <div className="container mx-auto px-4 md:px-20 relative z-10">
                 <motion.h2

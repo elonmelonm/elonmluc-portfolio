@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-16 bg-gray-50 rounded-xl dark:bg-gray-800 transition-colors duration-300">
+    <section id="contact" className="lg:hidden lg:mx-16 lg:mr-64 lg:min-h-screen py-16 bg-gray-50 rounded-xl dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-2 text-gray-900 dark:text-white transition-colors duration-300">
           Get in touch
