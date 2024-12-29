@@ -64,7 +64,7 @@ const HeaderRight = () => {
         initial={{ x: 100 }}
         animate={{ x: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed right-12 my-16 h-auto p-4 rounded-2xl bg-slate-100 dark:bg-slate-800 backdrop-blur-sm z-50 shadow-sm hidden lg:block"
+        className="fixed right-12 my-16 h-auto p-4 xl:p-8 rounded-2xl bg-slate-100 dark:bg-slate-800 backdrop-blur-sm z-50 shadow-sm hidden lg:block"
     >
         <motion.div 
           className="mx-auto mt-5 w-64 md:mb-0 rounded-full shadow-2xl overflow-hidden"
@@ -78,7 +78,7 @@ const HeaderRight = () => {
             className=""
           />
         </motion.div>
-        <div className="container flex flex-col justify-center mx-auto px-4 py-4 h-full">
+        <div className="container flex flex-col justify-center mx-auto py-4 h-full">
           <span className='p-1 rounded-xl text-2xl dark:text-white text-center my-4'>Luc Elonm Akakpo</span>
           <span className='p-1 rounded-xl text-blue-600 bg-white dark:bg-slate-500 dark:text-white text-center my-2'>Full Stack Web Developer</span>
           <div className="flex items-start space-x-4 mt-16">

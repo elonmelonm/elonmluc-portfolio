@@ -74,7 +74,7 @@ const Hero = () => {
     <section id="home" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 pt-8 pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="flex flex-col-reverse md:flex-row items-center justify-between gap-12"
+          className="flex flex-col md:flex-row-reverse items-center justify-between gap-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

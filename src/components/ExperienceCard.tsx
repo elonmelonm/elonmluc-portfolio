@@ -24,7 +24,7 @@ export default function ExperienceCard ({experience, index} : ExperienceCardProp
                 <Briefcase className="w-3 h-3 text-white" />
             </div>
             <div className="bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 ml-6">
-                <span className="text-sm font-semibold text-blue-300">
+                <span className="text-sm font-semibold text-blue-600">
                   {experience.period}
                 </span>
                 <h3 className="text-xl dark:text-white font-bold mt-1 mb-2">{experience.title}</h3>

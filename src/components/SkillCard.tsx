@@ -11,20 +11,21 @@ export default function SkillCard ({ skill } : SkillCardProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="p-6 rounded-xl bg-white/50 dark:bg-white/5 backdrop-blur-sm hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+            className="p-4 rounded-xl bg-white/50 dark:bg-white/5 backdrop-blur-sm hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
         >
             <div className="flex gap-6">
-                <div className="p-4 flex items-center justify-center">
+                <div className="py-4 flex items-center justify-center">
                     <img 
-                        className="size-16 lg:size-10 rounded-xl" 
+                        className="size-16 lg:size-10 rounded-lg" 
                         src={skill.icon} 
                         alt={skill.title.toLowerCase()} 
                     />
+                    {/* <h3 className="hidden xl:block text-xl text-gray-900 dark:text-white font-semibold mb-2">{skill.title}</h3> */}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 -ml-3">
                     <h3 className="text-xl text-gray-900 dark:text-white font-semibold mb-2">{skill.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{skill.description}</p>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-1">
+                    <div className="w-full bg-gray-300 dark:bg-gray-400 rounded-full h-2.5 mb-1">
                         <motion.div
                             className="h-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600"
                             initial={{ width: 0 }}
