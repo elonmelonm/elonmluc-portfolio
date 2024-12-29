@@ -64,7 +64,7 @@ const HeaderRight = () => {
         initial={{ x: 100 }}
         animate={{ x: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed right-12 my-16 h-auto p-4 xl:p-8 rounded-2xl bg-slate-100 dark:bg-slate-800 backdrop-blur-sm z-50 shadow-sm hidden lg:block"
+        className="fixed right-12 my-16 h-auto p-4 xl:px-8 rounded-2xl bg-slate-100 dark:bg-slate-800 backdrop-blur-sm z-50 shadow-sm hidden lg:block"
     >
         <motion.div 
           className="mx-auto mt-5 w-64 md:mb-0 rounded-full shadow-2xl overflow-hidden"

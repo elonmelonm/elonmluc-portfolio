@@ -20,7 +20,6 @@ export default function SkillCard ({ skill } : SkillCardProps) {
                         src={skill.icon} 
                         alt={skill.title.toLowerCase()} 
                     />
-                    {/* <h3 className="hidden xl:block text-xl text-gray-900 dark:text-white font-semibold mb-2">{skill.title}</h3> */}
                 </div>
                 <div className="flex-1 -ml-3">
                     <h3 className="text-xl text-gray-900 dark:text-white font-semibold mb-2">{skill.title}</h3>
