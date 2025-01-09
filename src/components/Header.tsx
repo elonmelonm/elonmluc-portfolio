@@ -124,7 +124,7 @@ const Header = () => {
       >
         <NavbarContent />
       </motion.div>
-      <div className="fixed md:right-8 md:mt-[35px] right-5 sm:mt-[10px] h-auto p-2 block lg:hidden md:z-50">
+      <div className={`fixed   h-auto p-2 block lg:hidden z-50 ${showTopNavbar ? 'right-5 bottom-3 md:right-8 md:top-9' : 'right-5 mt-3 md:bottom-3'}`}>
         <ThemeToggle />
       </div>
     </>
