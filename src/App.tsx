@@ -32,7 +32,7 @@ function App() {
           </motion.main>
         </AnimatePresence>
         <Footer />
-        <ScrollUp />
+        {/* <ScrollUp /> */}
       </div>
     </ThemeProvider>
   );
