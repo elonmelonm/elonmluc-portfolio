@@ -80,9 +80,9 @@ const HeaderRight = () => {
         </motion.div>
         <div className="container flex flex-col justify-center mx-auto py-4 h-full">
           <span className='p-1 rounded-xl text-2xl dark:text-white text-center my-4'>Luc Elonm Akakpo</span>
-          <span className='p-1 rounded-xl text-blue-600 bg-white dark:bg-slate-500 dark:text-white text-center my-2'>Full Stack Web Developer</span>
+          <span className='p-1 rounded-xl text-rose-600 bg-white dark:bg-rose-500 dark:text-white text-center my-2'>Full Stack Web Developer</span>
           <div className="flex items-start space-x-4 mt-16">
-            <Phone className="text-blue-600 dark:text-white mt-1 transition-colors duration-300" />
+            <Phone className="text-gray-600 dark:text-white mt-1 transition-colors duration-300" />
             <div>
               <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">
                 Phone
@@ -93,7 +93,7 @@ const HeaderRight = () => {
             </div>
           </div>
           <div className="flex items-start space-x-4">
-            <MapPin className="text-blue-600 dark:text-white mt-1 transition-colors duration-300" />
+            <MapPin className="text-gray-600 dark:text-white mt-1 transition-colors duration-300" />
             <div>
               <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">
                 Location

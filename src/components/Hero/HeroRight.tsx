@@ -44,11 +44,12 @@ const HeroRight = () => {
         className="fixed right-8 xl:right-12 my-16 h-auto py-5 p-3 lg:p-8 rounded-2xl bg-slate-100 dark:bg-slate-800 backdrop-blur-sm z-50 shadow-sm hidden lg:block"
     >
         <motion.h1 
+            style={{ fontFamily: 'Rammetto One' }} 
             variants={itemVariants}
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300 flex space-x-5"
+            className="text-3xl font-bold text-gray-700 dark:text-white mb-6 transition-colors duration-300 flex space-x-5"
         >
             <div>
-                <span>Luc Elonm</span>  <br /> <span className='text-4xl tracking-widest'>Akakpo</span>
+                    <span>Luc Elonm</span>  <br /> <span className='text-4xl tracking-widest'>Akakpo</span>
             </div>
             
             <motion.svg
@@ -113,7 +114,7 @@ const HeroRight = () => {
 
         </motion.h1>
         <motion.span 
-            className="text-xl text-blue-600 dark:text-blue-400 inline-block mb-4"
+            className="text-xl text-rose-600 inline-block mb-4"
             >
             ___   Full Stack Web Developer
             </motion.span>
@@ -129,7 +130,7 @@ const HeroRight = () => {
         >
             <motion.a 
                 href="#projets"
-                className="inline-flex items-center px-5 text-xl py-3 my-4 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
+                className="inline-flex items-center px-5 text-xl py-3 my-4 bg-rose-600 dark:bg-rose-500 text-white hover:text-rose-500 hover:border-rose-600 hover:border-2 rounded-full hover:bg-transparent dark:hover:bg-transparent transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 >
@@ -172,43 +173,43 @@ const HeroRight = () => {
     <div className="flex-1 lg:hidden">
         <motion.h1 
             variants={itemVariants}
-            className="text-4xl ld:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300 flex space-x-5"
+            className="text-4xl ld:text-6xl font-bold text-gray-700 dark:text-white mb-6 transition-colors duration-300 flex space-x-5"
         >
             <div>
             <span>Luc Elonm</span>  <br /> <span className='text-6xl lg:text-7xl lg:tracking-widest'>Akakpo</span>
             </div>
             
             <motion.span 
-            className="text-blue-600 dark:text-blue-400 inline-block"
-            animate={{ 
-                scale: [1, 1.2, 1],
-                rotate: [0, 5, 0]
-            }}
-            transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 3
-            }}
+                className="text-rose-600 dark:text-rose-400 inline-block"
+                animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 5, 0]
+                }}
+                transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatDelay: 3
+                }}
             >
             
             .
             </motion.span>
             <motion.svg
-            className="w-12 h-12 mt-7 md:w-20 md:h-20 md:mt-5 lg:w-32 lg:h-32 text-gray-800"
-            width="36"
-            height="36"
-            viewBox="0 0 48 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            animate={{ 
-                scale: [1, 1.2, 1],
-                rotate: [1, 5, 1]
-            }}
-            transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 3
-            }}
+                className="w-12 h-12 mt-7 md:w-20 md:h-20 md:mt-5 lg:w-32 lg:h-32 text-gray-800"
+                width="36"
+                height="36"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [1, 5, 1]
+                }}
+                transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatDelay: 3
+                }}
             >
             <path
                 d="M25.4995 32.0305L31.3495 33.1555L36.1495 8.48051C36.4495 6.83051 35.3995 5.18051 33.8245 4.88051C32.1745 4.58051 30.5995 5.70551 30.2995 7.35551L25.4995 32.0305Z"
@@ -255,7 +256,7 @@ const HeroRight = () => {
 
         </motion.h1>
         <motion.span 
-            className="text-blue-600 text-xl lg:text-xl dark:text-blue-400 inline-block mb-4"
+            className="text-rose-600 text-xl lg:text-xl inline-block mb-4"
             >
             _____   Full Stack Web Developer
         </motion.span>
@@ -271,7 +272,7 @@ const HeroRight = () => {
         >
             <motion.a 
             href="#projets"
-            className="inline-flex items-center px-2 md:px-4 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
+            className="inline-flex items-center text-sm md:text-md px-2 md:px-4 py-3 bg-rose-600 dark:bg-rose-500 text-white rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             >
@@ -290,7 +291,7 @@ const HeroRight = () => {
             </motion.a>
             <motion.a 
             href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 hover:text-white transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-rose-600 text-rose-600 rounded-full hover:bg-gray-800 dark:hover:bg-gray-700 hover:text-white transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             >

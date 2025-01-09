@@ -1,7 +1,8 @@
 import React from 'react';
 import { ArrowRight, Download, Files } from 'lucide-react';
 import { motion } from 'framer-motion';
-import image from '../img/elonmluc1.jpg'
+import image from '../img/elonmluc1.jpg';
+import cv from '../cv/LUC_ELONM_AKAKPO.pdf';
 
 const Hero = () => {
   const containerVariants = {
@@ -52,7 +53,8 @@ const Hero = () => {
     <section id="about" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-4xl font-bold text-center mb-2 text-gray-900 dark:text-white transition-colors duration-300"
+        style={{ fontFamily: 'Rammetto One' }} 
+          className="text-4xl font-bold text-center mb-2 text-rose-700 dark:text-rose-500 transition-colors duration-300"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -91,8 +93,9 @@ const Hero = () => {
               className="flex gap-4"
             >
               <motion.a 
-                href="#projets"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
+                href={cv}
+                download="LUC_ELONM_AKAKPO.pdf"
+                className="inline-flex items-center px-6 py-3 bg-rose-700 dark:bg-rose-500 text-white hover:text-rose-600 hover:border-2 hover:border-rose-600 rounded-full hover:bg-transparent dark:hover:bg-transparent transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

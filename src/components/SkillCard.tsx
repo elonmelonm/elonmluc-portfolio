@@ -22,11 +22,11 @@ export default function SkillCard ({ skill } : SkillCardProps) {
                     />
                 </div>
                 <div className="flex-1 -ml-3">
-                    <h3 className="text-xl text-gray-900 dark:text-white font-semibold mb-2">{skill.title}</h3>
+                    <h3 className="text-xl text-gray-900 dark:text-rose-50 font-semibold mb-2">{skill.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{skill.description}</p>
                     <div className="w-full bg-gray-300 dark:bg-gray-400 rounded-full h-2.5 mb-1">
                         <motion.div
-                            className="h-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600"
+                            className="h-2.5 rounded-full bg-gradient-to-r from-rose-500 to-purple-600"
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
                             transition={{ duration: 1, delay: 0.2 }}

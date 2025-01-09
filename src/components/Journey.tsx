@@ -15,12 +15,13 @@ export default function Experience () {
 
     return (
         <section id="journey" className="lg:mx-32 lg:mr-[330px] xl:mx-16 xl:mr-64 lg:min-h-screen py-16 lg:mb-0 mb-10 md:py-20 2xl:py-20 rounded-xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br bg-gray-50 dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
+            <div className="absolute inset-0 dark:bg-transparent bg-gradient-to-br bg-gray-50 dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
             <div className="container mx-auto px-4 md:px-20 relative z-10">
                 <motion.h2
+                    style={{ fontFamily: 'Rammetto One' }} 
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    className="text-4xl font-bold text-center mb-2 text-gray-900 dark:text-white transition-colors duration-300 "
+                    className="text-4xl font-bold text-center mb-2 text-rose-700 dark:text-rose-500 transition-colors duration-300 "
                 >
                     Qualification
                 </motion.h2>
@@ -33,12 +34,12 @@ export default function Experience () {
                 </motion.p>
                 <motion.div 
                     // variants={itemVariants}
-                    className="max-w-xl flex justify-center gap-3 md:gap-8 mb-5 mx-auto"
+                    className="max-w-xl flex justify-center  gap-1 md:gap-8 mb-5 mx-auto"
                     >
                     <motion.button 
                         // href=""
-                        className={isActive===1 ? "inline-flex items-center gap-2 px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300" : 
-                           "inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 hover:text-white transition-colors duration-300" }
+                        className={isActive===1 ? "inline-flex items-center gap-2 px-6 py-3 bg-rose-700 dark:bg-rose-500 text-white rounded-full transition-colors duration-300" : 
+                           "inline-flex items-center gap-2 px-6 py-3 border-2 border-rose-700 dark:border-rose-500 text-rose-700 dark:text-rose-500 rounded-full hover:bg-rose-700 dark:hover:bg-rose-500 dark:hover:text-white hover:text-white transition-colors duration-300" }
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => toggleTab(1)}
@@ -48,8 +49,8 @@ export default function Experience () {
                     </motion.button>
                     <motion.button 
                         // href=""
-                        className={isActive===1 ? "inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 hover:text-white transition-colors duration-300" : 
-                           "inline-flex items-center gap-2 px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300" }
+                        className={isActive===1 ? "inline-flex items-center gap-2 px-6 py-3 border-2 border-rose-700 dark:border-rose-500 text-rose-700 dark:text-rose-500 rounded-full hover:bg-rose-700 dark:hover:bg-rose-500 dark:hover:text-white hover:text-white transition-colors duration-300" : 
+                            "inline-flex items-center gap-2 px-6 py-3 bg-rose-700 dark:bg-rose-500 text-white rounded-full  hover:border-rose-600 transition-colors duration-300" }
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => toggleTab(2) }

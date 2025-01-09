@@ -73,10 +73,12 @@ const Projects = () => {
   };
 
   return (
-    <section id="projets" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 lg:min-h-screen bg-gray-50 py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300">
+    <section id="projets" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 lg:min-h-screen bg-gray-50 dark:bg-transparent py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300">
+    {/* <section id="projets" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 lg:min-h-screen bg-gray-50 dark:bg-transparent py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300"> */}
       <div className="container mx-auto px-4 py-10 rounded-xl ">
         <motion.h2 
-          className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white transition-colors duration-300"
+          style={{ fontFamily: 'Rammetto One' }} 
+          className="text-4xl font-bold text-center mb-12 text-rose-700 dark:text-rose-500 transition-colors duration-300"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -93,7 +95,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div 
               key={index}
-              className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transition-colors duration-300"
+              className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden bg-white/50 dark:bg-white/5 backdrop-blur-sm hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
               variants={cardVariants}
               whileHover="hover"
             >
@@ -105,7 +107,7 @@ const Projects = () => {
                 transition={{ duration: 0.3 }}
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-2 text-gray-700 dark:text-rose-50 transition-colors duration-300">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">
@@ -115,7 +117,7 @@ const Projects = () => {
                   {project.technologies.map((tech, i) => (
                     <motion.span 
                       key={i}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full text-sm transition-colors duration-300"
+                      className="px-3 py-1 bg-rose-100 dark:bg-rose-100 text-rose-700 dark:text-rose-500 rounded-full text-sm transition-colors duration-300"
                       variants={techBadgeVariants}
                       whileHover="hover"
                     >
