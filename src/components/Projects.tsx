@@ -4,28 +4,28 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "Une plateforme e-commerce complète avec panier, paiement et gestion des commandes",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    githubLink: "https://github.com",
-    liveLink: "https://example.com"
+    title: "Budget Management App",
+    description: "A budget management application to manage your wallet",
+    image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//budget%20management.png",
+    technologies: ["Next.js", "Tailwind CSS", "Node.js", "MySql"],
+    githubLink: "https://github.com/elonmelonm/BudgetManagement.git",
+    liveLink: "https://budget-management-liard.vercel.app/"
   },
   {
     title: "Task Management App",
-    description: "Application de gestion de tâches avec fonctionnalités collaboratives",
-    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=800",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubLink: "https://github.com",
-    liveLink: "https://example.com"
+    description: "Task management application with collaborative features",
+    image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//todoapp.png",
+    technologies: ["React.js", "Tailwind CSS", "Django", "PostgreSql"],
+    githubLink: "https://github.com/elonmelonm/Todo-App.git",
+    liveLink: "https://elonm-todo-app.vercel.app/"
   },
   {
-    title: "Real-time Chat App",
-    description: "Application de messagerie en temps réel avec support des fichiers",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
-    technologies: ["React", "Socket.io", "Express", "MongoDB"],
-    githubLink: "https://github.com",
-    liveLink: "https://example.com"
+    title: "Fresh Fruit",
+    description: "Fresh fruits selling landing page",
+    image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//budget%20management.png",
+    technologies: ["React.js", "Framer-motion"],
+    githubLink: "https://github.com/elonmelonm/fresh-fruits.git",
+    liveLink: "https://fruits-selling-elm.netlify.app/"
   }
 ];
 
