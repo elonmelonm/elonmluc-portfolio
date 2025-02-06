@@ -35,6 +35,22 @@ const projects = [
     technologies: ["React.js", "Framer-motion"],
     githubLink: "https://github.com/elonmelonm/e-learning.git",
     liveLink: "https://thecodingjourney-elm.netlify.app/"
+  },
+  {
+    title: "Smith Portfolio",
+    description: "Smith portfolio",
+    image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//smithportfolio.png",
+    technologies: ["React.js", "CSS"],
+    githubLink: "https://github.com/elonmelonm/e-learning.git",
+    liveLink: "https://smith-portfolio-elm.netlify.app/"
+  },
+  {
+    title: "Construction website",
+    description: "Constuction website landing page",
+    image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//construction.png",
+    technologies: ["React.js", "Tailwind CSS"],
+    githubLink: "https://github.com/elonmelonm/construction-website.git",
+    liveLink: "https://construction-site-elm.netlify.app/"
   }
 ];
 
