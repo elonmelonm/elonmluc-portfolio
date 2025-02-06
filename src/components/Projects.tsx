@@ -22,7 +22,7 @@ const projects = [
   {
     title: "Fresh Fruit",
     description: "Fresh fruits selling landing page",
-    image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//budget%20management.png",
+    image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//freshfruits.png",
     technologies: ["React.js", "Framer-motion"],
     githubLink: "https://github.com/elonmelonm/fresh-fruits.git",
     liveLink: "https://fruits-selling-elm.netlify.app/"
