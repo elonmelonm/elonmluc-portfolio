@@ -113,7 +113,7 @@ const Modal = ({ projects, onClose }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Fermer
+            Close
             <motion.div
               animate={{
                 x: [0, 5, 0],
