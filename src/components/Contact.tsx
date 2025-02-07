@@ -69,7 +69,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-gray-700 dark:text-gray-200 mb-2 transition-colors duration-300">
-                    Nom
+                    Name
                   </label>
                   <input
                     type="text"
@@ -77,7 +77,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
-                    placeholder="Votre nom"
+                    placeholder="Your name"
                     required
                   />
                 </div>
@@ -91,7 +91,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
-                    placeholder="votre@email.com"
+                    placeholder="your@email.com"
                     required
                   />
                 </div>
@@ -105,7 +105,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                     rows={4}
-                    placeholder="Votre message"
+                    placeholder="Your message"
                     required
                   />
                 </div>
@@ -113,19 +113,19 @@ const Contact = () => {
                   type="submit"
                   className="w-full bg-rose-700 dark:bg-rose-500 text-white py-2 px-4 rounded-full hover:bg-rose-700 dark:hover:bg-rose-600 transition-colors duration-300"
                 >
-                  Envoyer
+                  Submit
                 </button>
               </form>
 
               {/* Affichage des messages de statut */}
               {status === 'loading' && (
-                <p className="text-yellow-500 mt-4">Envoi en cours...</p>
+                <p className="text-yellow-500 mt-4">Sending in progress...</p>
               )}
               {status === 'success' && (
-                <p className="text-green-500 mt-4">Message envoyé avec succès !</p>
+                <p className="text-green-500 mt-4">Message sent successfully!</p>
               )}
               {status === 'error' && (
-                <p className="text-red-500 mt-4">Erreur lors de l'envoi du message. Veuillez réessayer.</p>
+                <p className="text-red-500 mt-4">Error sending message. Please try again.</p>
               )}
             </motion.div>
 
@@ -151,7 +151,7 @@ const Contact = () => {
                   <Phone className="text-rose-700 dark:text-rose-500 mt-1 transition-colors duration-300" />
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-rose-50 transition-colors duration-300">
-                      Téléphone
+                      Phone
                     </h4>
                     <p className="text-rose-700 dark:text-rose-500 transition-colors duration-300">
                       +229 01 57 11 38 10
@@ -162,7 +162,7 @@ const Contact = () => {
                   <MapPin className="text-rose-600 dark:text-rose-500 mt-1 transition-colors duration-300" />
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-rose-50 transition-colors duration-300">
-                      Localisation
+                      Location
                     </h4>
                     <p className="text-rose-600 dark:text-rose-500 transition-colors duration-300">
                       Bénin, Cotonou

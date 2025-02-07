@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <h3 style={{ fontFamily: 'Rammetto One' }} className="text-2xl font-bold mb-2">Elonm</h3>
             <p className="text-gray-400 dark:text-gray-500 transition-colors duration-300">
-              Créons ensemble vos projets web
+              Let's create your web projects together
             </p>
           </div>
           
@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-800 dark:border-gray-700 text-center text-gray-400 dark:text-gray-500 transition-colors duration-300">
-          <p >&copy; {new Date().getFullYear()} <span >Elonm Luc Akakpo.</span>  Tous droits réservés.</p>
+          <p >&copy; {new Date().getFullYear()} <span >Elonm Luc Akakpo.</span>  All rights reserved.</p>
         </div>
       </div>
     </footer>

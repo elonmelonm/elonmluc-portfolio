@@ -134,7 +134,7 @@ const HeroRight = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 >
-                Voir mes projets
+                See my projects
                 <motion.div
                     animate={{
                     x: [0, 5, 0],
@@ -276,7 +276,7 @@ const HeroRight = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             >
-            Voir mes projets
+            See my projects
             <motion.div
                 animate={{
                 x: [0, 5, 0],

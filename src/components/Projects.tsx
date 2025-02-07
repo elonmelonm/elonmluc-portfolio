@@ -21,7 +21,7 @@ const projects = [
     liveLink: "https://elonm-todo-app.vercel.app/"
   },
   {
-    title: "Fresh Fruit",
+    title: "Fresh Fruits",
     description: "Fresh fruits selling landing page",
     image: "https://unipdjnqcpjchfeiiwrg.supabase.co/storage/v1/object/public/elonm_portefolio//freshfruits.png",
     technologies: ["React.js", "Framer-motion"],
@@ -192,7 +192,7 @@ const Projects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Mes Projets
+          My projects
         </motion.h2>
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
