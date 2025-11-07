@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import image from '../../img/elonmluc2.jpg'
+import image from '../../assets/elonmluc.jpg'
 
 const HeroLeft = () => {
     const imageVariants = {

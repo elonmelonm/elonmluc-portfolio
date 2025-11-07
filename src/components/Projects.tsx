@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { LuCircleX } from 'react-icons/lu';
 
 // Import des images locales
-import budgetManagementImg from '../assets/images/budget-management.png';
-import todoAppImg from '../assets/images/todoapp.png';
-import freshFruitsImg from '../assets/images/freshfruits.png';
-import eLearningImg from '../assets/images/e-learning.png';
-import smithPortfolioImg from '../assets/images/smithportfolio.png';
-import constructionImg from '../assets/images/construction.png';
+import budgetManagementImg from '../assets/images/projets/budget-management.png';
+import todoAppImg from '../assets/images/projets/todoapp.png';
+import freshFruitsImg from '../assets/images/projets/freshfruits.png';
+import eLearningImg from '../assets/images/projets/e-learning.png';
+import smithPortfolioImg from '../assets/images/projets/smithportfolio.png';
+import constructionImg from '../assets/images/projets/construction.png';
 const projects = [
   {
     title: "Budget Management App",
