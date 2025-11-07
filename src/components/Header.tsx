@@ -103,7 +103,7 @@ const Header = () => {
     <>
       {/* Desktop Navbar */}
       <HeaderLeft />
-      <HeaderRight />
+      {/* <HeaderRight /> */}
 
       {/* Navbar en haut (visible si showTopNavbar est vrai) */}
       <motion.div

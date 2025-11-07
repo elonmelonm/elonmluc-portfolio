@@ -138,7 +138,7 @@ const Projects = () => {
   const toggleProjects = () => setShowAllProjects(!showAllProjects);
 
   return (
-    <section id="projets" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 lg:min-h-screen bg-gray-50 dark:bg-transparent py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300">
+    <section id="projets" className="lg:mx-32 xl:mx-10 lg:min-h-screen bg-gray-50 dark:bg-transparent py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4 py-10 rounded-xl ">
         <motion.h2
           style={{ fontFamily: 'Rammetto One' }}

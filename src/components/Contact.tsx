@@ -47,7 +47,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="lg:hidden lg:mx-16 lg:mr-64 lg:min-h-screen py-16 bg-gray-50 rounded-xl dark:bg-transparent transition-colors duration-300"
+      className="lg:mx-16 lg:min-h-screen py-16 bg-gray-50 rounded-xl dark:bg-transparent transition-colors duration-300"
     >
       <div className="container mx-auto px-4">
         <h2
@@ -61,7 +61,7 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
-              className="bg-white dark:bg-transparent p-6 rounded-xl shadow-lg transition-colors duration-300"
+              className="bg-white dark:bg-transparent p-6 rounded-xl transition-colors duration-300"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -130,7 +130,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.div
-              className="bg-white dark:bg-transparent p-6 rounded-xl shadow-lg transition-colors duration-300"
+              className="bg-white dark:bg-transparent p-6 rounded-xl  transition-colors duration-300"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}

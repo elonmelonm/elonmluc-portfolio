@@ -14,9 +14,9 @@ export default function Experience () {
     }
 
     return (
-        <section id="journey" className="lg:mx-32 lg:mr-[330px] xl:mx-16 xl:mr-64 lg:min-h-screen py-16 lg:mb-0 mb-10 md:py-20 2xl:py-20 rounded-xl relative overflow-hidden">
+        <section id="journey" className="lg:mx-32 xl:mx-16 lg:min-h-screen py-16 lg:mb-0 mb-10 md:py-20 2xl:py-20 rounded-xl relative overflow-hidden">
             <div className="absolute inset-0 dark:bg-transparent bg-gradient-to-br bg-gray-50 dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
-            <div className="container mx-auto px-4 md:px-20 relative z-10">
+            <div className="container mx-auto px-4 md:px-10 lg:px-0 relative z-10">
                 <motion.h2
                     style={{ fontFamily: 'Rammetto One' }} 
                     initial={{ opacity: 0 }}
@@ -34,7 +34,7 @@ export default function Experience () {
                 </motion.p>
                 <motion.div 
                     // variants={itemVariants}
-                    className="max-w-xl flex justify-center  gap-1 md:gap-8 mb-5 mx-auto"
+                    className="max-w-xl flex justify-center  gap-1 md:gap-8 mb-12 mx-auto"
                     >
                     <motion.button 
                         // href=""
@@ -69,7 +69,7 @@ export default function Experience () {
                         </motion.div>
                     </motion.button>
                     
-                    </motion.div>
+                </motion.div>
                 <div className="mx-auto">
                     {toggleState===1 
                         ?

@@ -1,10 +1,10 @@
 import React from 'react';
-import { ArrowRight, Download, Files } from 'lucide-react';
+import { ArrowRight, Download, Files, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import image from '../img/elonmluc1.jpg';
 import cv from '../cv/cv_LUC_ELONM_AKAKPO.pdf';
 
-const Hero = () => {
+const About = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -50,7 +50,7 @@ const Hero = () => {
   
 
   return (
-    <section id="about" className="lg:mx-32 lg:mr-80 xl:mx-16 xl:mr-64 pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="about" className="lg:mx-32 xl:mx-10 pb-16 min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.h2 
         style={{ fontFamily: 'Rammetto One' }} 
@@ -63,12 +63,12 @@ const Hero = () => {
         </motion.h2>
         <h6 className='text-sm mb-10 text-center text-gray-500'>My introduction</h6>
         <motion.div 
-          className="flex flex-col md:flex-row items-center justify-between gap-12"
+          className="flex flex-col items-center justify-between gap-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div 
+          {/* <motion.div 
             className="flex-1 lg:hidden"
             variants={imageVariants}
             whileHover="hover"
@@ -79,7 +79,14 @@ const Hero = () => {
               className="size-2/3 mx-auto rounded-2xl shadow-2xl transform transition-transform"
             />
 
-          </motion.div>
+          </motion.div> */}
+          {/* <div className="flex flex-col">
+            <div className="flex flex-col items-center">
+              <span className='p-1 rounded-xl text-2xl dark:text-white text-center my-4'>Luc Elonm Akakpo</span>
+              <span className='p-1 rounded-xl text-rose-600 bg-white dark:bg-rose-500 dark:text-white text-center my-2'>Full Stack Web Developer</span>
+            </div>
+            <Phone className="text-gray-600 dark:text-white mt-1 transition-colors duration-300" />
+          </div> */}
           <div className="flex-1">
             <motion.p 
               variants={itemVariants}
@@ -120,4 +127,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default About;

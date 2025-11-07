@@ -51,7 +51,7 @@ const HeroLeft = () => {
         <img 
             src={image}
             alt="Developer workspace"
-            className=""
+            className="w-[100%] h-[100%] object-cover"
         />
         
 
