@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Download, Files } from 'lucide-react';
 import { motion } from 'framer-motion';
 import image from '../img/elonmluc1.jpg';
-import cv from '../cv/LUC_ELONM_AKAKPO.pdf';
+import cv from '../cv/cv_LUC_ELONM_AKAKPO.pdf';
 
 const Hero = () => {
   const containerVariants = {
