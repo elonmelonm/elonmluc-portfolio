@@ -5,14 +5,20 @@ import emailjs from '@emailjs/browser';
 import { GiMailShirt } from 'react-icons/gi';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  interface FormData {
+    name: string;
+    email: string;
+    message: string;
+  }
+
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: '',
   });
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState<string | null>(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -20,24 +26,31 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus('loading'); // Ajoute un statut 'loading'
+    setStatus('loading');
+
+    // Créer un objet avec les mêmes propriétés mais avec un type plus large
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message
+    };
 
     emailjs
       .send(
-        'service_6zdpjyp', // Remplacez par votre Service ID EmailJS
-        'template_qzwrzsl', // Remplacez par votre Template ID EmailJS
-        formData,
-        'ShfEbM7aGAa906G90' // Remplacez par votre clé publique (User Token)
+        'service_6zdpjyp',
+        'template_qzwrzsl',
+        templateParams,
+        'ShfEbM7aGAa906G90'
       )
       .then(
-        (response) => {
+        (response: { status: number; text: string }) => {
           console.log('Email envoyé avec succès !', response.status, response.text);
           setStatus('success');
-          setFormData({ name: '', email: '', message: '' }); // Réinitialise le formulaire
+          setFormData({ name: '', email: '', message: '' });
         },
-        (error) => {
+        (error: Error) => {
           console.error('Erreur lors de l\'envoi de l\'email :', error);
           setStatus('error');
         }

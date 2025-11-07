@@ -36,7 +36,7 @@ const Header = () => {
         const sectionHeight = section.offsetHeight;
 
         if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          currentSection = section.getAttribute('id');
+          currentSection = section.getAttribute('id') || 'home';
         }
       });
 

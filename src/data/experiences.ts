@@ -1,5 +1,17 @@
 export const experiences = [
     {
+        period: "May - Today 2025",
+        title: "Full Stack Mobile Developer",
+        company: "Marktech",
+        description: "Full Stack Mobile developer at Marktech"
+    },
+    {
+        period: "February - April 2025",
+        title: "Full Stack Web Developer",
+        company: "10-20 Technologies",
+        description: "Web developer consultant at 10-20 Technologies"
+    },
+    {
         period: "September - December 2024",
         title: "Full Stack Developer Training",
         company: "Holding Bourjon Investment",

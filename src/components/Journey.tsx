@@ -8,7 +8,7 @@ export default function Experience () {
     const [toggleState, setToggleState] = useState(1);
     const [isActive, setIsActive] = useState(1);
 
-    const toggleTab = (index) => {
+    const toggleTab = (index: number) => {
         setToggleState(index);
         setIsActive(index);
     }
