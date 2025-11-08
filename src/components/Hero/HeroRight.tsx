@@ -53,7 +53,7 @@ const HeroRight = () => {
                         className="text-3xl font-bold text-gray-700 dark:text-white mb-6 transition-colors duration-300 flex space-x-5"
                     >
                         <div>
-                            <span>Luc Elonm</span><br />
+                            <span>Elonm Luc</span><br />
                             <span className='text-4xl tracking-widest'>Akakpo</span>
                         </div>
                         
