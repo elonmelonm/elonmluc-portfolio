@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import image from '../../assets/elonmluc.jpg'
+import { FaWhatsapp } from 'react-icons/fa';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const HeroLeft = () => {
   const imageVariants = {
@@ -147,6 +149,43 @@ const HeroLeft = () => {
         >
           Full Stack Web Developer
         </motion.p>
+        <motion.div
+          className="flex flex-row mt-4 justify-center p-2 rounded-full md:flex items-center space-x-8"
+          variants={itemVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <a
+            href="https://github.com/elonmelonm"
+            className="p-2 rounded-full hover:bg-black text-gray-600 hover:text-white dark:text-gray-300 dark:hover:bg-white dark:hover:text-black"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github size={20} />
+          </a>
+          <a
+            href="https://linkedin.com/in/luc-elonm-akakpo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full hover:bg-blue-600 hover:text-white text-gray-600 dark:text-gray-300 dark:hover:bg-blue-600 dark:hover:text-white"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a
+            href="https://wa.me/22957113810"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full hover:bg-green-600 hover:text-white text-gray-600 dark:text-gray-300 dark:hover:bg-green-400 dark:hover:text-black"
+          >
+            <FaWhatsapp size={20} />
+          </a>
+          <a
+            href="mailto:elonmlucakakpo@gmail.com"
+            className="p-2 rounded-full hover:bg-black hover:text-white text-gray-600 dark:text-gray-300 dark:hover:bg-white dark:hover:text-black"
+          >
+            <Mail size={20} />
+          </a>
+        </motion.div>
       </div>
     </>
   )
