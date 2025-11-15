@@ -154,10 +154,10 @@ const Contact = () => {
                 <div className="flex items-start space-x-4">
                   <Mail className="text-rose-700 dark:text-rose-500 mt-1 transition-colors duration-300" />
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-rose-50 transition-colors duration-300">
+                    <h4 className="font-semibold text-rose-700 dark:text-rose-500 transition-colors duration-300">
                       Email
                     </h4>
-                    <p className="text-rose-700 dark:text-rose-500 transition-colors duration-300">
+                    <p className="text-gray-900 dark:text-white transition-colors duration-300">
                       elonmlucakakpo@gmail.com
                     </p>
                   </div>
@@ -165,21 +165,21 @@ const Contact = () => {
                 <div className="flex items-start space-x-4">
                   <Phone className="text-rose-700 dark:text-rose-500 mt-1 transition-colors duration-300" />
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-rose-50 transition-colors duration-300">
+                    <h4 className="font-semibold text-rose-700 dark:text-rose-500 transition-colors duration-300">
                       Phone
                     </h4>
-                    <p className="text-rose-700 dark:text-rose-500 transition-colors duration-300">
+                    <p className="text-gray-900 dark:text-white transition-colors duration-300">
                       +229 01 57 11 38 10
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <MapPin className="text-rose-600 dark:text-rose-500 mt-1 transition-colors duration-300" />
+                  <MapPin className="text-rose-700 dark:text-rose-500 mt-1 transition-colors duration-300" />
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-rose-50 transition-colors duration-300">
+                    <h4 className="font-semibold text-rose-700 dark:text-rose-500 transition-colors duration-300">
                       Location
                     </h4>
-                    <p className="text-rose-600 dark:text-rose-500 transition-colors duration-300">
+                    <p className="text-gray-900 dark:text-white transition-colors duration-300">
                       Bénin, Cotonou
                     </p>
                   </div>
