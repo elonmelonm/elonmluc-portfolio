@@ -15,7 +15,7 @@ export default function Experience () {
 
     return (
         <section id="journey" className="lg:mx-32 xl:mx-16 lg:min-h-screen py-16 lg:mb-0 mb-10 md:py-20 2xl:py-20 rounded-xl relative overflow-hidden">
-            <div className="absolute inset-0 dark:bg-transparent bg-gradient-to-br bg-gray-50 dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
+            <div className="absolute inset-0 dark:bg-transparent bg-gradient-to-br dark:bg-gray-800 to-blue-500/10 backdrop-blur-sm" />
             <div className="container mx-auto px-4 md:px-10 lg:px-0 relative z-10">
                 <motion.h2
                     style={{ fontFamily: 'Rammetto One' }} 

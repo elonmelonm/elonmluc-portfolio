@@ -11,7 +11,7 @@ export default function Skills() {
     const toggleSkills = () => setShowAllSkills(!showAllSkills);
 
     return (
-        <section id="skills" className="lg:mx-32 xl:mx-16 lg:min-h-screen bg-gray-50  dark:bg-transparent py-16 mb-10 md:py-20 2xl:py-12 rounded-xl relative overflow-hidden">
+        <section id="skills" className="lg:mx-32 xl:mx-16 lg:min-h-screen px-4 dark:bg-transparent py-16 mb-10 md:py-20 2xl:py-12 rounded-xl relative overflow-hidden">
             <div className="absolute inset-0 to-blue-500/10 backdrop-blur-sm" />
             <div className="container mx-auto rounded-xl py-10 px-4 md:px-10 lg:px-0 relative z-10">
                 <motion.h2
@@ -45,8 +45,7 @@ export default function Skills() {
                     ))}
                 </div>
 
-                {/* Bouton Voir plus en mobile uniquement */}
-                <div className="lg:hidden flex justify-end mt-8">
+                <div className="flex justify-end mt-8">
                     <motion.button
                         onClick={toggleSkills}
                         className="flex items-center gap-2 px-6 py-3 bg-rose-700 dark:bg-rose-500 dark:hover:bg-transparent text-white rounded-full hover:text-rose-700 hover:border-rose-700 hover:border-2 hover:bg-white dark:hover:bg-rose-600 transition-colors duration-300"

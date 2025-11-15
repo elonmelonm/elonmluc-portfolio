@@ -79,7 +79,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '' }) => (
   <motion.div
     key={index}
-    className={`bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden bg-white/50 dark:bg-white/5 backdrop-blur-sm hover:bg-gray-200 dark:hover:bg-white/10 transition-colors ${className}`}
+    className={`bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden bg-white/50 dark:bg-white/5 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-white/10 transition-colors ${className}`}
   >
     <motion.img
       src={project.image}
@@ -138,7 +138,7 @@ const Projects = () => {
   const toggleProjects = () => setShowAllProjects(!showAllProjects);
 
   return (
-    <section id="projets" className="lg:mx-32 xl:mx-10 lg:min-h-screen bg-gray-50 dark:bg-transparent py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300">
+    <section id="projets" className="lg:mx-32 xl:mx-10 lg:min-h-screen dark:bg-transparent py-12 mb-10 rounded-xl dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4 py-10 rounded-xl ">
         <motion.h2
           style={{ fontFamily: 'Rammetto One' }}

@@ -60,7 +60,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="lg:mx-16 lg:min-h-screen py-16 bg-gray-50 rounded-xl dark:bg-transparent transition-colors duration-300"
+      className="lg:mx-16 lg:min-h-screen py-16 rounded-xl dark:bg-transparent transition-colors duration-300"
     >
       <div className="container mx-auto px-4">
         <h2
@@ -122,12 +122,14 @@ const Contact = () => {
                     required
                   />
                 </div>
-                <button
+                <motion.button
                   type="submit"
                   className="w-full bg-rose-700 dark:bg-rose-500 text-white py-2 px-4 rounded-full hover:bg-rose-700 dark:hover:bg-rose-600 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Submit
-                </button>
+                </motion.button>
               </form>
 
               {/* Affichage des messages de statut */}
