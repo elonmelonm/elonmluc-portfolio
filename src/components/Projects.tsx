@@ -10,7 +10,53 @@ import freshFruitsImg from '../assets/projetsImg/freshfruits.png';
 import eLearningImg from '../assets/projetsImg/e-learning.png';
 import smithPortfolioImg from '../assets/projetsImg/smithportfolio.png';
 import constructionImg from '../assets/projetsImg/construction.png';
+import ftcW1Img from '../assets/projetsImg/ftc-w1-elonm.png';
+import ftcW2Img from '../assets/projetsImg/ftc-w2-elonm.png';
+import ftcW3Img from '../assets/projetsImg/ftc-w3-elonm.png';
+import ftcW4Img from '../assets/projetsImg/ftc-w4-elonm.png';
+import hackathonIA2025Img from '../assets/projetsImg/hackathon-ia-2025.png';
+
 const projects = [
+  {
+    title: "Hackathon IA 2025",
+    description: "Hackathon IA 2025 : Challenge IA et données foncières : développer des solutions IA au service du foncier",
+    image: hackathonIA2025Img,
+    technologies: ["React.js", "Tailwind CSS", "Framer-motion", "FastApi"],
+    githubLink: "https://github.com/elonmelonm/les_mentats-luxdev-hackaton-ia-2025",
+    liveLink: "https://les-mentats-luxdev-hackaton-ia-2025.vercel.app/"
+  },
+  {
+    title: "The french tototte App",
+    description: "Build The french tototte website on Figma To Code Challenge",
+    image: ftcW4Img,
+    technologies: ["React.js", "Tailwind CSS", "Framer-motion", "Figma"],
+    githubLink: "https://github.com/elonmelonm/ftc-w4-elonm.git",
+    liveLink: "https://ftc-w4-elonm.vercel.app/"
+  },
+  {
+    title: "Monito App",
+    description: "Build a Monito App on Figma To Code Challenge",
+    image: ftcW3Img,
+    technologies: ["React.js", "Tailwind CSS", "Framer-motion", "Figma"],
+    githubLink: "https://github.com/elonmelonm/FTC-W3-ELONM.git",
+    liveLink: "https://ftc-w3-elonm.vercel.app/"
+  },
+  {
+    title: "Spending Management Landing Page",
+    description: "Build a Spending Management Landing Page on Figma To Code Challenge",
+    image: ftcW2Img,
+    technologies: ["React.js", "Tailwind CSS"],
+    githubLink: "https://github.com/elonmelonm/spending-management-landing-page.git",
+    liveLink: "https://ftc-w2-elonm.vercel.app/"
+  },
+  {
+    title: "SaaS Futuristic App",
+    description: "Build a SaaS Futuristic App on Figma To Code Challenge",
+    image: ftcW1Img,
+    technologies: ["React.js", "Tailwind CSS"],
+    githubLink: "https://github.com/elonmelonm/SaaS-Futuristic-App.git",
+    liveLink: "https://ftc-w1-elonm.vercel.app/"
+  },
   {
     title: "Budget Management App",
     description: "A budget management application to manage your wallet",
