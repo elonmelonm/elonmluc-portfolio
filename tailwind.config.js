@@ -5,12 +5,15 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'poppins': ['Montserrat ', 'sans-serif'],
+        sans: ['"Space Grotesk"', 'sans-serif'],
       },
       colors: {
-        'pink-500': '#1D4ED8', // Exemple de couleur personnalisée
-        'custom-gray': '#6B7280',
-        'custom-light': '#F3F4F6',
+        primary: '#3b82f6',
+        secondary: '#6b7280',
+        highlight: '#fef08a',
+        'dark-bg': '#030712',
+        // 'dark-bg': '#111827',
+        'light-bg': '#ffffff',
       },
     },
   },

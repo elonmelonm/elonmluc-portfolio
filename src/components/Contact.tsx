@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { GiMailShirt } from 'react-icons/gi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Contact = () => {
   interface FormData {
@@ -63,25 +63,89 @@ const Contact = () => {
       className="lg:mx-16 lg:min-h-screen py-16 rounded-xl dark:bg-transparent transition-colors duration-300"
     >
       <div className="container mx-auto px-4">
-        <h2
-          style={{ fontFamily: 'Rammetto One' }}
-          className="text-4xl font-bold text-center mb-2 text-rose-700 dark:text-rose-500 transition-colors duration-300"
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl font-bold text-center mb-2 text-primary transition-colors duration-300"
         >
           Get in touch
-        </h2>
+        </motion.h2>
         <h6 className="text-sm mb-10 text-center text-gray-500">Contact me</h6>
+
+        {/* Social Connect Cards Section */}
+        <div className="mb-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                name: "WhatsApp",
+                icon: <FaWhatsapp size={32} />,
+                link: "https://wa.me/22957113810",
+                color: "bg-[#25D366]",
+                desc: "Quick chat & responses"
+              },
+              {
+                name: "LinkedIn",
+                icon: <Linkedin size={32} />,
+                link: "https://linkedin.com/in/luc-elonm-akakpo/",
+                color: "bg-[#0077B5]",
+                desc: "Professional networking"
+              },
+              {
+                name: "GitHub",
+                icon: <Github size={32} />,
+                link: "https://github.com/elonmelonm",
+                color: "bg-[#333]",
+                desc: "View my code samples"
+              },
+              {
+                name: "Email",
+                icon: <Mail size={32} />,
+                link: "mailto:elonmlucakakpo@gmail.com",
+                color: "bg-[#EA4335]",
+                desc: "Send a formal inquiry"
+              }
+            ].map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+                className="group relative p-8 rounded-3xl bg-secondary/5 dark:bg-white/5 border border-secondary/10 dark:border-white/10 overflow-hidden flex flex-col items-center text-center transition-all"
+              >
+                {/* Background Hover Effect */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 ${social.color}`} />
+
+                <div className={`mb-6 p-4 rounded-2xl text-white shadow-lg ${social.color} group-hover:scale-110 transition-transform duration-300`}>
+                  {social.icon}
+                </div>
+
+                <h4 className="text-xl font-bold dark:text-white mb-2">{social.name}</h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{social.desc}</p>
+
+                <span className="text-xs font-bold uppercase tracking-widest text-primary flex items-center group-hover:translate-x-2 transition-transform">
+                  Contact Now <Send size={12} className="ml-2" />
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
-              className="bg-white dark:bg-transparent p-6 rounded-xl transition-colors duration-300"
+              className="bg-light-bg/50 dark:bg-dark-bg/50 p-6 rounded-xl border border-secondary/10 backdrop-blur-sm transition-colors duration-300"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-gray-700 dark:text-gray-200 mb-2 transition-colors duration-300">
+                  <label className="block text-secondary dark:text-gray-200 mb-2 transition-colors duration-300">
                     Name
                   </label>
                   <input
@@ -89,7 +153,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
+                    className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-light-bg dark:bg-dark-bg text-secondary dark:text-white transition-colors duration-300"
                     placeholder="Your name"
                     required
                   />
@@ -124,7 +188,7 @@ const Contact = () => {
                 </div>
                 <motion.button
                   type="submit"
-                  className="w-full bg-rose-700 dark:bg-rose-500 text-white py-2 px-4 rounded-full hover:bg-rose-700 dark:hover:bg-rose-600 transition-colors duration-300"
+                  className="w-full bg-primary text-white py-2 px-4 rounded-full hover:bg-primary/90 transition-colors duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -145,16 +209,16 @@ const Contact = () => {
             </motion.div>
 
             <motion.div
-              className="bg-white dark:bg-transparent p-6 rounded-xl  transition-colors duration-300"
+              className="bg-light-bg/50 dark:bg-dark-bg/50 p-6 rounded-xl border border-secondary/10 backdrop-blur-sm transition-colors duration-300"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <Mail className="text-rose-700 dark:text-rose-500 mt-1 transition-colors duration-300" />
+                  <Mail className="text-primary mt-1 transition-colors duration-300" />
                   <div>
-                    <h4 className="font-semibold text-rose-700 dark:text-rose-500 transition-colors duration-300">
+                    <h4 className="font-semibold text-primary transition-colors duration-300">
                       Email
                     </h4>
                     <p className="text-gray-900 dark:text-white transition-colors duration-300">
@@ -163,9 +227,9 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <Phone className="text-rose-700 dark:text-rose-500 mt-1 transition-colors duration-300" />
+                  <Phone className="text-primary mt-1 transition-colors duration-300" />
                   <div>
-                    <h4 className="font-semibold text-rose-700 dark:text-rose-500 transition-colors duration-300">
+                    <h4 className="font-semibold text-primary transition-colors duration-300">
                       Phone
                     </h4>
                     <p className="text-gray-900 dark:text-white transition-colors duration-300">
@@ -174,9 +238,9 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <MapPin className="text-rose-700 dark:text-rose-500 mt-1 transition-colors duration-300" />
+                  <MapPin className="text-primary mt-1 transition-colors duration-300" />
                   <div>
-                    <h4 className="font-semibold text-rose-700 dark:text-rose-500 transition-colors duration-300">
+                    <h4 className="font-semibold text-primary transition-colors duration-300">
                       Location
                     </h4>
                     <p className="text-gray-900 dark:text-white transition-colors duration-300">

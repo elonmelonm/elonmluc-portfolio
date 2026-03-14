@@ -28,9 +28,9 @@ export default function ScrollUp() {
         <button
           onClick={scrollToTop}
           type="button"
-          className="fixed lg:mr-[250px] xl:mr-[343px] right-8 md:bottom-8 bottom-16 md:right-8 p-3 bg-gray-700 text-white rounded-full shadow-lg dark:bg-gray-100 dark:text-black hover:bg-slate-300 hover:text-black dark:hover:text-white dark:hover:bg-gray-900  transition duration-300"
+          className="fixed right-8 bottom-8 p-4 bg-primary text-white rounded-2xl shadow-2xl hover:scale-110 active:scale-90 transition-all duration-300 z-[60] group"
         >
-          <ArrowUp size={24} />
+          <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
         </button>
       )}
     </div>

@@ -1,133 +1,130 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Home, 
-  User, 
-  Briefcase, 
-  Star, 
-  Compass, 
-  Send 
+import {
+  Menu,
+  X,
+  Home,
+  User,
+  Briefcase,
+  Star,
+  Compass,
+  Send
 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import HeaderLeft from './Header/HeaderLeft';
-import HeaderRight from './Header/HeaderRight';
+import { motion, AnimatePresence } from 'framer-motion';
+import { NavLink, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 
+const navLinks = [
+  { name: 'Home', href: '/', icon: Home },
+  { name: 'About', href: '/about', icon: User },
+  { name: 'Projects', href: '/projects', icon: Briefcase },
+  { name: 'Skills', href: '/skills', icon: Star },
+  { name: 'Journey', href: '/journey', icon: Compass },
+  { name: 'Contact', href: '/contact', icon: Send },
+];
+
 const Header = () => {
-  const [showTopNavbar, setShowTopNavbar] = useState(false); // État pour gérer quelle navbar afficher
-  const [activeSection, setActiveSection] = useState('home'); // État pour gérer la section active
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY; // Position verticale actuelle
-      const pageHeight = document.body.offsetHeight; // Hauteur totale de la page
-
-      // Calcul des 3/4 de la hauteur totale de la page
-      const threeQuarterHeight = (pageHeight * 3) / 4;
-
-      // Met à jour l'état en fonction de la position de défilement
-      setShowTopNavbar(scrollY >= threeQuarterHeight);
-
-      // Détection de la section active
-      const sections = document.querySelectorAll('section');
-      let currentSection = 'home';
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100; // Marge pour détecter l'entrée
-        const sectionHeight = section.offsetHeight;
-
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          currentSection = section.getAttribute('id') || 'home';
-        }
-      });
-
-      setActiveSection(currentSection);
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const NavbarContent = () => (
-    <div className="bg-white/90 md:rounded-full md:w-[500px] md:mt-7 dark:bg-gray-900/90 backdrop-blur-sm rounded-t-3xl shadow-lg">
-      <nav className="flex justify-around py-4">
-        <a href="#home" className="flex flex-col items-center">
-          <Home 
-            className={`text-gray-600 dark:text-gray-300 hover:text-blue-500 transition ${activeSection === 'home' ? 'text-blue-500 dark:text-blue-500' : ''}`} 
-            size={24} 
-          />
-          {activeSection === 'home' && <motion.div layout className="w-2 h-2 bg-blue-500 rounded-full mt-1" />}
-        </a>
-        <a href="#about" className="flex flex-col items-center">
-          <User 
-            className={`text-gray-600 dark:text-gray-300 hover:text-green-500 transition ${activeSection === 'about' ? 'text-green-500 dark:text-green-500' : ''}`} 
-            size={24} 
-          />
-          {activeSection === 'about' && <motion.div layout className="w-2 h-2 bg-green-500 rounded-full mt-1" />}
-        </a>
-        <a href="#projets" className="flex flex-col items-center">
-          <Briefcase 
-            className={`text-gray-600 dark:text-gray-300 hover:text-purple-500 transition ${activeSection === 'projets' ? 'text-purple-500 dark:text-purple-500' : ''}`} 
-            size={24} 
-          />
-          {activeSection === 'projets' && <motion.div layout className="w-2 h-2 bg-purple-500 rounded-full mt-1" />}
-        </a>
-        <a href="#skills" className="flex flex-col items-center">
-          <Star 
-            className={`text-gray-600 dark:text-gray-300 hover:text-yellow-500 transition ${activeSection === 'skills' ? 'text-yellow-500 dark:text-yellow-500' : ''}`} 
-            size={24} 
-          />
-          {activeSection === 'skills' && <motion.div layout className="w-2 h-2 bg-yellow-500 rounded-full mt-1" />}
-        </a>
-        <a href="#journey" className="flex flex-col items-center">
-          <Compass 
-            className={`text-gray-600 dark:text-gray-300 hover:text-teal-500 transition ${activeSection === 'journey' ? 'text-teal-500 dark:text-teal-500' : ''}`} 
-            size={24} 
-          />
-          {activeSection === 'journey' && <motion.div layout className="w-2 h-2 bg-teal-500 rounded-full mt-1" />}
-        </a>
-        <a href="#contact" className="flex flex-col items-center">
-          <Send 
-            className={`text-gray-600 dark:text-gray-300 hover:text-red-500 transition ${activeSection === 'contact' ? 'text-red-500 dark:text-red-500' : ''}`} 
-            size={24} 
-          />
-          {activeSection === 'contact' && <motion.div layout className="w-2 h-2 bg-red-500 rounded-full mt-1" />}
-        </a>
-      </nav>
-    </div>
-  );
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   return (
-    <>
-      {/* Desktop Navbar */}
-      <HeaderLeft />
-      {/* <HeaderRight /> */}
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+          ? 'py-3 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md shadow-lg border-b border-primary/10'
+          : 'py-6 bg-transparent border-b border-transparent'
+        }`}
+    >
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+        >
+          <NavLink
+            to="/"
+            className="text-2xl font-black tracking-tighter text-primary group flex items-center gap-1"
+          >
+            Elonm
+          </NavLink>
+        </motion.div>
 
-      {/* Navbar en haut (visible si showTopNavbar est vrai) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showTopNavbar ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        className={`md:flex md:justify-center lg:hidden fixed top-0 left-0 right-0 z-50 ${showTopNavbar ? 'block' : 'hidden'}`}
-      >
-        <NavbarContent />
-      </motion.div>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-1">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.href}
+              className={({ isActive }) =>
+                `px-4 py-2 text-sm font-bold transition-all rounded-xl ${isActive
+                  ? 'text-primary'
+                  : 'text-secondary dark:text-gray-400 hover:text-primary hover:bg-primary/5'
+                }`
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
+          <div className="ml-4 pl-4 border-l border-secondary/20">
+            <ThemeToggle />
+          </div>
+        </div>
 
-      {/* Navbar en bas (visible si showTopNavbar est faux) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: !showTopNavbar ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        className={`md:flex md:justify-center lg:hidden fixed bottom-0 left-0 right-0 z-50 ${!showTopNavbar ? 'block' : 'hidden'}`}
-      >
-        <NavbarContent />
-      </motion.div>
-      <div className={`fixed   h-auto p-2 block lg:hidden z-50 ${showTopNavbar ? 'right-5 bottom-3 md:right-8 md:top-9' : 'right-5 mt-3 md:bottom-3'}`}>
-        <ThemeToggle />
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
+          <button
+            onClick={toggleMenu}
+            className="p-2 text-secondary dark:text-gray-300 hover:bg-primary/10 rounded-xl transition-colors"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
-    </>
+
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden absolute top-full left-0 w-full h-screen bg-white dark:bg-dark-bg border-b border-secondary/10 shadow-2xl"
+          >
+            <div className="flex flex-col space-y-2 p-6">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.href}
+                  className={({ isActive }) =>
+                    `flex items-center gap-4 p-4 rounded-2xl text-lg font-bold transition-all ${isActive
+                      ? 'text-primary bg-primary/10'
+                      : 'text-secondary dark:text-gray-300 hover:bg-primary/5'
+                    }`
+                  }
+                >
+                  <link.icon size={20} />
+                  {link.name}
+                </NavLink>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 
