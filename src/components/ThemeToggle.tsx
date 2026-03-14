@@ -11,7 +11,7 @@ const ThemeToggle = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+      className="p-2 rounded-full"
       aria-label="Toggle theme"
     >
       {theme === 'light' ? (
