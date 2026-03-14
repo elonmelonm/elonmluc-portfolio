@@ -1,12 +1,13 @@
 import { Files, Briefcase, MessageSquare, Award, Star, BookOpen, Code, Smartphone, ShieldCheck, Layout as LayoutIcon, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import image from '../assets/elonmluc.jpg';
 import shootMe from '../assets/ShootMe.png';
-
 import cv from '../cv/cv_LUC_ELONM_AKAKPO.pdf';
 import { Link } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -51,31 +52,31 @@ const About = () => {
   };
 
   const stats = [
-    { icon: <Award className="text-primary" size={24} />, label: "Experience", value: "3+ Years" },
-    { icon: <Star className="text-primary" size={24} />, label: "Projects", value: "7+ Completed" },
-    { icon: <BookOpen className="text-primary" size={24} />, label: "Learning", value: "Continuous" }
+    { icon: <Award className="text-primary" size={24} />, label: t('about.stats.experience'), value: t('about.stats.years_val') },
+    { icon: <Star className="text-primary" size={24} />, label: t('about.stats.projects'), value: t('about.stats.projects_val') },
+    { icon: <BookOpen className="text-primary" size={24} />, label: t('about.stats.learning'), value: t('about.stats.learning_val') }
   ];
 
   const services = [
     {
       icon: <Code size={32} />,
-      title: "Web Development",
-      desc: "Creating responsive, SEO-friendly, and high-performance websites using modern frameworks."
+      title: t('about.what_i_do.web_dev.title'),
+      desc: t('about.what_i_do.web_dev.desc')
     },
     {
       icon: <Smartphone size={32} />,
-      title: "Mobile App Development",
-      desc: "Building cross-platform mobile applications with React Native for iOS and Android."
+      title: t('about.what_i_do.mobile_dev.title'),
+      desc: t('about.what_i_do.mobile_dev.desc')
     },
     {
       icon: <LayoutIcon size={32} />,
-      title: "UI/UX Design",
-      desc: "Designing intuitive and visually appealing user interfaces focusing on user experience."
+      title: t('about.what_i_do.uiux.title'),
+      desc: t('about.what_i_do.uiux.desc')
     },
     {
       icon: <ShieldCheck size={32} />,
-      title: "Cybersecurity",
-      desc: "Implementing security best practices to protect applications from vulnerabilities and threats."
+      title: t('about.what_i_do.cyber.title'),
+      desc: t('about.what_i_do.cyber.desc')
     }
   ];
 
@@ -115,9 +116,9 @@ const About = () => {
                 className="mb-8"
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                  About me
+                  {t('about.title')}
                 </h2>
-                <span className="text-gray-500 dark:text-gray-400 text-lg">My introduction</span>
+                <span className="text-gray-500 dark:text-gray-400 text-lg">{t('about.intro')}</span>
               </motion.div>
 
               {/* Stats Cards */}
@@ -138,14 +139,16 @@ const About = () => {
                 variants={itemVariants}
                 className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-light"
               >
-                I am a <span className="text-primary font-semibold">Full Stack Developer</span> with over <span className="text-primary font-bold">3 years of experience</span> in building high-quality digital products.
+                <Trans i18nKey="about.p1">
+                  I am a <span className="text-primary font-semibold">Full Stack Developer</span> with over <span className="text-primary font-bold">3 years of experience</span> in building high-quality digital products.
+                </Trans>
               </motion.p>
 
               <motion.p
                 variants={itemVariants}
                 className="text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed"
               >
-                Passionate about technology, I specialize in creating scalable web application and intuitive user interfaces. My goal is to transform ideas into reality through clean and efficient code.
+                {t('about.p2')}
               </motion.p>
 
               <motion.div
@@ -158,7 +161,7 @@ const About = () => {
                   className="inline-flex items-center px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-105 transition-all text-sm md:text-base"
                   whileTap={{ scale: 0.95 }}
                 >
-                  Download CV
+                  {t('about.buttons.download_cv')}
                   <Files className="ml-2" size={18} />
                 </motion.a>
 
@@ -167,7 +170,7 @@ const About = () => {
                     to="/contact"
                     className="inline-flex items-center px-8 py-3 bg-transparent text-primary font-bold rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all text-sm md:text-base"
                   >
-                    Contact Me
+                    {t('about.buttons.contact_me')}
                     <MessageSquare className="ml-2" size={18} />
                   </Link>
                 </motion.div>
@@ -176,7 +179,7 @@ const About = () => {
                     to="/projects"
                     className="inline-flex items-center px-8 py-3 bg-secondary/10 dark:bg-white/10 text-secondary dark:text-white font-bold rounded-full border border-secondary/20 dark:border-white/20 hover:bg-secondary hover:text-white dark:hover:bg-white dark:hover:text-dark-bg transition-all text-sm md:text-base"
                   >
-                    My Projects
+                    {t('about.buttons.my_projects')}
                     <Briefcase className="ml-2" size={18} />
                   </Link>
                 </motion.div>
@@ -189,20 +192,20 @@ const About = () => {
               >
                 <Link to="/skills" className="group flex-1 p-4 rounded-xl bg-secondary/5 dark:bg-white/5 hover:bg-primary/5 transition-all border border-transparent hover:border-primary/20">
                   <h4 className="font-bold dark:text-white mb-2 flex items-center group-hover:text-primary transition-colors">
-                    Skills Preview
+                    {t('about.previews.skills_title')}
                     <Briefcase size={16} className="ml-2 opacity-50" />
                   </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">React, Node.js, TypeScript, Tailwind CSS and more...</p>
-                  <span className="text-xs font-bold text-primary underline underline-offset-4">Explore all skills →</span>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{t('about.previews.skills_desc')}</p>
+                  <span className="text-xs font-bold text-primary underline underline-offset-4">{t('about.previews.skills_link')}</span>
                 </Link>
 
                 <Link to="/journey" className="group flex-1 p-4 rounded-xl bg-secondary/5 dark:bg-white/5 hover:bg-primary/5 transition-all border border-transparent hover:border-primary/20">
                   <h4 className="font-bold dark:text-white mb-2 flex items-center group-hover:text-primary transition-colors">
-                    Qualifications
+                    {t('about.previews.journey_title')}
                     <Award size={16} className="ml-2 opacity-50" />
                   </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Professional experience and academic background.</p>
-                  <span className="text-xs font-bold text-primary underline underline-offset-4">See my journey →</span>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{t('about.previews.journey_desc')}</p>
+                  <span className="text-xs font-bold text-primary underline underline-offset-4">{t('about.previews.journey_link')}</span>
                 </Link>
               </motion.div>
             </div>
@@ -221,9 +224,9 @@ const About = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-2">
-              What I Do
+              {t('about.what_i_do.title')}
             </h2>
-            <span className="text-gray-500 dark:text-gray-400 text-lg">My specialized services</span>
+            <span className="text-gray-500 dark:text-gray-400 text-lg">{t('about.what_i_do.subtitle')}</span>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -294,7 +297,13 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight"
               >
-                Let's Build Something <span className="text-yellow-300">Epic</span> Together!
+                {t('about.fun_cta.title').split('<0>').map((part, i) => {
+                  if (part.includes('</0>')) {
+                    const [italic, rest] = part.split('</0>');
+                    return <span key={i}><span className="text-yellow-300">{italic}</span>{rest}</span>;
+                  }
+                  return part;
+                })}
               </motion.h2>
 
               <motion.p
@@ -304,7 +313,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
               >
-                Currently available for new projects and collaborations. If you have a great idea, let's turn it into reality!
+                {t('about.fun_cta.desc')}
               </motion.p>
 
               <motion.div
@@ -318,7 +327,7 @@ const About = () => {
                   to="/contact"
                   className="group inline-flex items-center px-10 py-5 bg-white text-primary font-bold text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300"
                 >
-                  Start a Chat
+                  {t('about.fun_cta.chat')}
                   <MessageSquare className="ml-3 group-hover:rotate-12 transition-transform" />
                 </Link>
 
@@ -326,7 +335,7 @@ const About = () => {
                   to="/projects"
                   className="group inline-flex items-center px-10 py-5 bg-transparent border-2 border-white/30 text-white font-bold text-xl rounded-full backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
                 >
-                  View My Work
+                  {t('about.fun_cta.work')}
                   <Sparkles className="ml-3 group-hover:animate-pulse" />
                 </Link>
               </motion.div>

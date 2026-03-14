@@ -1,11 +1,19 @@
 import { motion } from "framer-motion"
-import { skills } from "../data/skills"
+import { useTranslation } from "react-i18next";
 
 interface SkillCardProps {
-    skill: typeof skills[0]
+    skill: {
+        icon: string;
+        title: string;
+        descKey: string;
+        level: number;
+        category: string;
+    }
 }
 
 export default function SkillCard({ skill }: SkillCardProps) {
+    const { t } = useTranslation();
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -24,7 +32,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
                 </div>
                 <div className="flex-1 -ml-3">
                     <h3 className="text-xl text-secondary dark:text-white font-semibold mb-2">{skill.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{skill.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{t(skill.descKey)}</p>
                 </div>
             </div>
         </motion.div>

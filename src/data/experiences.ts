@@ -1,32 +1,37 @@
 export const experiences = [
     {
-        period: "May - Today 2025",
-        title: "Full Stack Mobile Developer",
+        id: "marktech",
+        periodKey: "journey.experiences.marktech.period",
+        titleKey: "journey.experiences.marktech.title",
         company: "Marktech",
-        description: "Full Stack Mobile developer at Marktech"
+        descKey: "journey.experiences.marktech.desc"
     },
     {
-        period: "February - April 2025",
-        title: "Full Stack Web Developer",
+        id: "ten_twenty",
+        periodKey: "journey.experiences.ten_twenty.period",
+        titleKey: "journey.experiences.ten_twenty.title",
         company: "10-20 Technologies",
-        description: "Web developer consultant at 10-20 Technologies"
+        descKey: "journey.experiences.ten_twenty.desc"
     },
     {
-        period: "September - December 2024",
-        title: "Full Stack Developer Training",
+        id: "bourjon",
+        periodKey: "journey.experiences.bourjon.period",
+        titleKey: "journey.experiences.bourjon.title",
         company: "Holding Bourjon Investment",
-        description: "TechSeed Academy Training financed by the Labourd Foundation"
+        descKey: "journey.experiences.bourjon.desc"
     },
     {
-        period: "August 2024",
-        title: "Web development intern",
+        id: "three_d",
+        periodKey: "journey.experiences.three_d.period",
+        titleKey: "journey.experiences.three_d.title",
         company: "3d tech africa",
-        description: "Intern at 3d tech africa in frontend development"
+        descKey: "journey.experiences.three_d.desc"
     },
     {
-        period: "Frebruary - May 2023",
-        title: "Web development intern",
+        id: "tpapy",
+        periodKey: "journey.experiences.tpapy.period",
+        titleKey: "journey.experiences.tpapy.title",
         company: "TPAPY EDUCATIONAL CONSULT",
-        description: "Academic internship in Web development"
+        descKey: "journey.experiences.tpapy.desc"
     },
 ]

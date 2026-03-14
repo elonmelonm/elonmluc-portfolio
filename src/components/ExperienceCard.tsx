@@ -1,13 +1,20 @@
 import { motion } from "framer-motion"
-import { experiences } from "../data/experiences"
 import { Briefcase } from "lucide-react"
+import { useTranslation } from "react-i18next";
 
 interface ExperienceCardProps {
-    experience: typeof experiences[0]
-    index: number
+    experience: {
+        periodKey: string;
+        titleKey: string;
+        company: string;
+        descKey: string;
+    };
+    index: number;
 }
 
-export default function ExperienceCard ({experience, index} : ExperienceCardProps) {
+export default function ExperienceCard({ experience, index }: ExperienceCardProps) {
+    const { t } = useTranslation();
+
     return (
         <motion.div
             key={index}
@@ -26,11 +33,11 @@ export default function ExperienceCard ({experience, index} : ExperienceCardProp
             </div>
             <div className="bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 ml-6">
                 <span className="text-sm font-semibold text-primary">
-                  {experience.period}
+                    {t(experience.periodKey)}
                 </span>
-                <h3 className="text-xl text-gray-700 dark:text-primary/80 font-bold mt-1 mb-2">{experience.title}</h3>
+                <h3 className="text-xl text-gray-700 dark:text-primary/80 font-bold mt-1 mb-2">{t(experience.titleKey)}</h3>
                 <h4 className="text-lg text-gray-600 dark:text-gray-400 mb-3">{experience.company}</h4>
-                <p className="text-gray-600 dark:text-gray-300">{experience.description}</p>
+                <p className="text-gray-600 dark:text-gray-300">{t(experience.descKey)}</p>
             </div>
         </motion.div>
     )

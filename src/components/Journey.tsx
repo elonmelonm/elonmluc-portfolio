@@ -3,8 +3,10 @@ import { Backpack, GraduationCap, Rocket } from "lucide-react";
 import EducationPart from "./EducationPart";
 import ExperiencePart from "./ExperiencePart";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Experience() {
+    const { t } = useTranslation();
     const [toggleState, setToggleState] = useState(1);
     const [isActive, setIsActive] = useState(1);
 
@@ -14,14 +16,14 @@ export default function Experience() {
     }
 
     const languages = [
-        { name: "French", level: "Advanced", icon: "🇫🇷" },
-        { name: "English", level: "Beginner", icon: "🇬🇧" }
+        { name: t('journey.communication.french'), level: t('journey.communication.advanced'), icon: "🇫🇷" },
+        { name: t('journey.communication.english'), level: t('journey.communication.beginner'), icon: "🇬🇧" }
     ];
 
     const certifications = [
-        { title: "Meta Front-End Developer", issuer: "Coursera / Meta", year: "2024" },
-        { title: "Responsive Web Design", issuer: "FreeCodeCamp", year: "2023" },
-        { title: "JavaScript Algorithms & Data Structures", issuer: "FreeCodeCamp", year: "2023" }
+        { title: t('journey.certifications.meta'), issuer: "Coursera / Meta", year: "2024" },
+        { title: t('journey.certifications.rwd'), issuer: "FreeCodeCamp", year: "2023" },
+        { title: t('journey.certifications.js'), issuer: "FreeCodeCamp", year: "2023" }
     ];
 
     return (
@@ -34,19 +36,25 @@ export default function Experience() {
                             whileInView={{ opacity: 1, x: 0 }}
                             className="text-4xl md:text-6xl font-black mb-6 text-secondary dark:text-white"
                         >
-                            My <span className="text-primary italic">Journey</span>
+                            {t('journey.title').split('<0>').map((part, i) => {
+                                if (part.includes('</0>')) {
+                                    const [italic, rest] = part.split('</0>');
+                                    return <span key={i}><span className="text-primary italic">{italic}</span>{rest}</span>;
+                                }
+                                return part;
+                            })}
                         </motion.h2>
                         <p className="text-lg text-gray-500 dark:text-gray-400">
-                            A timeline of my professional growth, educational background, and recognized achievements.
+                            {t('journey.subtitle')}
                         </p>
                     </div>
 
                     {/* Tab Selectors */}
                     <div className="flex gap-2 p-1 bg-secondary/5 dark:bg-white/5 rounded-2xl border border-secondary/10 dark:border-white/10">
                         {[
-                            { id: 1, icon: Backpack, label: "Experience" },
-                            { id: 2, icon: GraduationCap, label: "Education" },
-                            { id: 3, icon: Rocket, label: "Certs" }
+                            { id: 1, icon: Backpack, label: t('journey.tabs.experience') },
+                            { id: 2, icon: GraduationCap, label: t('journey.tabs.education') },
+                            { id: 3, icon: Rocket, label: t('journey.tabs.certs') }
                         ].map((tab) => (
                             <button
                                 key={tab.id}
@@ -90,7 +98,7 @@ export default function Experience() {
                         whileInView={{ opacity: 1 }}
                         className="text-2xl font-bold mb-12 text-center text-secondary dark:text-white uppercase tracking-[0.3em]"
                     >
-                        Communication
+                        {t('journey.communication.title')}
                     </motion.h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {languages.map((lang, i) => (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CircleFadingPlus, ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from "react-i18next";
 
 // Import des images locales
 import budgetManagementImg from '../assets/projetsImg/budget-management.png';
@@ -17,19 +18,18 @@ import hackathonIA2025Img from '../assets/projetsImg/hackathon-ia-2025.png';
 import devlab2025Img from '../assets/projetsImg/devlab-2025.png';
 import meDevlav2025Img from '../assets/projetsImg/me-devlav-2025.jpg';
 
-const projects = [
+const projectsData = [
   {
-    title: "DEVLAB 2025",
-    description: "Hackathon 2025 : développer une solution open source de paiement en masse des pensions de retraite en intégrant les API Mojaloop",
+    titleKey: "projects.items.devlab.title",
+    descKey: "projects.items.devlab.desc",
     images: [devlab2025Img, meDevlav2025Img],
     technologies: ["Vue.js", "Tailwind CSS", "Framer-motion", "Pinia", "Node.js", "Mojaloop"],
     githubLink: "https://github.com/elonmelonm/devlab-2025-result",
-    // liveLink: "https://devlab-2025-result.vercel.app/",
     category: "Web"
   },
   {
-    title: "Hackathon IA 2025",
-    description: "Hackathon IA 2025 : Challenge IA et données foncières : développer des solutions IA au service du foncier",
+    titleKey: "projects.items.hackathon.title",
+    descKey: "projects.items.hackathon.desc",
     images: [hackathonIA2025Img],
     technologies: ["React.js", "Tailwind CSS", "Framer-motion", "FastApi"],
     githubLink: "https://github.com/elonmelonm/les_mentats-luxdev-hackaton-ia-2025",
@@ -37,8 +37,8 @@ const projects = [
     category: "Web"
   },
   {
-    title: "The french tototte App",
-    description: "Build The french tototte website on Figma To Code Challenge",
+    titleKey: "projects.items.tototte.title",
+    descKey: "projects.items.tototte.desc",
     images: [ftcW4Img],
     technologies: ["React.js", "Tailwind CSS", "Framer-motion", "Figma"],
     githubLink: "https://github.com/elonmelonm/ftc-w4-elonm.git",
@@ -46,8 +46,8 @@ const projects = [
     category: "Web"
   },
   {
-    title: "Monito App",
-    description: "Build a Monito App on Figma To Code Challenge",
+    titleKey: "projects.items.monito.title",
+    descKey: "projects.items.monito.desc",
     images: [ftcW3Img],
     technologies: ["React.js", "Tailwind CSS", "Framer-motion", "Figma"],
     githubLink: "https://github.com/elonmelonm/FTC-W3-ELONM.git",
@@ -55,8 +55,8 @@ const projects = [
     category: "Web"
   },
   {
-    title: "Spending Management Landing Page",
-    description: "Build a Spending Management Landing Page on Figma To Code Challenge",
+    titleKey: "projects.items.spending.title",
+    descKey: "projects.items.spending.desc",
     images: [ftcW2Img],
     technologies: ["React.js", "Tailwind CSS"],
     githubLink: "https://github.com/elonmelonm/spending-management-landing-page.git",
@@ -64,8 +64,8 @@ const projects = [
     category: "Web"
   },
   {
-    title: "SaaS Futuristic App",
-    description: "Build a SaaS Futuristic App on Figma To Code Challenge",
+    titleKey: "projects.items.saas.title",
+    descKey: "projects.items.saas.desc",
     images: [ftcW1Img],
     technologies: ["React.js", "Tailwind CSS"],
     githubLink: "https://github.com/elonmelonm/SaaS-Futuristic-App.git",
@@ -73,8 +73,8 @@ const projects = [
     category: "Web"
   },
   {
-    title: "Budget Management App",
-    description: "A budget management application to manage your wallet",
+    titleKey: "projects.items.budget.title",
+    descKey: "projects.items.budget.desc",
     images: [budgetManagementImg],
     technologies: ["Next.js", "Tailwind CSS", "Node.js", "MySql"],
     githubLink: "https://github.com/elonmelonm/BudgetManagement.git",
@@ -82,8 +82,8 @@ const projects = [
     category: "Web"
   },
   {
-    title: "Task Management App",
-    description: "Task management application with collaborative features",
+    titleKey: "projects.items.task.title",
+    descKey: "projects.items.task.desc",
     images: [todoAppImg],
     technologies: ["React.js", "Tailwind CSS", "Django", "PostgreSql"],
     githubLink: "https://github.com/elonmelonm/Todo-App.git",
@@ -91,8 +91,8 @@ const projects = [
     category: "Web"
   },
   {
-    title: "Fresh Fruits",
-    description: "Fresh fruits selling landing page",
+    titleKey: "projects.items.fresh.title",
+    descKey: "projects.items.fresh.desc",
     images: [freshFruitsImg],
     technologies: ["React.js", "Framer-motion"],
     githubLink: "https://github.com/elonmelonm/fresh-fruits.git",
@@ -100,8 +100,8 @@ const projects = [
     category: "Design"
   },
   {
-    title: "E-learning website",
-    description: "E-learning website landing page",
+    titleKey: "projects.items.elearning.title",
+    descKey: "projects.items.elearning.desc",
     images: [eLearningImg],
     technologies: ["React.js", "Framer-motion"],
     githubLink: "https://github.com/elonmelonm/e-learning.git",
@@ -109,8 +109,8 @@ const projects = [
     category: "Design"
   },
   {
-    title: "Smith Portfolio",
-    description: "Smith portfolio",
+    titleKey: "projects.items.smith.title",
+    descKey: "projects.items.smith.desc",
     images: [smithPortfolioImg],
     technologies: ["React.js", "CSS"],
     githubLink: "https://github.com/elonmelonm/e-learning.git",
@@ -118,8 +118,8 @@ const projects = [
     category: "Design"
   },
   {
-    title: "Construction website",
-    description: "Construction website landing page",
+    titleKey: "projects.items.construction.title",
+    descKey: "projects.items.construction.desc",
     images: [constructionImg],
     technologies: ["React.js", "Tailwind CSS"],
     githubLink: "https://github.com/elonmelonm/construction-website.git",
@@ -129,8 +129,8 @@ const projects = [
 ];
 
 interface Project {
-  title: string;
-  description: string;
+  titleKey: string;
+  descKey: string;
   images: string[];
   technologies: string[];
   githubLink: string;
@@ -238,84 +238,91 @@ export const ProjectCarousel: React.FC<{ images: string[]; title: string; height
   );
 };
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '' }) => (
-  <motion.div
-    key={index}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    viewport={{ once: true }}
-    className={`bg-light-bg dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/10 backdrop-blur-sm hover:bg-secondary/5 transition-all group ${className}`}
-  >
-    <ProjectCarousel images={project.images} title={project.title} />
-    <div className="p-5">
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="text-xl font-bold text-secondary dark:text-white transition-colors duration-300 truncate pr-2">
-          {project.title}
-        </h3>
-        <span className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-primary/10 text-primary rounded-md border border-primary/20">
-          {project.category}
-        </span>
-      </div>
-      <p className="text-gray-600 dark:text-gray-300 mb-4 min-h-12 text-sm transition-colors duration-300 line-clamp-2">
-        {project.description}
-      </p>
-      <div className="relative mb-4">
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.slice(0, 3).map((tech, i) => (
-            <span
-              key={i}
-              className="px-2 py-1 bg-white dark:bg-white/5 border border-secondary/10 dark:border-white/10 text-gray-500 dark:text-gray-400 rounded-lg text-xs transition-colors duration-300"
-            >
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 3 && (
-            <span className="px-2 py-1 text-gray-400 text-xs">+{project.technologies.length - 3} more</span>
-          )}
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '' }) => {
+  const { t } = useTranslation();
+  return (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className={`bg-light-bg dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/10 backdrop-blur-sm hover:bg-secondary/5 transition-all group ${className}`}
+    >
+      <ProjectCarousel images={project.images} title={t(project.titleKey)} />
+      <div className="p-5">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="text-xl font-bold text-secondary dark:text-white transition-colors duration-300 truncate pr-2">
+            {t(project.titleKey)}
+          </h3>
+          <span className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-primary/10 text-primary rounded-md border border-primary/20">
+            {project.category}
+          </span>
         </div>
-      </div>
-      <div className="flex gap-4 pt-2">
-        <motion.a
-          href={project.githubLink}
-          className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
-          whileHover={{ x: 3 }}
-        >
-          <Github size={18} className="mr-1.5" />
-          Code
-        </motion.a>
-        {project.liveLink && (
+        <p className="text-gray-600 dark:text-gray-300 mb-4 min-h-12 text-sm transition-colors duration-300 line-clamp-2">
+          {t(project.descKey)}
+        </p>
+        <div className="relative mb-4">
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.slice(0, 3).map((tech, i) => (
+              <span
+                key={i}
+                className="px-2 py-1 bg-white dark:bg-white/5 border border-secondary/10 dark:border-white/10 text-gray-500 dark:text-gray-400 rounded-lg text-xs transition-colors duration-300"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 3 && (
+              <span className="px-2 py-1 text-gray-400 text-xs">+{project.technologies.length - 3} more</span>
+            )}
+          </div>
+        </div>
+        <div className="flex gap-4 pt-2">
           <motion.a
-            href={project.liveLink}
+            href={project.githubLink}
             className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
             whileHover={{ x: 3 }}
           >
-            <ExternalLink size={18} className="mr-1.5" />
-            Live Demo
+            <Github size={18} className="mr-1.5" />
+            {t('projects.ui.code')}
           </motion.a>
-        )}
+          {project.liveLink && (
+            <motion.a
+              href={project.liveLink}
+              className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+              whileHover={{ x: 3 }}
+            >
+              <ExternalLink size={18} className="mr-1.5" />
+              {t('projects.ui.live')}
+            </motion.a>
+          )}
+        </div>
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+}
 
 const Projects = () => {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState('All');
   const [showAllProjects, setShowAllProjects] = useState(false);
 
-  const categories = ['All', 'Web', 'Mobile', 'Design'];
+  const categories = [
+    { id: 'All', label: t('projects.categories.all') },
+    { id: 'Web', label: t('projects.categories.web') },
+    { id: 'Mobile', label: t('projects.categories.mobile') },
+    { id: 'Design', label: t('projects.categories.design') }
+  ];
 
-  const filteredProjects = projects.filter(p =>
+  const filteredProjects = projectsData.filter(p =>
     filter === 'All' ? true : p.category === filter
   );
 
   const displayedProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
 
   const stats = [
-    // { label: "Completed Projects", value: "15+" },
-    // { label: "Happy Clients", value: "10+" },
-    { label: "Years Experience", value: "3+" },
-    { label: "Recognition", value: "2+" }
+    { label: t('projects.stats.experience'), value: "3+" },
+    { label: t('projects.stats.recognition'), value: "2+" }
   ];
 
   return (
@@ -343,10 +350,10 @@ const Projects = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
-              My Projects
+              {t('projects.title')}
             </motion.h2>
             <p className="text-lg text-gray-500 dark:text-gray-400">
-              A curated selection of my work across web development, mobile applications, and digital design.
+              {t('projects.subtitle')}
             </p>
           </div>
 
@@ -354,14 +361,14 @@ const Projects = () => {
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((cat) => (
               <button
-                key={cat}
-                onClick={() => { setFilter(cat); setShowAllProjects(false); }}
-                className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${filter === cat
+                key={cat.id}
+                onClick={() => { setFilter(cat.id); setShowAllProjects(false); }}
+                className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${filter === cat.id
                   ? "bg-primary text-white shadow-lg shadow-primary/20"
                   : "bg-light-bg dark:bg-dark-bg text-gray-500 border border-secondary/10 dark:border-white/10 hover:border-primary/30"
                   }`}
               >
-                {cat}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -369,7 +376,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedProjects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
 
@@ -380,7 +387,7 @@ const Projects = () => {
               className="inline-flex items-center px-10 py-4 bg-secondary text-white dark:bg-white dark:text-dark-bg font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl"
               whileHover={{ y: -5 }}
             >
-              {showAllProjects ? 'Show Less' : `View All ${filteredProjects.length} Projects`}
+              {showAllProjects ? t('projects.buttons.show_less') : t('projects.buttons.view_all', { count: filteredProjects.length })}
               <CircleFadingPlus size={20} className={`ml-3 transition-transform ${showAllProjects ? 'rotate-45' : ''}`} />
             </motion.button>
           </div>
@@ -394,16 +401,16 @@ const Projects = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-secondary dark:text-white mb-4">How I Work</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">My structured approach to bringing digital products to life, from idea to launch.</p>
+            <h2 className="text-3xl md:text-5xl font-black text-secondary dark:text-white mb-4">{t('projects.workflow.title')}</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">{t('projects.workflow.subtitle')}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Discovery", desc: "Understanding goals, requirements, and user needs." },
-              { step: "02", title: "Strategy", desc: "Planning architecture, features, and technology stack." },
-              { step: "03", title: "Development", desc: "Building with clean code and regular updates." },
-              { step: "04", title: "Deployment", desc: "Testing, optimization, and successful launch." }
+              { step: "01", title: t('projects.workflow.discovery.title'), desc: t('projects.workflow.discovery.desc') },
+              { step: "02", title: t('projects.workflow.strategy.title'), desc: t('projects.workflow.strategy.desc') },
+              { step: "03", title: t('projects.workflow.development.title'), desc: t('projects.workflow.development.desc') },
+              { step: "04", title: t('projects.workflow.deployment.title'), desc: t('projects.workflow.deployment.desc') }
             ].map((phase, i) => (
               <motion.div
                 key={i}
@@ -437,12 +444,12 @@ const styles = `
   .animate-fadeIn {
     animation: fadeIn 0.5s ease-out forwards;
   }
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 `;
 

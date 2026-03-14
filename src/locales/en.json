@@ -1,0 +1,386 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "skills": "Skills",
+        "journey": "Journey",
+        "contact": "Contact"
+    },
+    "home": {
+        "hero": {
+            "available": "Available for new opportunities",
+            "crafting": "Crafting",
+            "modern": "Modern",
+            "digital_experiences": "Digital Experiences",
+            "hello": "Hello, I'm",
+            "name": "Elonm Luc Akakpo",
+            "subtitle": "A Full Stack Developer dedicated to building high-performance, premium web & mobile applications.",
+            "specialization": {
+                "web": "Web Dev",
+                "mobile": "Mobile Dev",
+                "seo": "SEO Optimized"
+            },
+            "see_projects": "See My Projects",
+            "lets_talk": "Let's Talk",
+            "discover": "Discover"
+        },
+        "services": {
+            "title": "Specialized in Modern Solutions",
+            "subtitle": "Harnessing the power of the latest technologies to build software that scales and converts.",
+            "see_all": "See All Skills",
+            "web_dev": "Web Development",
+            "web_dev_desc": "High-performance, modern websites.",
+            "mobile_dev": "Mobile Apps",
+            "mobile_dev_desc": "Cross-platform React Native apps.",
+            "uiux": "UI/UX Design",
+            "uiux_desc": "Clean & intuitive user interfaces."
+        },
+        "featured": {
+            "title": "Featured Work",
+            "subtitle": "A selection of my recent projects where creativity meets functionality.",
+            "view_all": "View All Projects",
+            "details": "Details",
+            "projects": {
+                "devlab": {
+                    "title": "DEVLAB 2025",
+                    "desc": "Hackathon 2025: developing an open source solution for mass payment of retirement pensions by integrating Mojaloop APIs."
+                },
+                "hackathon": {
+                    "title": "Hackathon IA 2025",
+                    "desc": "IA solutions for land data management."
+                },
+                "tototte": {
+                    "title": "The French Tototte",
+                    "desc": "Modern e-commerce landing page."
+                }
+            }
+        },
+        "cta": {
+            "title": "Ready to Transform Your Digital Future?",
+            "subtitle": "Let's unite your vision with my expertise to create something truly exceptional. High-performance, secure, and uniquely designed.",
+            "hire_me": "Hire Me Now",
+            "learn_more": "Learn More"
+        }
+    },
+    "about": {
+        "title": "About me",
+        "intro": "My introduction",
+        "stats": {
+            "experience": "Experience",
+            "projects": "Projects",
+            "learning": "Learning",
+            "years_val": "3+ Years",
+            "projects_val": "7+ Completed",
+            "learning_val": "Continuous"
+        },
+        "p1": "I am a <0>Full Stack Developer</0> with over <1>3 years of experience</1> in building high-quality digital products.",
+        "p2": "Passionate about technology, I specialize in creating scalable web application and intuitive user interfaces. My goal is to transform ideas into reality through clean and efficient code.",
+        "buttons": {
+            "download_cv": "Download CV",
+            "contact_me": "Contact Me",
+            "my_projects": "My Projects"
+        },
+        "previews": {
+            "skills_title": "Skills Preview",
+            "skills_desc": "React, Node.js, TypeScript, Tailwind CSS and more...",
+            "skills_link": "Explore all skills →",
+            "journey_title": "Qualifications",
+            "journey_desc": "Professional experience and academic background.",
+            "journey_link": "See my journey →"
+        },
+        "what_i_do": {
+            "title": "What I Do",
+            "subtitle": "My specialized services",
+            "web_dev": {
+                "title": "Web Development",
+                "desc": "Creating responsive, SEO-friendly, and high-performance websites using modern frameworks."
+            },
+            "mobile_dev": {
+                "title": "Mobile App Development",
+                "desc": "Building cross-platform mobile applications with React Native for iOS and Android."
+            },
+            "uiux": {
+                "title": "UI/UX Design",
+                "desc": "Designing intuitive and visually appealing user interfaces focusing on user experience."
+            },
+            "cyber": {
+                "title": "Cybersecurity",
+                "desc": "Implementing security best practices to protect applications from vulnerabilities and threats."
+            }
+        },
+        "fun_cta": {
+            "title": "Let's Build Something <0>Epic</0> Together!",
+            "desc": "Currently available for new projects and collaborations. If you have a great idea, let's turn it into reality!",
+            "chat": "Start a Chat",
+            "work": "View My Work"
+        }
+    },
+    "journey": {
+        "title": "My <0>Journey</0>",
+        "subtitle": "A timeline of my professional growth, educational background, and recognized achievements.",
+        "tabs": {
+            "experience": "Experience",
+            "education": "Education",
+            "certs": "Certs"
+        },
+        "experiences": {
+            "marktech": {
+                "period": "May - Today 2025",
+                "title": "Full Stack Mobile Developer",
+                "desc": "Full Stack Mobile developer at Marktech"
+            },
+            "ten_twenty": {
+                "period": "February - April 2025",
+                "title": "Full Stack Web Developer",
+                "desc": "Web developer consultant at 10-20 Technologies"
+            },
+            "bourjon": {
+                "period": "September - December 2024",
+                "title": "Full Stack Developer Training",
+                "desc": "TechSeed Academy Training financed by the Labourd Foundation"
+            },
+            "three_d": {
+                "period": "August 2024",
+                "title": "Web development intern",
+                "desc": "Intern at 3d tech africa in frontend development"
+            },
+            "tpapy": {
+                "period": "Frebruary - May 2023",
+                "title": "Web development intern",
+                "desc": "Academic internship in Web development"
+            }
+        },
+        "education": {
+            "bachelor": {
+                "period": "2020-2023",
+                "title": "Bachelor degree",
+                "desc": "Bachelor degree cycle in Software computer science"
+            },
+            "bac": {
+                "period": "2020",
+                "title": "Bac",
+                "desc": "Baccalaureate exam"
+            }
+        },
+        "certifications": {
+            "meta": "Meta Front-End Developer",
+            "rwd": "Responsive Web Design",
+            "js": "JavaScript Algorithms & Data Structures"
+        },
+        "communication": {
+            "title": "Communication",
+            "french": "French",
+            "english": "English",
+            "advanced": "Advanced",
+            "beginner": "Beginner"
+        }
+    },
+    "skills": {
+        "title": "Technical <0>Expertise</0>",
+        "subtitle": "A deep dive into the technologies I use to build premium digital solutions.",
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "tools": "Tools"
+        },
+        "soft": {
+            "title": "Core Competencies",
+            "adaptability": {
+                "title": "Adaptability",
+                "desc": "Quickly learning new stacks and methodologies."
+            },
+            "teamwork": {
+                "title": "Teamwork",
+                "desc": "Experience in agile environments and pair programming."
+            },
+            "problem_solving": {
+                "title": "Problem Solving",
+                "desc": "Finding efficient solutions to complex logic issues."
+            },
+            "communication": {
+                "title": "Communication",
+                "desc": "Explaining technical concepts to non-tech stakeholders."
+            }
+        },
+        "learning": {
+            "title": "Continuous Growth",
+            "desc": "I'm currently expanding my expertise in these areas to deliver even more innovative solutions.",
+            "items": {
+                "threejs": "Three.js (3D Web)",
+                "web3": "Web3 & Blockchain",
+                "cloud": "Cloud Architecture",
+                "native": "Native Performance"
+            }
+        },
+        "items": {
+            "html5": "Semantic markup and accessibility best practices",
+            "css3": "Modern layouts with Flexbox and Grid",
+            "tailwind": "Utility-first CSS framework",
+            "js": "ES6+ features and modern practices",
+            "ts": "Type-safe development and interfaces",
+            "react": "Component-based architecture and hooks",
+            "nextjs": "Full-stack framework for React with server-side rendering and static site generation",
+            "framer": "Production-ready animations",
+            "git": "Version control and collaboration",
+            "php": "Server-side scripting language for building dynamic web applications.",
+            "nodejs": "JavaScript runtime environment for building scalable server-side applications.",
+            "express": "Lightweight backend framework for building RESTful APIs with Node.js",
+            "fastapi": "High-performance Python framework for building APIs.",
+            "django": "Python web framework for rapid development and clean design.",
+            "laravel": "PHP framework for building elegant and scalable web applications.",
+            "mysql": "Relational database management system for storing structured data.",
+            "postgresql": "Open-source relational database system known for advanced features and reliability.",
+            "mongodb": "NoSQL database system for storing unstructured and semi-structured data.",
+            "docker": "Platform for containerization to streamline application deployment and scaling.",
+            "figma": "Collaborative interface design tool for creating high-fidelity prototypes."
+        }
+    },
+    "projects": {
+        "title": "My Projects",
+        "subtitle": "A curated selection of my work across web development, mobile applications, and digital design.",
+        "stats": {
+            "experience": "Years Experience",
+            "recognition": "Recognition"
+        },
+        "categories": {
+            "all": "All",
+            "web": "Web",
+            "mobile": "Mobile",
+            "design": "Design"
+        },
+        "buttons": {
+            "show_less": "Show Less",
+            "view_all": "View All {{count}} Projects"
+        },
+        "workflow": {
+            "title": "How I Work",
+            "subtitle": "My structured approach to bringing digital products to life, from idea to launch.",
+            "discovery": {
+                "title": "Discovery",
+                "desc": "Understanding goals, requirements, and user needs."
+            },
+            "strategy": {
+                "title": "Strategy",
+                "desc": "Planning architecture, features, and technology stack."
+            },
+            "development": {
+                "title": "Development",
+                "desc": "Building with clean code and regular updates."
+            },
+            "deployment": {
+                "title": "Deployment",
+                "desc": "Testing, optimization, and successful launch."
+            }
+        },
+        "items": {
+            "devlab": {
+                "title": "DEVLAB 2025",
+                "desc": "Hackathon 2025 : developing an open source solution for mass payment of retirement pensions by integrating Mojaloop APIs"
+            },
+            "hackathon": {
+                "title": "Hackathon IA 2025",
+                "desc": "Hackathon IA 2025 : Challenge IA et données foncières : développer des solutions IA au service du foncier"
+            },
+            "tototte": {
+                "title": "The french tototte App",
+                "desc": "Build The french tototte website on Figma To Code Challenge"
+            },
+            "monito": {
+                "title": "Monito App",
+                "desc": "Build a Monito App on Figma To Code Challenge"
+            },
+            "spending": {
+                "title": "Spending Management Landing Page",
+                "desc": "Build a Spending Management Landing Page on Figma To Code Challenge"
+            },
+            "saas": {
+                "title": "SaaS Futuristic App",
+                "desc": "Build a SaaS Futuristic App on Figma To Code Challenge"
+            },
+            "budget": {
+                "title": "Budget Management App",
+                "desc": "A budget management application to manage your wallet"
+            },
+            "task": {
+                "title": "Task Management App",
+                "desc": "Task management application with collaborative features"
+            },
+            "fresh": {
+                "title": "Fresh Fruits",
+                "desc": "Fresh fruits selling landing page"
+            },
+            "elearning": {
+                "title": "E-learning website",
+                "desc": "E-learning website landing page"
+            },
+            "smith": {
+                "title": "Smith Portfolio",
+                "desc": "Smith portfolio"
+            },
+            "construction": {
+                "title": "Construction website",
+                "desc": "Construction website landing page"
+            }
+        },
+        "ui": {
+            "code": "Code",
+            "live": "Live Demo"
+        }
+    },
+    "contact": {
+        "title": "Get in touch",
+        "subtitle": "Contact me",
+        "social": {
+            "whatsapp": {
+                "desc": "Quick chat & responses"
+            },
+            "linkedin": {
+                "desc": "Professional networking"
+            },
+            "github": {
+                "desc": "View my code samples"
+            },
+            "email": {
+                "desc": "Send a formal inquiry"
+            },
+            "cta": "Contact Now"
+        },
+        "form": {
+            "name": {
+                "label": "Name",
+                "placeholder": "Your name"
+            },
+            "email": {
+                "label": "Email",
+                "placeholder": "your@email.com"
+            },
+            "message": {
+                "label": "Message",
+                "placeholder": "Your message"
+            },
+            "submit": "Submit",
+            "status": {
+                "sending": "Sending in progress...",
+                "success": "Message sent successfully!",
+                "error": "Error sending message. Please try again."
+            }
+        },
+        "info": {
+            "email": {
+                "label": "Email"
+            },
+            "phone": {
+                "label": "Phone"
+            },
+            "location": {
+                "label": "Location",
+                "val": "Benin, Cotonou"
+            }
+        }
+    },
+    "footer": {
+        "desc": "Full Stack Web Developer crafting modern digital experiences.",
+        "rights": "All rights reserved."
+    }
+}

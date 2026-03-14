@@ -11,21 +11,23 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import ThemeToggle from './ThemeToggle';
 
-const navLinks = [
-  { name: 'Home', href: '/', icon: Home },
-  { name: 'About', href: '/about', icon: User },
-  { name: 'Projects', href: '/projects', icon: Briefcase },
-  { name: 'Skills', href: '/skills', icon: Star },
-  { name: 'Journey', href: '/journey', icon: Compass },
-  { name: 'Contact', href: '/contact', icon: Send },
-];
-
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const navLinks = [
+    { name: t('nav.home'), href: '/', icon: Home },
+    { name: t('nav.about'), href: '/about', icon: User },
+    { name: t('nav.projects'), href: '/projects', icon: Briefcase },
+    { name: t('nav.skills'), href: '/skills', icon: Star },
+    { name: t('nav.journey'), href: '/journey', icon: Compass },
+    { name: t('nav.contact'), href: '/contact', icon: Send },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +39,11 @@ const Header = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'fr' ? 'en' : 'fr';
+    i18n.changeLanguage(newLang);
+  };
+
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -44,8 +51,8 @@ const Header = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
-          ? 'py-3 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md shadow-lg border-b border-primary/10'
-          : 'py-6 bg-transparent border-b border-transparent'
+        ? 'py-3 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md shadow-lg border-b border-primary/10'
+        : 'py-6 bg-transparent border-b border-transparent'
         }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -66,7 +73,7 @@ const Header = () => {
         <div className="hidden md:flex items-center space-x-1">
           {navLinks.map((link) => (
             <NavLink
-              key={link.name}
+              key={link.href}
               to={link.href}
               className={({ isActive }) =>
                 `px-4 py-2 text-sm font-bold transition-all rounded-xl ${isActive
@@ -78,13 +85,29 @@ const Header = () => {
               {link.name}
             </NavLink>
           ))}
-          <div className="ml-4 pl-4 border-l border-secondary/20">
+          <div className="ml-4 pl-4 border-l border-secondary/20 flex items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold uppercase tracking-wider text-secondary dark:text-gray-400 hover:bg-primary/5 hover:text-primary transition-all transition-colors border border-secondary/10 dark:border-white/10"
+            >
+              <span className={i18n.language === 'fr' ? 'text-primary' : ''}>FR</span>
+              <span className="text-secondary/20 dark:text-white/20">|</span>
+              <span className={i18n.language === 'en' ? 'text-primary' : ''}>EN</span>
+            </button>
             <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile menu button */}
         <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 px-2 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider text-secondary dark:text-gray-400 border border-secondary/10 dark:border-white/10"
+          >
+            <span className={i18n.language === 'fr' ? 'text-primary' : ''}>FR</span>
+            <span className="text-secondary/20 dark:text-white/20">|</span>
+            <span className={i18n.language === 'en' ? 'text-primary' : ''}>EN</span>
+          </button>
           <ThemeToggle />
           <button
             onClick={toggleMenu}
@@ -107,7 +130,7 @@ const Header = () => {
             <div className="flex flex-col space-y-2 p-6">
               {navLinks.map((link) => (
                 <NavLink
-                  key={link.name}
+                  key={link.href}
                   to={link.href}
                   className={({ isActive }) =>
                     `flex items-center gap-4 p-4 rounded-2xl text-lg font-bold transition-all ${isActive

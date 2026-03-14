@@ -3,8 +3,10 @@ import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { FaWhatsapp } from 'react-icons/fa';
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
   interface FormData {
     name: string;
     email: string;
@@ -30,7 +32,6 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // Créer un objet avec les mêmes propriétés mais avec un type plus large
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
@@ -57,6 +58,37 @@ const Contact = () => {
       );
   };
 
+  const socialLinks = [
+    {
+      name: "WhatsApp",
+      icon: <FaWhatsapp size={32} />,
+      link: "https://wa.me/22957113810",
+      color: "bg-[#25D366]",
+      descKey: "contact.social.whatsapp.desc"
+    },
+    {
+      name: "LinkedIn",
+      icon: <Linkedin size={32} />,
+      link: "https://linkedin.com/in/luc-elonm-akakpo/",
+      color: "bg-[#0077B5]",
+      descKey: "contact.social.linkedin.desc"
+    },
+    {
+      name: "GitHub",
+      icon: <Github size={32} />,
+      link: "https://github.com/elonmelonm",
+      color: "bg-[#333]",
+      descKey: "contact.social.github.desc"
+    },
+    {
+      name: "Email",
+      icon: <Mail size={32} />,
+      link: "mailto:elonmlucakakpo@gmail.com",
+      color: "bg-[#EA4335]",
+      descKey: "contact.social.email.desc"
+    }
+  ];
+
   return (
     <section
       id="contact"
@@ -68,43 +100,14 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-4xl font-bold text-center mb-2 text-primary transition-colors duration-300"
         >
-          Get in touch
+          {t('contact.title')}
         </motion.h2>
-        <h6 className="text-sm mb-10 text-center text-gray-500">Contact me</h6>
+        <h6 className="text-sm mb-10 text-center text-gray-500">{t('contact.subtitle')}</h6>
 
         {/* Social Connect Cards Section */}
         <div className="mb-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                name: "WhatsApp",
-                icon: <FaWhatsapp size={32} />,
-                link: "https://wa.me/22957113810",
-                color: "bg-[#25D366]",
-                desc: "Quick chat & responses"
-              },
-              {
-                name: "LinkedIn",
-                icon: <Linkedin size={32} />,
-                link: "https://linkedin.com/in/luc-elonm-akakpo/",
-                color: "bg-[#0077B5]",
-                desc: "Professional networking"
-              },
-              {
-                name: "GitHub",
-                icon: <Github size={32} />,
-                link: "https://github.com/elonmelonm",
-                color: "bg-[#333]",
-                desc: "View my code samples"
-              },
-              {
-                name: "Email",
-                icon: <Mail size={32} />,
-                link: "mailto:elonmlucakakpo@gmail.com",
-                color: "bg-[#EA4335]",
-                desc: "Send a formal inquiry"
-              }
-            ].map((social, index) => (
+            {socialLinks.map((social, index) => (
               <motion.a
                 key={index}
                 href={social.link}
@@ -125,10 +128,10 @@ const Contact = () => {
                 </div>
 
                 <h4 className="text-xl font-bold dark:text-white mb-2">{social.name}</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{social.desc}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{t(social.descKey)}</p>
 
                 <span className="text-xs font-bold uppercase tracking-widest text-primary flex items-center group-hover:translate-x-2 transition-transform">
-                  Contact Now <Send size={12} className="ml-2" />
+                  {t('contact.social.cta')} <Send size={12} className="ml-2" />
                 </span>
               </motion.a>
             ))}
@@ -146,7 +149,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-secondary dark:text-gray-200 mb-2 transition-colors duration-300">
-                    Name
+                    {t('contact.form.name.label')}
                   </label>
                   <input
                     type="text"
@@ -154,13 +157,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-light-bg dark:bg-dark-bg text-secondary dark:text-white transition-colors duration-300"
-                    placeholder="Your name"
+                    placeholder={t('contact.form.name.placeholder')}
                     required
                   />
                 </div>
                 <div>
                   <label className="block text-gray-700 dark:text-gray-200 mb-2 transition-colors duration-300">
-                    Email
+                    {t('contact.form.email.label')}
                   </label>
                   <input
                     type="email"
@@ -168,13 +171,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
-                    placeholder="your@email.com"
+                    placeholder={t('contact.form.email.placeholder')}
                     required
                   />
                 </div>
                 <div>
                   <label className="block text-gray-700 dark:text-gray-200 mb-2 transition-colors duration-300">
-                    Message
+                    {t('contact.form.message.label')}
                   </label>
                   <textarea
                     name="message"
@@ -182,7 +185,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-2 border dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                     rows={4}
-                    placeholder="Your message"
+                    placeholder={t('contact.form.message.placeholder')}
                     required
                   />
                 </div>
@@ -192,19 +195,19 @@ const Contact = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Submit
+                  {t('contact.form.submit')}
                 </motion.button>
               </form>
 
               {/* Affichage des messages de statut */}
               {status === 'loading' && (
-                <p className="text-yellow-500 mt-4">Sending in progress...</p>
+                <p className="text-yellow-500 mt-4">{t('contact.form.status.sending')}</p>
               )}
               {status === 'success' && (
-                <p className="text-green-500 mt-4">Message sent successfully!</p>
+                <p className="text-green-500 mt-4">{t('contact.form.status.success')}</p>
               )}
               {status === 'error' && (
-                <p className="text-red-500 mt-4">Error sending message. Please try again.</p>
+                <p className="text-red-500 mt-4">{t('contact.form.status.error')}</p>
               )}
             </motion.div>
 
@@ -219,7 +222,7 @@ const Contact = () => {
                   <Mail className="text-primary mt-1 transition-colors duration-300" />
                   <div>
                     <h4 className="font-semibold text-primary transition-colors duration-300">
-                      Email
+                      {t('contact.info.email.label')}
                     </h4>
                     <p className="text-gray-900 dark:text-white transition-colors duration-300">
                       elonmlucakakpo@gmail.com
@@ -230,7 +233,7 @@ const Contact = () => {
                   <Phone className="text-primary mt-1 transition-colors duration-300" />
                   <div>
                     <h4 className="font-semibold text-primary transition-colors duration-300">
-                      Phone
+                      {t('contact.info.phone.label')}
                     </h4>
                     <p className="text-gray-900 dark:text-white transition-colors duration-300">
                       +229 01 57 11 38 10
@@ -241,10 +244,10 @@ const Contact = () => {
                   <MapPin className="text-primary mt-1 transition-colors duration-300" />
                   <div>
                     <h4 className="font-semibold text-primary transition-colors duration-300">
-                      Location
+                      {t('contact.info.location.label')}
                     </h4>
                     <p className="text-gray-900 dark:text-white transition-colors duration-300">
-                      Bénin, Cotonou
+                      {t('contact.info.location.val')}
                     </p>
                   </div>
                 </div>

@@ -2,19 +2,25 @@ import { motion } from "framer-motion";
 import { useState } from 'react';
 import { skills } from "../data/skills";
 import SkillCard from "./SkillCard";
+import { useTranslation } from "react-i18next";
 
 export default function Skills() {
+    const { t } = useTranslation();
     const [activeCategory, setActiveCategory] = useState("Frontend");
 
-    const categories = ["Frontend", "Backend", "Tools"];
+    const categories = [
+        { id: "Frontend", label: t('skills.categories.frontend') },
+        { id: "Backend", label: t('skills.categories.backend') },
+        { id: "Tools", label: t('skills.categories.tools') }
+    ];
 
     const filteredSkills = skills.filter(skill => skill.category === activeCategory);
 
     const softSkills = [
-        { title: "Adaptability", desc: "Quickly learning new stacks and methodologies." },
-        { title: "Teamwork", desc: "Experience in agile environments and pair programming." },
-        { title: "Problem Solving", desc: "Finding efficient solutions to complex logic issues." },
-        { title: "Communication", desc: "Explaining technical concepts to non-tech stakeholders." }
+        { title: t('skills.soft.adaptability.title'), desc: t('skills.soft.adaptability.desc') },
+        { title: t('skills.soft.teamwork.title'), desc: t('skills.soft.teamwork.desc') },
+        { title: t('skills.soft.problem_solving.title'), desc: t('skills.soft.problem_solving.desc') },
+        { title: t('skills.soft.communication.title'), desc: t('skills.soft.communication.desc') }
     ];
 
     return (
@@ -27,10 +33,16 @@ export default function Skills() {
                             whileInView={{ opacity: 1, x: 0 }}
                             className="text-4xl md:text-6xl font-black mb-6 text-secondary dark:text-white"
                         >
-                            Technical <span className="text-primary italic">Expertise</span>
+                            {t('skills.title').split('<0>').map((part, i) => {
+                                if (part.includes('</0>')) {
+                                    const [italic, rest] = part.split('</0>');
+                                    return <span key={i}><span className="text-primary italic">{italic}</span>{rest}</span>;
+                                }
+                                return part;
+                            })}
                         </motion.h2>
                         <p className="text-lg text-gray-500 dark:text-gray-400">
-                            A deep dive into the technologies I use to build premium digital solutions.
+                            {t('skills.subtitle')}
                         </p>
                     </div>
 
@@ -38,14 +50,14 @@ export default function Skills() {
                     <div className="flex gap-4 p-1 bg-secondary/5 dark:bg-white/5 rounded-2xl border border-secondary/10 dark:border-white/10">
                         {categories.map((cat) => (
                             <button
-                                key={cat}
-                                onClick={() => setActiveCategory(cat)}
-                                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeCategory === cat
+                                key={cat.id}
+                                onClick={() => setActiveCategory(cat.id)}
+                                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeCategory === cat.id
                                     ? "bg-primary text-white shadow-lg shadow-primary/20"
                                     : "text-gray-500 hover:text-primary"
                                     }`}
                             >
-                                {cat}
+                                {cat.label}
                             </button>
                         ))}
                     </div>
@@ -72,7 +84,7 @@ export default function Skills() {
                         whileInView={{ opacity: 1 }}
                         className="text-2xl font-bold mb-12 text-center text-secondary dark:text-white uppercase tracking-[0.3em]"
                     >
-                        Core Competencies
+                        {t('skills.soft.title')}
                     </motion.h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {softSkills.map((skill, i) => (
@@ -100,11 +112,16 @@ export default function Skills() {
                 >
                     <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
                         <div className="max-w-md text-center md:text-left">
-                            <h3 className="text-3xl md:text-4xl font-black mb-4">Continuous Growth</h3>
-                            <p className="text-primary-foreground/80 font-medium">I'm currently expanding my expertise in these areas to deliver even more innovative solutions.</p>
+                            <h3 className="text-3xl md:text-4xl font-black mb-4">{t('skills.learning.title')}</h3>
+                            <p className="text-primary-foreground/80 font-medium">{t('skills.learning.desc')}</p>
                         </div>
                         <div className="flex flex-wrap justify-center gap-4">
-                            {["Three.js (3D Web)", "Web3 & Blockchain", "Cloud Architecture", "Native Performance"].map((item, i) => (
+                            {[
+                                t('skills.learning.items.threejs'),
+                                t('skills.learning.items.web3'),
+                                t('skills.learning.items.cloud'),
+                                t('skills.learning.items.native')
+                            ].map((item, i) => (
                                 <span key={i} className="px-6 py-3 bg-white/20 backdrop-blur-md rounded-2xl font-bold text-sm border border-white/20">
                                     {item}
                                 </span>

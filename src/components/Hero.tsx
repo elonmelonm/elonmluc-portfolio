@@ -1,9 +1,12 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Mail, Sparkles, Code, Smartphone, Rocket } from 'lucide-react';
+import { Github, Linkedin, Mail, Sparkles, Code, Smartphone, Rocket, ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -95,17 +98,17 @@ const Hero = () => {
             className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm uppercase tracking-wider mb-4"
           >
             <Sparkles size={16} className="mr-2" />
-            Available for new opportunities
+            {t('home.hero.available')}
           </motion.div>
 
           {/* Main Title */}
           <motion.div variants={itemVariants} className="max-w-4xl">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-secondary dark:text-white leading-[1.1] mb-6 tracking-tight">
-              Crafting <span className="text-primary italic">Modern</span> <br />
-              Digital Experiences
+              {t('home.hero.crafting')} <span className="text-primary italic">{t('home.hero.modern')}</span> <br />
+              {t('home.hero.digital_experiences')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-              Hello, I'm <span className="text-primary font-bold">Elonm Luc Akakpo</span>. A Full Stack Developer dedicated to building high-performance, premium web & mobile applications.
+              {t('home.hero.hello')} <span className="text-primary font-bold">{t('home.hero.name')}</span>. {t('home.hero.subtitle')}
             </p>
           </motion.div>
 
@@ -116,15 +119,15 @@ const Hero = () => {
           >
             <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500">
               <Code size={20} className="text-primary" />
-              <span className="font-semibold uppercase tracking-widest text-xs">Web Dev</span>
+              <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.web')}</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500">
               <Smartphone size={20} className="text-primary" />
-              <span className="font-semibold uppercase tracking-widest text-xs">Mobile Dev</span>
+              <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.mobile')}</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500">
               <Rocket size={20} className="text-primary" />
-              <span className="font-semibold uppercase tracking-widest text-xs">SEO Optimized</span>
+              <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.seo')}</span>
             </div>
           </motion.div>
 
@@ -134,7 +137,7 @@ const Hero = () => {
               to="/projects"
               className="group inline-flex items-center px-10 py-5 bg-primary text-white text-xl font-bold rounded-full shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all"
             >
-              See My Projects
+              {t('home.hero.see_projects')}
               <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
             </Link>
 
@@ -142,7 +145,7 @@ const Hero = () => {
               to="/contact"
               className="inline-flex items-center px-10 py-5 bg-transparent text-secondary dark:text-white border-2 border-secondary/20 dark:border-white/20 text-xl font-bold rounded-full hover:bg-secondary hover:text-white dark:hover:bg-white dark:hover:text-dark-bg transition-all"
             >
-              Let's Talk
+              {t('home.hero.lets_talk')}
             </Link>
           </motion.div>
 
@@ -157,7 +160,7 @@ const Hero = () => {
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">Discover</span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">{t('home.hero.discover')}</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
