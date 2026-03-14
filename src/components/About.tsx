@@ -158,6 +158,8 @@ const About = () => {
                 <motion.a
                   href={cv}
                   download="LUC_ELONM_AKAKPO.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-105 transition-all text-sm md:text-base"
                   whileTap={{ scale: 0.95 }}
                 >

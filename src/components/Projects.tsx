@@ -280,6 +280,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
         <div className="flex gap-4 pt-2">
           <motion.a
             href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
             whileHover={{ x: 3 }}
           >
@@ -289,6 +291,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
           {project.liveLink && (
             <motion.a
               href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
               whileHover={{ x: 3 }}
             >
