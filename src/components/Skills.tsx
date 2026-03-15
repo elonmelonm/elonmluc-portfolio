@@ -26,12 +26,12 @@ export default function Skills() {
     return (
         <section id="skills" className="lg:mx-32 xl:mx-16 py-20 px-4 transition-colors duration-300">
             <div className="container mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                    <div className="max-w-xl">
+                <div className="flex flex-col items-center justify-between mb-16 gap-8">
+                    <div className="flex flex-col text-center max-w-xl">
                         <motion.h2
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            className="text-4xl md:text-6xl font-black mb-6 text-secondary dark:text-white"
+                            className="text-4xl md:text-5xl font-black mb-6 text-secondary dark:text-white"
                         >
                             {t('skills.title').split('<0>').map((part, i) => {
                                 if (part.includes('</0>')) {
@@ -71,6 +71,7 @@ export default function Skills() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3, delay: index * 0.1 }}
                             viewport={{ once: true }}
+                            className="h-full"
                         >
                             <SkillCard skill={skill} />
                         </motion.div>
@@ -94,7 +95,7 @@ export default function Skills() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: i * 0.1 }}
                                 viewport={{ once: true }}
-                                className="p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10 hover:border-primary/30 transition-colors"
+                                className="h-full p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10 hover:border-primary/30 transition-colors"
                             >
                                 <h4 className="text-lg font-bold text-primary mb-2">{skill.title}</h4>
                                 <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{skill.desc}</p>
@@ -110,8 +111,8 @@ export default function Skills() {
                     viewport={{ once: true }}
                     className="p-10 md:p-16 bg-primary text-white rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden"
                 >
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
-                        <div className="max-w-md text-center md:text-left">
+                    <div className="relative z-10 flex flex-col items-center justify-between gap-10">
+                        <div className="max-w-2xl text-center">
                             <h3 className="text-3xl md:text-4xl font-black mb-4">{t('skills.learning.title')}</h3>
                             <p className="text-primary-foreground/80 font-medium">{t('skills.learning.desc')}</p>
                         </div>

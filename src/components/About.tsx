@@ -61,22 +61,22 @@ const About = () => {
     {
       icon: <Code size={32} />,
       title: t('about.what_i_do.web_dev.title'),
-      desc: t('about.what_i_do.web_dev.desc')
+      tools: ["React.js", "Next.js", "Tailwind CSS", "TypeScript", "Node.js"]
     },
     {
       icon: <Smartphone size={32} />,
       title: t('about.what_i_do.mobile_dev.title'),
-      desc: t('about.what_i_do.mobile_dev.desc')
+      tools: ["React Native", "Expo", "TypeScript", "Firebase", "Zustand"]
     },
     {
       icon: <LayoutIcon size={32} />,
       title: t('about.what_i_do.uiux.title'),
-      desc: t('about.what_i_do.uiux.desc')
+      tools: ["Figma", "Framer Motion", "Responsive Design", "Principles"]
     },
     {
       icon: <ShieldCheck size={32} />,
       title: t('about.what_i_do.cyber.title'),
-      desc: t('about.what_i_do.cyber.desc')
+      tools: ["OWASP", "JWT", "Sanitization", "Auth", "Security Audit"]
     }
   ];
 
@@ -186,30 +186,6 @@ const About = () => {
                   </Link>
                 </motion.div>
               </motion.div>
-
-              {/* Preview Links Section */}
-              <motion.div
-                variants={itemVariants}
-                className="flex flex-col md:flex-row gap-6 border-t border-secondary/10 dark:border-white/10 pt-8"
-              >
-                <Link to="/skills" className="group flex-1 p-4 rounded-xl bg-secondary/5 dark:bg-white/5 hover:bg-primary/5 transition-all border border-transparent hover:border-primary/20">
-                  <h4 className="font-bold dark:text-white mb-2 flex items-center group-hover:text-primary transition-colors">
-                    {t('about.previews.skills_title')}
-                    <Briefcase size={16} className="ml-2 opacity-50" />
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{t('about.previews.skills_desc')}</p>
-                  <span className="text-xs font-bold text-primary underline underline-offset-4">{t('about.previews.skills_link')}</span>
-                </Link>
-
-                <Link to="/journey" className="group flex-1 p-4 rounded-xl bg-secondary/5 dark:bg-white/5 hover:bg-primary/5 transition-all border border-transparent hover:border-primary/20">
-                  <h4 className="font-bold dark:text-white mb-2 flex items-center group-hover:text-primary transition-colors">
-                    {t('about.previews.journey_title')}
-                    <Award size={16} className="ml-2 opacity-50" />
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{t('about.previews.journey_desc')}</p>
-                  <span className="text-xs font-bold text-primary underline underline-offset-4">{t('about.previews.journey_link')}</span>
-                </Link>
-              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -245,12 +221,16 @@ const About = () => {
                 <div className="mb-6 p-4 rounded-2xl bg-white dark:bg-dark-bg shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 inline-block">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-secondary dark:text-white group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold mb-4 text-secondary dark:text-white group-hover:text-primary transition-colors h-14 line-clamp-2">
                   {service.title}
                 </h3>
-                <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">
-                  {service.desc}
-                </p>
+                <div className="flex flex-wrap gap-2">
+                  {service.tools.map((tool, i) => (
+                    <span key={i} className="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground text-[10px] font-bold rounded-lg border border-primary/20">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>

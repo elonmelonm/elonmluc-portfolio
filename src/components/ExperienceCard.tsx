@@ -22,16 +22,26 @@ export default function ExperienceCard({ experience, index }: ExperienceCardProp
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative pl-8 pb-12 last:pb-0"
+            className={`relative flex w-full mb-12 last:mb-0 ${index % 2 === 0 ? "lg:justify-start" : "lg:justify-end"
+                }`}
         >
-            {/* Timeline line */}
-            <div className="absolute left-[11px] top-1 bottom-0 w-px bg-gradient-to-b from-primary to-primary" />
+            {/* Mobile/Tablet Timeline line (hidden on lg) */}
+            <div className="lg:hidden absolute left-[11px] top-1 bottom-[-3rem] w-px bg-primary last:hidden" />
 
-            {/* Timeline dot */}
-            <div className="absolute left-0 top-1 w-[23px] h-[23px] rounded-full bg-gradient-to-br bg-primary to-primary flex items-center justify-center">
+            {/* Timeline dot - Positioned left on mobile, centered on lg */}
+            <div className={`absolute top-1 w-[23px] h-[23px] rounded-full bg-primary flex items-center justify-center z-10 
+                left-0 lg:left-1/2 lg:-translate-x-1/2`}
+            >
                 <Briefcase className="w-3 h-3 text-white" />
             </div>
-            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 ml-6">
+
+            {/* Card Content - Occupies full width on mobile, ~45% on lg */}
+            <div className={`w-full lg:w-[45%] bg-primary/10 dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 
+                ${index % 2 === 0
+                    ? "ml-8 lg:ml-0 lg:text-right lg:pr-10"
+                    : "ml-8 lg:ml-0 lg:text-left lg:pl-10"
+                }`}
+            >
                 <span className="text-sm font-semibold text-primary">
                     {t(experience.periodKey)}
                 </span>

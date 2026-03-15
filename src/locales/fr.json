@@ -10,12 +10,12 @@
     "home": {
         "hero": {
             "available": "Disponible pour de nouvelles opportunités",
-            "crafting": "Création d'expériences",
-            "modern": "Modernes",
-            "digital_experiences": "Numériques",
+            "crafting": "Développeur Full",
+            "modern": "Stack",
+            "digital_experiences": "",
             "hello": "Bonjour, je suis",
             "name": "Elonm Luc Akakpo",
-            "subtitle": "Un développeur Full Stack dédié à la construction d'applications web et mobiles premium et performantes.",
+            "subtitle": "Je construis des applications web et mobiles performantes.",
             "specialization": {
                 "web": "Dév Web",
                 "mobile": "Dév Mobile",
@@ -26,8 +26,8 @@
             "discover": "Découvrir"
         },
         "services": {
-            "title": "Spécialisé en Solutions Modernes",
-            "subtitle": "Exploiter la puissance des dernières technologies pour créer des logiciels évolutifs et performants.",
+            "title": "Qu'est ce que je fais ?",
+            "subtitle": "J'exploite la puissance des dernières technologies pour créer des logiciels évolutifs et performants.",
             "see_all": "Voir Toutes les Compétences",
             "web_dev": "Développement Web",
             "web_dev_desc": "Sites web modernes et performants.",
@@ -37,7 +37,7 @@
             "uiux_desc": "Interfaces utilisateur propres et intuitives."
         },
         "featured": {
-            "title": "Travail Vedette",
+            "title": "Ce que j'ai fait récemment",
             "subtitle": "Une sélection de mes projets récents où la créativité rencontre la fonctionnalité.",
             "view_all": "Voir Tous les Projets",
             "details": "Détails",
@@ -57,9 +57,9 @@
             }
         },
         "cta": {
-            "title": "Prêt à Transformer Votre Futur Numérique ?",
-            "subtitle": "Unissons votre vision à mon expertise pour créer quelque chose de vraiment exceptionnel. Haute performance, sécurité et design unique.",
-            "hire_me": "Engagez-moi",
+            "title": "Parlez-moi de votre prochain projet",
+            "subtitle": "Unissons votre vision à mon expertise pour créer quelque chose de vraiment exceptionnel.",
+            "hire_me": "On en parle ici",
             "learn_more": "En savoir plus"
         }
     },
@@ -113,7 +113,7 @@
             "title": "Construisons Quelque Chose d'<0>Épique</0> Ensemble !",
             "desc": "Actuellement disponible pour de nouveaux projets et collaborations. Si vous avez une excellente idée, transformons-la en réalité !",
             "chat": "Démarrer une Discussion",
-            "work": "Voir Mon Travail"
+            "work": "Voir Mes Travaux"
         }
     },
     "journey": {
@@ -322,6 +322,12 @@
                 "title": "Site de Construction",
                 "desc": "Page de destination pour un site de construction"
             }
+        },
+        "cta": {
+            "title": "Envie de Collaborer ?",
+            "subtitle": "Je suis toujours ouvert à de nouveaux projets passionnants. Discutons de la manière dont je peux vous aider à concrétiser votre vision.",
+            "button_chat": "Démarrer une Discussion",
+            "button_projects": "Voir Plus de Projets"
         },
         "ui": {
             "code": "Code",

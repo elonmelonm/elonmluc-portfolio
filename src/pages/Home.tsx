@@ -61,12 +61,10 @@ const Home = () => {
             {/* Quick Services Section */}
             <section className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
                 <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                        <div className="max-w-xl">
-                            <h2 className="text-4xl md:text-5xl font-bold text-secondary dark:text-white mb-6">
-                                {t('home.services.title').split(' ').map((word, i) => word === 'Modern' || word === 'Modernes' ? (
-                                    <span key={i} className="text-primary"> {word} </span>
-                                ) : ` ${word}`)}
+                    <div className="flex flex-col justify-between items-center mb-16 gap-8">
+                        <div className="max-w-2xl text-center">
+                            <h2 className="text-4xl md:text-5xl font-bold text-primary dark:text-white mb-6">
+                                {t('home.services.title')}
                             </h2>
                             <p className="text-lg text-gray-500 dark:text-gray-400">
                                 {t('home.services.subtitle')}
@@ -103,7 +101,7 @@ const Home = () => {
             <section className="py-24 bg-secondary/5 dark:bg-white/5">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-secondary dark:text-white mb-4">{t('home.featured.title')}</h2>
+                        <h2 className="text-4xl md:text-5xl font-bold text-primary dark:text-white mb-4">{t('home.featured.title')}</h2>
                         <p className="text-gray-500 max-w-2xl mx-auto text-lg">{t('home.featured.subtitle')}</p>
                     </div>
 
@@ -153,25 +151,23 @@ const Home = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="relative p-12 md:p-20 rounded-[3rem] bg-dark-bg text-center text-white overflow-hidden group shadow-2xl"
+                        className="relative p-12 md:p-20 rounded-[3rem] bg-light-bg dark:bg-dark-bg text-center text-white overflow-hidden group shadow-2xl"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-blue-500/10 opacity-50" />
 
                         <div className="relative z-10 max-w-3xl mx-auto text-center">
                             <Rocket className="w-16 h-16 text-primary mb-8 mx-auto animate-bounce" />
-                            <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
-                                {t('home.cta.title').split(' ').map((word, i) => word === 'Digital' || word === 'Numérique' ? (
-                                    <span key={i} className="text-primary"> {word} </span>
-                                ) : ` ${word}`)}
+                            <h2 className="text-4xl md:text-6xl text-secondary dark:text-white font-black mb-8 leading-tight">
+                                {t('home.cta.title')}
                             </h2>
-                            <p className="text-xl text-gray-400 mb-12 font-light">
+                            <p className="text-xl text-gray-500 dark:text-gray-400 mb-12 font-light">
                                 {t('home.cta.subtitle')}
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                                 <Link to="/contact" className="px-10 py-5 bg-primary text-white font-bold text-xl rounded-full shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
                                     {t('home.cta.hire_me')}
                                 </Link>
-                                <Link to="/about" className="px-10 py-5 bg-white/5 border border-white/10 text-white font-bold text-xl rounded-full hover:bg-white/10 transition-all">
+                                <Link to="/about" className="px-10 py-5 bg-white/5 dark:bg-white/5 border border-secondary/50 dark:border-white/10 text-secondary dark:text-white font-bold text-xl rounded-full hover:bg-white/10 transition-all">
                                     {t('home.cta.learn_more')}
                                 </Link>
                             </div>

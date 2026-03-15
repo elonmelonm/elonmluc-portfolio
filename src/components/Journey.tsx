@@ -29,8 +29,8 @@ export default function Experience() {
     return (
         <section id="journey" className="lg:mx-32 xl:mx-16 py-20 px-4 transition-colors duration-300">
             <div className="container mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                    <div className="max-w-xl">
+                <div className="flex flex-col justify-between items-center mb-16 gap-8">
+                    <div className="max-w-2xl text-center">
                         <motion.h2
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}

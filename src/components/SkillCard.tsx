@@ -20,7 +20,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="p-4 rounded-xl bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/10 backdrop-blur-sm hover:bg-secondary/5 transition-colors"
+            className="h-full p-4 rounded-xl bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/30 backdrop-blur-sm hover:bg-secondary/10 hover:border-primary/30 transition-colors"
         >
             <div className="flex gap-6">
                 <div className="py-4 flex items-center justify-center">

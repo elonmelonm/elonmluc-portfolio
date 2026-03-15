@@ -103,7 +103,7 @@ const Hero = () => {
 
           {/* Main Title */}
           <motion.div variants={itemVariants} className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-secondary dark:text-white leading-[1.1] mb-6 tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-secondary dark:text-white leading-[1.1] mb-6 tracking-tight">
               {t('home.hero.crafting')} <span className="text-primary italic">{t('home.hero.modern')}</span> <br />
               {t('home.hero.digital_experiences')}
             </h1>

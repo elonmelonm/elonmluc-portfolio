@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CircleFadingPlus, ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { CircleFadingPlus, ExternalLink, Github, ChevronLeft, ChevronRight, MessageSquare, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from "react-i18next";
 
@@ -333,7 +333,7 @@ const Projects = () => {
     <section id="projets" className="lg:mx-32 xl:mx-16 py-16 mb-20 transition-colors duration-300">
       <div className="container mx-auto px-4">
         {/* Statistics Bar */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -345,10 +345,10 @@ const Projects = () => {
               <div className="text-xs uppercase tracking-widest text-gray-500 font-bold">{stat.label}</div>
             </div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
-        <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
-          <div className="max-w-xl text-center md:text-left">
+        <div className="flex flex-col justify-between items-center mb-16 gap-8">
+          <div className="max-w-2xl text-center">
             <motion.h2
               className="text-4xl md:text-6xl font-black mb-6 text-secondary dark:text-white transition-colors duration-300"
               initial={{ opacity: 0, x: -20 }}
@@ -432,6 +432,50 @@ const Projects = () => {
             ))}
           </div>
         </div>
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-40 relative group"
+        >
+          {/* Background Decorative Element */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+
+          <div className="relative p-10 md:p-20 bg-light-bg/70 dark:bg-dark-bg/50 backdrop-blur-xl rounded-[3rem] border border-secondary/10 dark:border-white/10 overflow-hidden text-center">
+            {/* Animated background shape */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+
+            <h2 className="text-4xl md:text-6xl font-black text-secondary dark:text-white mb-6 tracking-tight">
+              {t('projects.cta.title')}
+            </h2>
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+              {t('projects.cta.subtitle')}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <motion.a
+                href="#contact"
+                className="group/btn relative px-8 py-4 bg-primary text-white font-bold rounded-2xl flex items-center shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <MessageSquare className="mr-2 w-5 h-5 flex-shrink-0" />
+                {t('projects.cta.button_chat')}
+                <ArrowRight className="ml-2 w-4 h-4 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
+              </motion.a>
+
+              {/* <motion.button
+                onClick={() => setShowAllProjects(true)}
+                className="px-8 py-4 bg-secondary/5 dark:bg-white/5 text-secondary dark:text-white font-bold rounded-2xl border border-secondary/10 dark:border-white/10 hover:bg-secondary/10 dark:hover:bg-white/10 transition-all"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('projects.cta.button_projects')}
+              </motion.button> */}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

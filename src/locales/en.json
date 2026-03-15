@@ -323,6 +323,12 @@
                 "desc": "Construction website landing page"
             }
         },
+        "cta": {
+            "title": "Want to Collaborate?",
+            "subtitle": "I'm always open to new and exciting projects. Let's discuss how I can help you bring your vision to life.",
+            "button_chat": "Start a Chat",
+            "button_projects": "View More Projects"
+        },
         "ui": {
             "code": "Code",
             "live": "Live Demo"
