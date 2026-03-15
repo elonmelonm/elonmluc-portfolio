@@ -100,8 +100,7 @@
                     "Tailwind CSS",
                     "TypeScript",
                     "Node.js"
-                ],
-                "desc": "Création de sites web réactifs, optimisés SEO et performants à l'aide de frameworks modernes."
+                ]
             },
             "mobile_dev": {
                 "title": "Développement d'Apps Mobiles",
@@ -111,8 +110,7 @@
                     "TypeScript",
                     "Firebase",
                     "Zustand"
-                ],
-                "desc": "Construction d'applications mobiles multiplateformes avec React Native pour iOS and Android."
+                ]
             },
             "uiux": {
                 "title": "Design UI/UX",
@@ -121,8 +119,7 @@
                     "Framer Motion",
                     "Responsive Design",
                     "Principles"
-                ],
-                "desc": "Conception d'interfaces utilisateur intuitives et visuellement attrayantes axées sur l'expérience utilisateur."
+                ]
             },
             "cyber": {
                 "title": "Cybersécurité",
@@ -132,8 +129,7 @@
                     "Sanitization",
                     "Auth",
                     "Security Audit"
-                ],
-                "desc": "Mise en œuvre des meilleures pratiques de sécurité pour protéger les applications contre les vulnérabilités et les menaces."
+                ]
             }
         },
         "fun_cta": {
