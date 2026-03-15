@@ -10,9 +10,9 @@
     "home": {
         "hero": {
             "available": "Available for new opportunities",
-            "crafting": "Crafting",
-            "modern": "Modern",
-            "digital_experiences": "Digital Experiences",
+            "crafting": "Full Stack",
+            "modern": "Developer",
+            "digital_experiences": "",
             "hello": "Hello, I'm",
             "name": "Elonm Luc Akakpo",
             "subtitle": "A Full Stack Developer dedicated to building high-performance, premium web & mobile applications.",
@@ -26,7 +26,7 @@
             "discover": "Discover"
         },
         "services": {
-            "title": "Specialized in Modern Solutions",
+            "title": "What I Do?",
             "subtitle": "Harnessing the power of the latest technologies to build software that scales and converts.",
             "see_all": "See All Skills",
             "web_dev": "Web Development",
@@ -59,7 +59,7 @@
         "cta": {
             "title": "Ready to Transform Your Digital Future?",
             "subtitle": "Let's unite your vision with my expertise to create something truly exceptional. High-performance, secure, and uniquely designed.",
-            "hire_me": "Hire Me Now",
+            "hire_me": "Let's Talk",
             "learn_more": "Learn More"
         }
     },
@@ -94,26 +94,49 @@
             "subtitle": "My specialized services",
             "web_dev": {
                 "title": "Web Development",
-                "desc": "Creating responsive, SEO-friendly, and high-performance websites using modern frameworks."
+                "tools": [
+                    "React.js",
+                    "Next.js",
+                    "Tailwind CSS",
+                    "TypeScript",
+                    "Node.js"
+                ]
             },
             "mobile_dev": {
                 "title": "Mobile App Development",
-                "desc": "Building cross-platform mobile applications with React Native for iOS and Android."
+                "tools": [
+                    "React Native",
+                    "Expo",
+                    "TypeScript",
+                    "Firebase",
+                    "Zustand"
+                ]
             },
             "uiux": {
                 "title": "UI/UX Design",
-                "desc": "Designing intuitive and visually appealing user interfaces focusing on user experience."
+                "tools": [
+                    "Figma",
+                    "Framer Motion",
+                    "Responsive Design",
+                    "Principles"
+                ]
             },
             "cyber": {
                 "title": "Cybersecurity",
-                "desc": "Implementing security best practices to protect applications from vulnerabilities and threats."
+                "tools": [
+                    "OWASP",
+                    "JWT",
+                    "Sanitization",
+                    "Auth",
+                    "Security Audit"
+                ]
             }
         },
         "fun_cta": {
             "title": "Let's Build Something <0>Epic</0> Together!",
             "desc": "Currently available for new projects and collaborations. If you have a great idea, let's turn it into reality!",
             "chat": "Start a Chat",
-            "work": "View My Work"
+            "work": "View My Works"
         }
     },
     "journey": {
@@ -279,24 +302,24 @@
                 "desc": "Hackathon 2025 : developing an open source solution for mass payment of retirement pensions by integrating Mojaloop APIs"
             },
             "hackathon": {
-                "title": "Hackathon IA 2025",
-                "desc": "Hackathon IA 2025 : Challenge IA et données foncières : développer des solutions IA au service du foncier"
+                "title": "AI Hackathon 2025",
+                "desc": "AI Hackathon 2025: AI Challenge and land data: developing AI solutions for land management"
             },
             "tototte": {
-                "title": "The french tototte App",
-                "desc": "Build The french tototte website on Figma To Code Challenge"
+                "title": "The French Tototte App",
+                "desc": "Creation of The French Tototte website during the Figma To Code challenge"
             },
             "monito": {
                 "title": "Monito App",
-                "desc": "Build a Monito App on Figma To Code Challenge"
+                "desc": "Creation of a Monito application during the Figma To Code challenge"
             },
             "spending": {
                 "title": "Spending Management Landing Page",
-                "desc": "Build a Spending Management Landing Page on Figma To Code Challenge"
+                "desc": "Creation of a landing page for expense management during the Figma To Code challenge"
             },
             "saas": {
                 "title": "SaaS Futuristic App",
-                "desc": "Build a SaaS Futuristic App on Figma To Code Challenge"
+                "desc": "Creation of a futuristic SaaS application during the Figma To Code challenge"
             },
             "budget": {
                 "title": "Budget Management App",
@@ -308,11 +331,11 @@
             },
             "fresh": {
                 "title": "Fresh Fruits",
-                "desc": "Fresh fruits selling landing page"
+                "desc": "Landing page for selling fresh fruits"
             },
             "elearning": {
                 "title": "E-learning website",
-                "desc": "E-learning website landing page"
+                "desc": "Landing page for an e-learning site"
             },
             "smith": {
                 "title": "Smith Portfolio",
@@ -320,7 +343,7 @@
             },
             "construction": {
                 "title": "Construction website",
-                "desc": "Construction website landing page"
+                "desc": "Landing page for a construction site"
             }
         },
         "cta": {

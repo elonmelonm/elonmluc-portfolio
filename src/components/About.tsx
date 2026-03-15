@@ -59,24 +59,24 @@ const About = () => {
 
   const services = [
     {
+      id: 'web_dev',
       icon: <Code size={32} />,
       title: t('about.what_i_do.web_dev.title'),
-      tools: ["React.js", "Next.js", "Tailwind CSS", "TypeScript", "Node.js"]
     },
     {
+      id: 'mobile_dev',
       icon: <Smartphone size={32} />,
       title: t('about.what_i_do.mobile_dev.title'),
-      tools: ["React Native", "Expo", "TypeScript", "Firebase", "Zustand"]
     },
     {
+      id: 'uiux',
       icon: <LayoutIcon size={32} />,
       title: t('about.what_i_do.uiux.title'),
-      tools: ["Figma", "Framer Motion", "Responsive Design", "Principles"]
     },
     {
+      id: 'cyber',
       icon: <ShieldCheck size={32} />,
       title: t('about.what_i_do.cyber.title'),
-      tools: ["OWASP", "JWT", "Sanitization", "Auth", "Security Audit"]
     }
   ];
 
@@ -225,7 +225,7 @@ const About = () => {
                   {service.title}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {service.tools.map((tool, i) => (
+                  {(t(`about.what_i_do.${service.id}.tools`, { returnObjects: true }) as string[]).map((tool, i) => (
                     <span key={i} className="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground text-[10px] font-bold rounded-lg border border-primary/20">
                       {tool}
                     </span>

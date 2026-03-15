@@ -54,7 +54,7 @@ export default function Experience() {
                         {[
                             { id: 1, icon: Backpack, label: t('journey.tabs.experience') },
                             { id: 2, icon: GraduationCap, label: t('journey.tabs.education') },
-                            { id: 3, icon: Rocket, label: t('journey.tabs.certs') }
+                            // { id: 3, icon: Rocket, label: t('journey.tabs.certs') }
                         ].map((tab) => (
                             <button
                                 key={tab.id}
@@ -74,7 +74,7 @@ export default function Experience() {
                 <div className="min-h-[400px]">
                     {toggleState === 1 && <ExperiencePart />}
                     {toggleState === 2 && <EducationPart />}
-                    {toggleState === 3 && (
+                    {/* {toggleState === 3 && (
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function Experience() {
                                 </div>
                             ))}
                         </motion.div>
-                    )}
+                    )} */}
                 </div>
 
                 {/* Languages Section */}
