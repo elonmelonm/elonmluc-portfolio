@@ -140,7 +140,7 @@ const About = () => {
                 className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-light"
               >
                 <Trans i18nKey="about.p1">
-                  I am a <span className="text-primary font-semibold">Full Stack Developer</span> with over <span className="text-primary font-bold">3 years of experience</span> in building high-quality digital products.
+                  <span className="text-primary font-semibold">Full Stack Developer</span> with over <span className="text-primary font-bold">3 years of experience</span> in building high-quality digital products.
                 </Trans>
               </motion.p>
 
@@ -224,9 +224,9 @@ const About = () => {
                 <h3 className="text-xl font-bold mb-4 text-secondary dark:text-white group-hover:text-primary transition-colors h-14 line-clamp-2">
                   {service.title}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 mb-2">
                   {(t(`about.what_i_do.${service.id}.tools`, { returnObjects: true }) as string[]).map((tool, i) => (
-                    <span key={i} className="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground text-[10px] font-bold rounded-lg border border-primary/20">
+                    <span key={i} className="px-2 py-0.5 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground text-[9px] sm:text-[10px] font-bold rounded-lg border border-primary/20 whitespace-normal">
                       {tool}
                     </span>
                   ))}

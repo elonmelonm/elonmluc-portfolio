@@ -55,7 +55,7 @@ const Header = () => {
         : 'py-6 bg-transparent border-b border-transparent'
         }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -99,10 +99,10 @@ const Header = () => {
         </div>
 
         {/* Mobile menu button */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-2">
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-1 px-2 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider text-secondary dark:text-gray-400 border border-secondary/10 dark:border-white/10"
+            className="flex items-center gap-1 px-1.5 py-1 rounded-xl text-[10px] font-bold uppercase tracking-wider text-secondary dark:text-gray-400 border border-secondary/10 dark:border-white/10"
           >
             <span className={i18n.language === 'fr' ? 'text-primary' : ''}>FR</span>
             <span className="text-secondary/20 dark:text-white/20">|</span>

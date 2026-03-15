@@ -362,7 +362,7 @@ const Projects = () => {
           </div>
 
           {/* Filtering Tabs */}
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-nowrap overflow-x-auto pb-4 sm:pb-0 sm:flex-wrap justify-start md:justify-center gap-3 no-scrollbar">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -446,7 +446,7 @@ const Projects = () => {
             {/* Animated background shape */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
-            <h2 className="text-4xl md:text-6xl font-black text-secondary dark:text-white mb-6 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-6xl text-secondary dark:text-white font-black mb-8 leading-tight">
               {t('projects.cta.title')}
             </h2>
             <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">

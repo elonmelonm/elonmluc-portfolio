@@ -26,11 +26,10 @@ export default function ExperienceCard({ experience, index }: ExperienceCardProp
                 }`}
         >
             {/* Mobile/Tablet Timeline line (hidden on lg) */}
-            <div className="lg:hidden absolute left-[11px] top-1 bottom-[-3rem] w-px bg-primary last:hidden" />
-
+            <div className="lg:hidden absolute left-[23px] top-1 bottom-[-3rem] w-px bg-primary group-last:hidden" />
             {/* Timeline dot - Positioned left on mobile, centered on lg */}
             <div className={`absolute top-1 w-[23px] h-[23px] rounded-full bg-primary flex items-center justify-center z-10 
-                left-0 lg:left-1/2 lg:-translate-x-1/2`}
+                left-3 lg:left-1/2 lg:-translate-x-1/2`}
             >
                 <Briefcase className="w-3 h-3 text-white" />
             </div>

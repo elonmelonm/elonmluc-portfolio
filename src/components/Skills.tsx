@@ -116,7 +116,7 @@ export default function Skills() {
                             <h3 className="text-3xl md:text-4xl font-black mb-4">{t('skills.learning.title')}</h3>
                             <p className="text-primary-foreground/80 font-medium">{t('skills.learning.desc')}</p>
                         </div>
-                        <div className="flex flex-wrap justify-center gap-4">
+                        <div className="flex flex-nowrap overflow-x-auto pb-4 sm:pb-0 sm:flex-wrap justify-start md:justify-center gap-2 md:gap-4 no-scrollbar">
                             {[
                                 t('skills.learning.items.threejs'),
                                 t('skills.learning.items.web3'),
