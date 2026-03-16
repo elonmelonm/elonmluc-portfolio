@@ -97,7 +97,7 @@ const projectsData = [
     technologies: ["React.js", "Framer-motion"],
     githubLink: "https://github.com/elonmelonm/fresh-fruits.git",
     liveLink: "https://fruits-selling-elm.netlify.app/",
-    category: "Design"
+    category: "Web"
   },
   {
     titleKey: "projects.items.elearning.title",
@@ -106,7 +106,7 @@ const projectsData = [
     technologies: ["React.js", "Framer-motion"],
     githubLink: "https://github.com/elonmelonm/e-learning.git",
     liveLink: "https://thecodingjourney-elm.netlify.app/",
-    category: "Design"
+    category: "Web"
   },
   {
     titleKey: "projects.items.smith.title",
@@ -115,7 +115,7 @@ const projectsData = [
     technologies: ["React.js", "CSS"],
     githubLink: "https://github.com/elonmelonm/e-learning.git",
     liveLink: "https://smith-portfolio-elm.netlify.app/",
-    category: "Design"
+    category: "Web"
   },
   {
     titleKey: "projects.items.construction.title",
@@ -315,7 +315,7 @@ const Projects = () => {
     { id: 'All', label: t('projects.categories.all') },
     { id: 'Web', label: t('projects.categories.web') },
     { id: 'Mobile', label: t('projects.categories.mobile') },
-    { id: 'Design', label: t('projects.categories.design') }
+    // { id: 'Design', label: t('projects.categories.design') }
   ];
 
   const filteredProjects = projectsData.filter(p =>
@@ -350,7 +350,7 @@ const Projects = () => {
         <div className="flex flex-col justify-between items-center mb-16 gap-8">
           <div className="max-w-2xl text-center">
             <motion.h2
-              className="text-4xl md:text-6xl font-black mb-6 text-secondary dark:text-white transition-colors duration-300"
+              className="text-4xl md:text-6xl font-black mb-6 text-primary dark:text-white transition-colors duration-300"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
@@ -405,7 +405,7 @@ const Projects = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-secondary dark:text-white mb-4">{t('projects.workflow.title')}</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-primary dark:text-white mb-4">{t('projects.workflow.title')}</h2>
             <p className="text-gray-500 max-w-2xl mx-auto">{t('projects.workflow.subtitle')}</p>
           </motion.div>
 
@@ -442,7 +442,7 @@ const Projects = () => {
           {/* Background Decorative Element */}
           <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
 
-          <div className="relative p-10 md:p-20 bg-light-bg/70 dark:bg-dark-bg/50 backdrop-blur-xl rounded-[3rem] border border-secondary/10 dark:border-white/10 overflow-hidden text-center">
+          <div className="relative p-5 md:p-20 bg-light-bg/70 dark:bg-dark-bg/50 backdrop-blur-xl rounded-[3rem] border border-secondary/10 dark:border-white/10 overflow-hidden text-center">
             {/* Animated background shape */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
@@ -456,7 +456,7 @@ const Projects = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
                 href="#contact"
-                className="group/btn relative px-8 py-4 bg-primary text-white font-bold rounded-2xl flex items-center shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all"
+                className="group/btn relative px-5 py-4 bg-primary text-white font-bold rounded-full flex items-center shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

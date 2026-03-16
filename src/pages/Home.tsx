@@ -151,7 +151,7 @@ const Home = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="relative p-12 md:p-20 rounded-[3rem] bg-light-bg dark:bg-dark-bg text-center text-white overflow-hidden group shadow-2xl"
+                        className="relative p-5 md:p-20 rounded-[3rem] bg-light-bg dark:bg-dark-bg text-center text-white overflow-hidden group shadow-2xl"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-blue-500/10 opacity-50" />
 

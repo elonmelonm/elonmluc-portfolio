@@ -245,7 +245,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative p-12 md:p-20 rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-blue-600 text-center text-white shadow-2xl shadow-primary/30 group"
+            className="relative p-4 md:p-20 rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-blue-600 text-center text-white shadow-2xl shadow-primary/30 group"
           >
             {/* Animated Background Elements */}
             <motion.div
@@ -307,7 +307,7 @@ const About = () => {
               >
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center px-10 py-5 bg-white text-primary font-bold text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300"
+                  className="group inline-flex items-center px-10 py-5 bg-white text-primary font-bold text-sm md:text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300"
                 >
                   {t('about.fun_cta.chat')}
                   <MessageSquare className="ml-3 group-hover:rotate-12 transition-transform" />
@@ -315,7 +315,7 @@ const About = () => {
 
                 <Link
                   to="/projects"
-                  className="group inline-flex items-center px-10 py-5 bg-transparent border-2 border-white/30 text-white font-bold text-xl rounded-full backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
+                  className="group inline-flex items-center px-10 py-5 bg-transparent border-2 border-white/30 text-white font-bold text-sm md:text-xl rounded-full backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
                 >
                   {t('about.fun_cta.work')}
                   <Sparkles className="ml-3 group-hover:animate-pulse" />

@@ -109,14 +109,14 @@ export default function Skills() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="p-10 md:p-16 bg-primary text-white rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden"
+                    className="p-5 md:p-16 bg-primary text-white rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden"
                 >
                     <div className="relative z-10 flex flex-col items-center justify-between gap-10">
                         <div className="max-w-2xl text-center">
                             <h3 className="text-3xl md:text-4xl font-black mb-4">{t('skills.learning.title')}</h3>
                             <p className="text-primary-foreground/80 font-medium">{t('skills.learning.desc')}</p>
                         </div>
-                        <div className="flex flex-nowrap overflow-x-auto pb-4 sm:pb-0 sm:flex-wrap justify-start md:justify-center gap-2 md:gap-4 no-scrollbar">
+                        <div className="flex flex-wrap overflow-x-auto pb-4 sm:pb-0 justify-center gap-2 md:gap-4 no-scrollbar">
                             {[
                                 t('skills.learning.items.threejs'),
                                 t('skills.learning.items.web3'),
