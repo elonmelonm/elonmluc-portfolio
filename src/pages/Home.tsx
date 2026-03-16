@@ -157,7 +157,7 @@ const Home = () => {
 
                         <div className="relative z-10 max-w-3xl mx-auto text-center">
                             <Rocket className="w-16 h-16 text-primary mb-8 mx-auto animate-bounce" />
-                            <h2 className="text-4xl md:text-6xl text-secondary dark:text-white font-black mb-8 leading-tight">
+                            <h2 className="text-3xl md:text-5xl text-secondary dark:text-white font-black mb-8 leading-tight">
                                 {t('home.cta.title')}
                             </h2>
                             <p className="text-xl text-gray-500 dark:text-gray-400 mb-12 font-light">
