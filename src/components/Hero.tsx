@@ -1,11 +1,14 @@
+import { useRef } from 'react';
 import { Github, Linkedin, Mail, Sparkles, Code, Smartphone, Rocket, ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
   const { t } = useTranslation();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.1 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -31,37 +34,47 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-light-bg dark:bg-dark-bg transition-colors duration-300 pt-28 pb-32">
+    <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-light-bg dark:bg-dark-bg transition-colors duration-300 pt-28 pb-32">
       {/* Social Links Sidebar - Fixed on left */}
-      <div className="fixed left-8 bottom-0 z-50 hidden lg:flex flex-col items-center gap-6">
-        {[
-          { Icon: Github, href: "https://github.com/elonmelonm", title: "GitHub" },
-          { Icon: Linkedin, href: "https://linkedin.com/in/luc-elonm-akakpo/", title: "LinkedIn" },
-          { Icon: FaWhatsapp, href: "https://wa.me/22957113810", title: "WhatsApp" },
-          { Icon: Mail, href: "mailto:elonmlucakakpo@gmail.com", title: "Email" }
-        ].map((social, idx) => (
-          <motion.a
-            key={idx}
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, x: -20 }}
+      <AnimatePresence>
+        {isInView && (
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1 + idx * 0.1 }}
-            whileHover={{ y: -5, color: '#0066FF' }}
-            className="text-gray-400 hover:text-primary transition-colors duration-300"
-            title={social.title}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5 }}
+            className="fixed left-8 bottom-0 z-50 hidden lg:flex flex-col items-center gap-6"
           >
-            <social.Icon size={20} />
-          </motion.a>
-        ))}
-        <motion.div
-          initial={{ height: 0 }}
-          animate={{ height: 100 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="w-px bg-gray-300 dark:bg-gray-700 mt-2"
-        />
-      </div>
+            {[
+              { Icon: Github, href: "https://github.com/elonmelonm", title: "GitHub" },
+              { Icon: Linkedin, href: "https://linkedin.com/in/luc-elonm-akakpo/", title: "LinkedIn" },
+              { Icon: FaWhatsapp, href: "https://wa.me/22957113810", title: "WhatsApp" },
+              { Icon: Mail, href: "mailto:elonmlucakakpo@gmail.com", title: "Email" }
+            ].map((social, idx) => (
+              <motion.a
+                key={idx}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 + idx * 0.1 }}
+                whileHover={{ y: -5, color: '#0066FF' }}
+                className="text-gray-400 hover:text-primary transition-colors duration-300"
+                title={social.title}
+              >
+                <social.Icon size={20} />
+              </motion.a>
+            ))}
+            <motion.div
+              initial={{ height: 0 }}
+              animate={{ height: 100 }}
+              transition={{ delay: 0.7, duration: 1 }}
+              className="w-px bg-gray-300 dark:bg-gray-700 mt-2"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

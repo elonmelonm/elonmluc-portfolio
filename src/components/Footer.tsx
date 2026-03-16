@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer className="xl:px-36 dark:bg-dark-bg mt-10 text-white py-12 transition-colors duration-300">
+    <footer className="xl:px-36 dark:bg-dark-bg text-white pb-12 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
