@@ -140,7 +140,8 @@ const About = () => {
                 className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-light"
               >
                 <Trans i18nKey="about.p1">
-                  <span className="text-primary font-semibold">Full Stack Developer</span> with over <span className="text-primary font-bold">3 years of experience</span> in building high-quality digital products.
+                  <span className="text-primary font-semibold">Full Stack Developer</span>
+                  <span className="text-primary font-bold">3 years of experience</span>
                 </Trans>
               </motion.p>
 
