@@ -19,7 +19,7 @@ const empty: ProjectInput = {
   desc_fr: '',
   technologies: [],
   images: [],
-  github_link: '',
+  github_link: null,
   live_link: null,
   category: 'Web',
   display_order: 0,
@@ -107,7 +107,7 @@ export default function ProjectsManager() {
     setSaving(true);
     setFormError(null);
     try {
-      const payload = { ...form, live_link: form.live_link || null };
+      const payload = { ...form, github_link: form.github_link || null, live_link: form.live_link || null };
       if (editingId) await updateProject(editingId, payload);
       else await createProject(payload);
       setOpen(false);
@@ -234,8 +234,8 @@ export default function ProjectsManager() {
             </Field>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Field label="Lien GitHub">
-                <input className={inputClass} value={form.github_link} onChange={(e) => setForm({ ...form, github_link: e.target.value })} required />
+              <Field label="Lien GitHub (optionnel)">
+                <input className={inputClass} value={form.github_link ?? ''} onChange={(e) => setForm({ ...form, github_link: e.target.value })} />
               </Field>
               <Field label="Lien live (optionnel)">
                 <input className={inputClass} value={form.live_link ?? ''} onChange={(e) => setForm({ ...form, live_link: e.target.value })} />

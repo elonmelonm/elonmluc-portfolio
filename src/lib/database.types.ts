@@ -10,7 +10,7 @@ export interface Project {
   desc_fr: string;
   technologies: string[];
   images: string[];
-  github_link: string;
+  github_link: string | null;
   live_link: string | null;
   category: Category;
   display_order: number;

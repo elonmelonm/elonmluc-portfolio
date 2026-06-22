@@ -151,16 +151,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
           </div>
         </div>
         <div className="flex gap-4 pt-2">
-          <motion.a
-            href={project.github_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
-            whileHover={{ x: 3 }}
-          >
-            <Github size={18} className="mr-1.5" />
-            {t('projects.ui.code')}
-          </motion.a>
+          {project.github_link && (
+            <motion.a
+              href={project.github_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+              whileHover={{ x: 3 }}
+            >
+              <Github size={18} className="mr-1.5" />
+              {t('projects.ui.code')}
+            </motion.a>
+          )}
           {project.live_link && (
             <motion.a
               href={project.live_link}
