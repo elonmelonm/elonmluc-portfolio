@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import ThemeToggle from '../../components/ThemeToggle';
 
 const AdminLogin = () => {
   const { signIn, session } = useAuth();
@@ -31,6 +32,9 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-light-bg dark:bg-dark-bg px-4">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-sm p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10 shadow-xl"

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { LogOut, FolderGit2, Briefcase, GraduationCap, Award, BarChart3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import ThemeToggle from '../../components/ThemeToggle';
 import ProjectsManager from '../../components/admin/ProjectsManager';
 import ExperiencesManager from '../../components/admin/ExperiencesManager';
 import EducationsManager from '../../components/admin/EducationsManager';
@@ -36,12 +37,15 @@ export default function AdminDashboard() {
             <h1 className="text-xl font-black text-secondary dark:text-white">Espace admin</h1>
             <p className="text-xs text-gray-500">{user?.email}</p>
           </div>
-          <button
-            onClick={handleSignOut}
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-red-500"
-          >
-            <LogOut size={16} /> Déconnexion
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={handleSignOut}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-red-500"
+            >
+              <LogOut size={16} /> Déconnexion
+            </button>
+          </div>
         </div>
       </header>
 
