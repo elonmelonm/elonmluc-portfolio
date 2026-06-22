@@ -45,6 +45,17 @@ export interface Education {
   updated_at: string;
 }
 
+export interface Certification {
+  id: string;
+  title_en: string;
+  title_fr: string;
+  issuer: string;
+  year: string;
+  display_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface PageView {
   id: number;
   path: string;
@@ -56,3 +67,4 @@ export interface PageView {
 export type ProjectInput = Omit<Project, 'id' | 'created_at' | 'updated_at'>;
 export type ExperienceInput = Omit<Experience, 'id' | 'created_at' | 'updated_at'>;
 export type EducationInput = Omit<Education, 'id' | 'created_at' | 'updated_at'>;
+export type CertificationInput = Omit<Certification, 'id' | 'created_at' | 'updated_at'>;

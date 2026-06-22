@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { Plus, Pencil, Trash2, X, GripVertical } from 'lucide-react';
-import { useExperiences } from '../../hooks/useExperiences';
-import { createExperience, updateExperience, deleteExperience, reorderExperiences } from '../../lib/content';
-import type { Experience, ExperienceInput } from '../../lib/database.types';
+import { useCertifications } from '../../hooks/useCertifications';
+import {
+  createCertification,
+  updateCertification,
+  deleteCertification,
+  reorderCertifications,
+} from '../../lib/content';
+import type { Certification, CertificationInput } from '../../lib/database.types';
 import { Field, inputClass } from './ui';
 
-const empty: ExperienceInput = {
-  period_en: '',
-  period_fr: '',
+const empty: CertificationInput = {
   title_en: '',
   title_fr: '',
-  company: '',
-  desc_en: '',
-  desc_fr: '',
+  issuer: '',
+  year: '',
   display_order: 0,
 };
 
-export default function ExperiencesManager() {
-  const { experiences, loading, error, refetch } = useExperiences();
+export default function CertificationsManager() {
+  const { certifications, loading, error, refetch } = useCertifications();
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [form, setForm] = useState<ExperienceInput>(empty);
+  const [form, setForm] = useState<CertificationInput>(empty);
   const [open, setOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  const [items, setItems] = useState<Experience[]>([]);
+  const [items, setItems] = useState<Certification[]>([]);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setItems(experiences);
-  }, [experiences]);
+    setItems(certifications);
+  }, [certifications]);
 
   const handleDrop = async (dropIndex: number) => {
     if (dragIndex === null || dragIndex === dropIndex) {
@@ -41,7 +43,7 @@ export default function ExperiencesManager() {
     setItems(reordered);
     setDragIndex(null);
     try {
-      await reorderExperiences(reordered.map((x) => x.id));
+      await reorderCertifications(reordered.map((x) => x.id));
       await refetch();
     } catch {
       await refetch();
@@ -55,7 +57,7 @@ export default function ExperiencesManager() {
     setFormError(null);
   };
 
-  const startEdit = (x: Experience) => {
+  const startEdit = (x: Certification) => {
     setEditingId(x.id);
     const { id, created_at, updated_at, ...rest } = x;
     setForm(rest);
@@ -68,8 +70,8 @@ export default function ExperiencesManager() {
     setSaving(true);
     setFormError(null);
     try {
-      if (editingId) await updateExperience(editingId, form);
-      else await createExperience(form);
+      if (editingId) await updateCertification(editingId, form);
+      else await createCertification(form);
       setOpen(false);
       await refetch();
     } catch (e: any) {
@@ -80,15 +82,15 @@ export default function ExperiencesManager() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Supprimer cette expérience ?')) return;
-    await deleteExperience(id);
+    if (!confirm('Supprimer cette certification ?')) return;
+    await deleteCertification(id);
     await refetch();
   };
 
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold text-secondary dark:text-white">Expériences</h2>
+        <h2 className="text-lg font-bold text-secondary dark:text-white">Certifications</h2>
         <button onClick={startCreate} className="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90">
           <Plus size={16} /> Nouvelle
         </button>
@@ -99,7 +101,7 @@ export default function ExperiencesManager() {
         <p className="text-gray-500">Chargement…</p>
       ) : (
         <>
-          <p className="text-xs text-gray-400 mb-2">Glisse les expériences pour changer leur ordre d'affichage.</p>
+          <p className="text-xs text-gray-400 mb-2">Glisse les certifications pour changer leur ordre d'affichage.</p>
           <div className="space-y-2">
             {items.map((x, index) => (
               <div
@@ -116,7 +118,7 @@ export default function ExperiencesManager() {
                 <GripVertical size={16} className="text-gray-400 cursor-grab shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="font-semibold text-secondary dark:text-white truncate">{x.title_fr}</div>
-                  <div className="text-xs text-gray-500">{x.company} · {x.period_fr}</div>
+                  <div className="text-xs text-gray-500">{x.issuer} · {x.year}</div>
                 </div>
                 <button onClick={() => startEdit(x)} className="p-2 text-gray-500 hover:text-primary"><Pencil size={16} /></button>
                 <button onClick={() => handleDelete(x.id)} className="p-2 text-gray-500 hover:text-red-500"><Trash2 size={16} /></button>
@@ -130,34 +132,25 @@ export default function ExperiencesManager() {
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 overflow-y-auto">
           <form onSubmit={handleSubmit} className="w-full max-w-2xl my-8 p-6 bg-light-bg dark:bg-dark-bg rounded-2xl border border-secondary/10 dark:border-white/10 space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-bold text-secondary dark:text-white">{editingId ? 'Éditer' : 'Nouvelle'} expérience</h3>
+              <h3 className="text-lg font-bold text-secondary dark:text-white">{editingId ? 'Éditer' : 'Nouvelle'} certification</h3>
               <button type="button" onClick={() => setOpen(false)}><X size={20} className="text-gray-500" /></button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Field label="Période (FR)">
-                <input className={inputClass} value={form.period_fr} onChange={(e) => setForm({ ...form, period_fr: e.target.value })} required />
-              </Field>
-              <Field label="Période (EN)">
-                <input className={inputClass} value={form.period_en} onChange={(e) => setForm({ ...form, period_en: e.target.value })} required />
-              </Field>
               <Field label="Titre (FR)">
                 <input className={inputClass} value={form.title_fr} onChange={(e) => setForm({ ...form, title_fr: e.target.value })} required />
               </Field>
               <Field label="Titre (EN)">
                 <input className={inputClass} value={form.title_en} onChange={(e) => setForm({ ...form, title_en: e.target.value })} required />
               </Field>
-              <Field label="Entreprise">
-                <input className={inputClass} value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
+              <Field label="Organisme (issuer)">
+                <input className={inputClass} value={form.issuer} onChange={(e) => setForm({ ...form, issuer: e.target.value })} />
+              </Field>
+              <Field label="Année">
+                <input className={inputClass} value={form.year} onChange={(e) => setForm({ ...form, year: e.target.value })} />
               </Field>
               <Field label="Ordre d'affichage">
                 <input type="number" className={inputClass} value={form.display_order} onChange={(e) => setForm({ ...form, display_order: Number(e.target.value) })} />
-              </Field>
-              <Field label="Description (FR)">
-                <textarea className={inputClass} rows={3} value={form.desc_fr} onChange={(e) => setForm({ ...form, desc_fr: e.target.value })} required />
-              </Field>
-              <Field label="Description (EN)">
-                <textarea className={inputClass} rows={3} value={form.desc_en} onChange={(e) => setForm({ ...form, desc_en: e.target.value })} required />
               </Field>
             </div>
 

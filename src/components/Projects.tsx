@@ -227,6 +227,7 @@ const Projects = () => {
           </div>
 
           {/* Filtering Tabs */}
+          {(loading || projects.length > 0) && (
           <div className="flex flex-nowrap overflow-x-auto pb-4 sm:pb-0 sm:flex-wrap justify-start md:justify-center gap-3 no-scrollbar">
             {categories.map((cat) => (
               <button
@@ -241,6 +242,7 @@ const Projects = () => {
               </button>
             ))}
           </div>
+          )}
         </div>
 
         {error ? (
@@ -249,11 +251,7 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[0, 1, 2].map((i) => <ProjectCardSkeleton key={i} />)}
           </div>
-        ) : filteredProjects.length === 0 ? (
-          <p className="text-center text-gray-500 dark:text-gray-400 py-16">
-            {t('projects.empty', 'No projects to display yet.')}
-          </p>
-        ) : (
+        ) : filteredProjects.length === 0 ? null : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayedProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />

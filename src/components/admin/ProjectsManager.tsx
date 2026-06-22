@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Plus, Pencil, Trash2, Upload, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Plus, Pencil, Trash2, Upload, X, GripVertical } from 'lucide-react';
 import { useProjects } from '../../hooks/useProjects';
 import {
   createProject,
   updateProject,
   deleteProject,
   uploadProjectImage,
+  reorderProjects,
 } from '../../lib/content';
 import type { Project, ProjectInput, Category } from '../../lib/database.types';
 import { Field, inputClass, TagInput } from './ui';
@@ -31,6 +32,31 @@ export default function ProjectsManager() {
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const [items, setItems] = useState<Project[]>([]);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+
+  // Copie locale ordonnée (réordonnable en optimiste).
+  useEffect(() => {
+    setItems(projects);
+  }, [projects]);
+
+  const handleDrop = async (dropIndex: number) => {
+    if (dragIndex === null || dragIndex === dropIndex) {
+      setDragIndex(null);
+      return;
+    }
+    const reordered = [...items];
+    const [moved] = reordered.splice(dragIndex, 1);
+    reordered.splice(dropIndex, 0, moved);
+    setItems(reordered);
+    setDragIndex(null);
+    try {
+      await reorderProjects(reordered.map((p) => p.id));
+      await refetch();
+    } catch {
+      await refetch(); // rollback depuis la source de vérité
+    }
+  };
 
   const startCreate = () => {
     setEditingId(null);
@@ -112,30 +138,43 @@ export default function ProjectsManager() {
       {loading ? (
         <p className="text-gray-500">Chargement…</p>
       ) : (
-        <div className="space-y-2">
-          {projects.map((p) => (
-            <div
-              key={p.id}
-              className="flex items-center gap-3 p-3 bg-white dark:bg-white/5 rounded-xl border border-secondary/10 dark:border-white/10"
-            >
-              {p.images[0] && (
-                <img src={p.images[0]} alt="" className="w-12 h-12 rounded-lg object-cover" />
-              )}
-              <div className="flex-1 min-w-0">
-                <div className="font-semibold text-secondary dark:text-white truncate">{p.title_fr}</div>
-                <div className="text-xs text-gray-500">
-                  {p.category} · ordre {p.display_order}
+        <>
+          <p className="text-xs text-gray-400 mb-2">Glisse les projets pour changer leur ordre d'affichage.</p>
+          <div className="space-y-2">
+            {items.map((p, index) => (
+              <div
+                key={p.id}
+                draggable
+                onDragStart={() => setDragIndex(index)}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={() => handleDrop(index)}
+                onDragEnd={() => setDragIndex(null)}
+                className={`flex items-center gap-3 p-3 bg-white dark:bg-white/5 rounded-xl border transition-colors ${
+                  dragIndex === index
+                    ? 'border-primary/50 opacity-60'
+                    : 'border-secondary/10 dark:border-white/10'
+                }`}
+              >
+                <GripVertical size={16} className="text-gray-400 cursor-grab shrink-0" />
+                {p.images[0] && (
+                  <img src={p.images[0]} alt="" className="w-12 h-12 rounded-lg object-cover" />
+                )}
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-secondary dark:text-white truncate">{p.title_fr}</div>
+                  <div className="text-xs text-gray-500">
+                    {p.category} · ordre {p.display_order}
+                  </div>
                 </div>
+                <button onClick={() => startEdit(p)} className="p-2 text-gray-500 hover:text-primary">
+                  <Pencil size={16} />
+                </button>
+                <button onClick={() => handleDelete(p.id)} className="p-2 text-gray-500 hover:text-red-500">
+                  <Trash2 size={16} />
+                </button>
               </div>
-              <button onClick={() => startEdit(p)} className="p-2 text-gray-500 hover:text-primary">
-                <Pencil size={16} />
-              </button>
-              <button onClick={() => handleDelete(p.id)} className="p-2 text-gray-500 hover:text-red-500">
-                <Trash2 size={16} />
-              </button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
 
       {open && (

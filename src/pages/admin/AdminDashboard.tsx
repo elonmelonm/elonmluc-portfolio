@@ -1,18 +1,20 @@
 import { useState } from 'react';
-import { LogOut, FolderGit2, Briefcase, GraduationCap, BarChart3 } from 'lucide-react';
+import { LogOut, FolderGit2, Briefcase, GraduationCap, Award, BarChart3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import ProjectsManager from '../../components/admin/ProjectsManager';
 import ExperiencesManager from '../../components/admin/ExperiencesManager';
 import EducationsManager from '../../components/admin/EducationsManager';
+import CertificationsManager from '../../components/admin/CertificationsManager';
 import StatsView from '../../components/admin/StatsView';
 
-type Tab = 'projects' | 'experiences' | 'educations' | 'stats';
+type Tab = 'projects' | 'experiences' | 'educations' | 'certifications' | 'stats';
 
 const tabs: { id: Tab; label: string; icon: typeof FolderGit2 }[] = [
   { id: 'projects', label: 'Projets', icon: FolderGit2 },
   { id: 'experiences', label: 'Expériences', icon: Briefcase },
   { id: 'educations', label: 'Éducation', icon: GraduationCap },
+  { id: 'certifications', label: 'Certifications', icon: Award },
   { id: 'stats', label: 'Statistiques', icon: BarChart3 },
 ];
 
@@ -63,6 +65,7 @@ export default function AdminDashboard() {
         {tab === 'projects' && <ProjectsManager />}
         {tab === 'experiences' && <ExperiencesManager />}
         {tab === 'educations' && <EducationsManager />}
+        {tab === 'certifications' && <CertificationsManager />}
         {tab === 'stats' && <StatsView />}
       </div>
     </div>
