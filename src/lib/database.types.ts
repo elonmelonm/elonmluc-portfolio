@@ -14,6 +14,7 @@ export interface Project {
   live_link: string | null;
   category: Category;
   display_order: number;
+  is_visible: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -28,6 +29,7 @@ export interface Experience {
   desc_en: string;
   desc_fr: string;
   display_order: number;
+  is_visible: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -41,6 +43,7 @@ export interface Education {
   desc_en: string;
   desc_fr: string;
   display_order: number;
+  is_visible: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -52,6 +55,7 @@ export interface Certification {
   issuer: string;
   year: string;
   display_order: number;
+  is_visible: boolean;
   created_at: string;
   updated_at: string;
 }

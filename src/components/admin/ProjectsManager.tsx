@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Plus, Pencil, Trash2, Upload, X, GripVertical } from 'lucide-react';
+import { Plus, Pencil, Trash2, Upload, X, GripVertical, Eye, EyeOff } from 'lucide-react';
 import { useProjects } from '../../hooks/useProjects';
 import {
   createProject,
@@ -7,6 +7,7 @@ import {
   deleteProject,
   uploadProjectImage,
   reorderProjects,
+  setVisibility,
 } from '../../lib/content';
 import type { Project, ProjectInput, Category } from '../../lib/database.types';
 import { Field, inputClass, TagInput } from './ui';
@@ -22,10 +23,11 @@ const empty: ProjectInput = {
   live_link: null,
   category: 'Web',
   display_order: 0,
+  is_visible: true,
 };
 
 export default function ProjectsManager() {
-  const { projects, loading, error, refetch } = useProjects();
+  const { projects, loading, error, refetch } = useProjects(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<ProjectInput>(empty);
   const [open, setOpen] = useState(false);
@@ -78,6 +80,7 @@ export default function ProjectsManager() {
       live_link: p.live_link,
       category: p.category,
       display_order: p.display_order,
+      is_visible: p.is_visible,
     });
     setOpen(true);
     setFormError(null);
@@ -122,6 +125,15 @@ export default function ProjectsManager() {
     await refetch();
   };
 
+  const handleToggleVisibility = async (id: string, current: boolean) => {
+    setItems((prev) => prev.map((p) => (p.id === id ? { ...p, is_visible: !current } : p)));
+    try {
+      await setVisibility('projects', id, !current);
+    } finally {
+      await refetch();
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -153,18 +165,28 @@ export default function ProjectsManager() {
                   dragIndex === index
                     ? 'border-primary/50 opacity-60'
                     : 'border-secondary/10 dark:border-white/10'
-                }`}
+                } ${!p.is_visible ? 'opacity-50' : ''}`}
               >
                 <GripVertical size={16} className="text-gray-400 cursor-grab shrink-0" />
                 {p.images[0] && (
                   <img src={p.images[0]} alt="" className="w-12 h-12 rounded-lg object-cover" />
                 )}
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-secondary dark:text-white truncate">{p.title_fr}</div>
+                  <div className="font-semibold text-secondary dark:text-white truncate">
+                    {p.title_fr}
+                    {!p.is_visible && <span className="ml-2 text-[10px] uppercase text-gray-400">(masqué)</span>}
+                  </div>
                   <div className="text-xs text-gray-500">
                     {p.category} · ordre {p.display_order}
                   </div>
                 </div>
+                <button
+                  onClick={() => handleToggleVisibility(p.id, p.is_visible)}
+                  className="p-2 text-gray-500 hover:text-primary"
+                  title={p.is_visible ? 'Masquer du site' : 'Afficher sur le site'}
+                >
+                  {p.is_visible ? <Eye size={16} /> : <EyeOff size={16} />}
+                </button>
                 <button onClick={() => startEdit(p)} className="p-2 text-gray-500 hover:text-primary">
                   <Pencil size={16} />
                 </button>

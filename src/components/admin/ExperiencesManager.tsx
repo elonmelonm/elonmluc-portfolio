@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Plus, Pencil, Trash2, X, GripVertical } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, GripVertical, Eye, EyeOff } from 'lucide-react';
 import { useExperiences } from '../../hooks/useExperiences';
-import { createExperience, updateExperience, deleteExperience, reorderExperiences } from '../../lib/content';
+import { createExperience, updateExperience, deleteExperience, reorderExperiences, setVisibility } from '../../lib/content';
 import type { Experience, ExperienceInput } from '../../lib/database.types';
 import { Field, inputClass } from './ui';
 
@@ -14,10 +14,11 @@ const empty: ExperienceInput = {
   desc_en: '',
   desc_fr: '',
   display_order: 0,
+  is_visible: true,
 };
 
 export default function ExperiencesManager() {
-  const { experiences, loading, error, refetch } = useExperiences();
+  const { experiences, loading, error, refetch } = useExperiences(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<ExperienceInput>(empty);
   const [open, setOpen] = useState(false);
@@ -85,6 +86,15 @@ export default function ExperiencesManager() {
     await refetch();
   };
 
+  const handleToggleVisibility = async (id: string, current: boolean) => {
+    setItems((prev) => prev.map((x) => (x.id === id ? { ...x, is_visible: !current } : x)));
+    try {
+      await setVisibility('experiences', id, !current);
+    } finally {
+      await refetch();
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -111,13 +121,19 @@ export default function ExperiencesManager() {
                 onDragEnd={() => setDragIndex(null)}
                 className={`flex items-center gap-3 p-3 bg-white dark:bg-white/5 rounded-xl border transition-colors ${
                   dragIndex === index ? 'border-primary/50 opacity-60' : 'border-secondary/10 dark:border-white/10'
-                }`}
+                } ${!x.is_visible ? 'opacity-50' : ''}`}
               >
                 <GripVertical size={16} className="text-gray-400 cursor-grab shrink-0" />
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-secondary dark:text-white truncate">{x.title_fr}</div>
+                  <div className="font-semibold text-secondary dark:text-white truncate">
+                    {x.title_fr}
+                    {!x.is_visible && <span className="ml-2 text-[10px] uppercase text-gray-400">(masqué)</span>}
+                  </div>
                   <div className="text-xs text-gray-500">{x.company} · {x.period_fr}</div>
                 </div>
+                <button onClick={() => handleToggleVisibility(x.id, x.is_visible)} className="p-2 text-gray-500 hover:text-primary" title={x.is_visible ? 'Masquer du site' : 'Afficher sur le site'}>
+                  {x.is_visible ? <Eye size={16} /> : <EyeOff size={16} />}
+                </button>
                 <button onClick={() => startEdit(x)} className="p-2 text-gray-500 hover:text-primary"><Pencil size={16} /></button>
                 <button onClick={() => handleDelete(x.id)} className="p-2 text-gray-500 hover:text-red-500"><Trash2 size={16} /></button>
               </div>

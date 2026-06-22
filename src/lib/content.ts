@@ -8,6 +8,14 @@ import type {
 
 const BUCKET = 'project-images';
 
+type ContentTable = 'projects' | 'experiences' | 'educations' | 'certifications';
+
+// Active/désactive l'affichage public d'un élément (sans le supprimer).
+export async function setVisibility(table: ContentTable, id: string, isVisible: boolean) {
+  const { error } = await supabase.from(table).update({ is_visible: isVisible }).eq('id', id);
+  if (error) throw error;
+}
+
 // ---------- Projects ----------
 export async function createProject(input: ProjectInput) {
   const { error } = await supabase.from('projects').insert(input);
