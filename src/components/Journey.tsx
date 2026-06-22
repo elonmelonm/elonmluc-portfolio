@@ -1,29 +1,38 @@
 import { motion } from "framer-motion";
-import { Backpack, GraduationCap, Rocket } from "lucide-react";
+import { Backpack, GraduationCap, Award } from "lucide-react";
 import EducationPart from "./EducationPart";
 import ExperiencePart from "./ExperiencePart";
-import { useState } from "react";
+import CertificationsPart from "./CertificationsPart";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useExperiences } from "../hooks/useExperiences";
+import { useEducations } from "../hooks/useEducations";
+import { useCertifications } from "../hooks/useCertifications";
 
 export default function Experience() {
     const { t } = useTranslation();
-    const [toggleState, setToggleState] = useState(1);
-    const [isActive, setIsActive] = useState(1);
+    const { experiences } = useExperiences();
+    const { educations } = useEducations();
+    const { certifications } = useCertifications();
+    const [toggleState, setToggleState] = useState(0);
 
-    const toggleTab = (index: number) => {
-        setToggleState(index);
-        setIsActive(index);
-    }
+    // Onglets dont la section a du contenu uniquement.
+    const tabs = [
+        experiences.length > 0 && { id: 1, icon: Backpack, label: t('journey.tabs.experience') },
+        educations.length > 0 && { id: 2, icon: GraduationCap, label: t('journey.tabs.education') },
+        certifications.length > 0 && { id: 3, icon: Award, label: t('journey.tabs.certs') },
+    ].filter(Boolean) as { id: number; icon: typeof Backpack; label: string }[];
+
+    // Sélectionne le premier onglet disponible si l'actif n'existe pas/plus.
+    useEffect(() => {
+        if (tabs.length > 0 && !tabs.some((tab) => tab.id === toggleState)) {
+            setToggleState(tabs[0].id);
+        }
+    }, [tabs, toggleState]);
 
     const languages = [
         { name: t('journey.communication.french'), level: t('journey.communication.advanced'), icon: "🇫🇷" },
         { name: t('journey.communication.english'), level: t('journey.communication.beginner'), icon: "🇬🇧" }
-    ];
-
-    const certifications = [
-        { title: t('journey.certifications.meta'), issuer: "Coursera / Meta", year: "2024" },
-        { title: t('journey.certifications.rwd'), issuer: "FreeCodeCamp", year: "2023" },
-        { title: t('journey.certifications.js'), issuer: "FreeCodeCamp", year: "2023" }
     ];
 
     return (
@@ -50,45 +59,29 @@ export default function Experience() {
                     </div>
 
                     {/* Tab Selectors */}
-                    <div className="flex gap-2 p-1 bg-secondary/5 dark:bg-white/5 rounded-2xl border border-secondary/10 dark:border-white/10">
-                        {[
-                            { id: 1, icon: Backpack, label: t('journey.tabs.experience') },
-                            { id: 2, icon: GraduationCap, label: t('journey.tabs.education') },
-                            // { id: 3, icon: Rocket, label: t('journey.tabs.certs') }
-                        ].map((tab) => (
-                            <button
-                                key={tab.id}
-                                onClick={() => toggleTab(tab.id)}
-                                className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all ${isActive === tab.id
-                                    ? "bg-primary text-white shadow-lg shadow-primary/20"
-                                    : "text-gray-500 hover:text-primary"
-                                    }`}
-                            >
-                                <tab.icon size={16} />
-                                {tab.label}
-                            </button>
-                        ))}
-                    </div>
+                    {tabs.length > 0 && (
+                        <div className="flex gap-2 p-1 bg-secondary/5 dark:bg-white/5 rounded-2xl border border-secondary/10 dark:border-white/10">
+                            {tabs.map((tab) => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setToggleState(tab.id)}
+                                    className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all ${toggleState === tab.id
+                                        ? "bg-primary text-white shadow-lg shadow-primary/20"
+                                        : "text-gray-500 hover:text-primary"
+                                        }`}
+                                >
+                                    <tab.icon size={16} />
+                                    {tab.label}
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="min-h-[400px]">
                     {toggleState === 1 && <ExperiencePart />}
                     {toggleState === 2 && <EducationPart />}
-                    {/* {toggleState === 3 && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-                        >
-                            {certifications.map((cert, i) => (
-                                <div key={i} className="p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10 group hover:border-rose-600/30 transition-colors">
-                                    <div className="text-xs font-bold text-primary mb-2">{cert.year}</div>
-                                    <h4 className="text-lg font-bold text-secondary dark:text-white mb-2">{cert.title}</h4>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">{cert.issuer}</p>
-                                </div>
-                            ))}
-                        </motion.div>
-                    )} */}
+                    {toggleState === 3 && <CertificationsPart />}
                 </div>
 
                 {/* Languages Section */}

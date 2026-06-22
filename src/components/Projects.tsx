@@ -2,141 +2,9 @@ import React, { useState } from 'react';
 import { CircleFadingPlus, ExternalLink, Github, ChevronLeft, ChevronRight, MessageSquare, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from "react-i18next";
-
-// Import des images locales
-import budgetManagementImg from '../assets/projetsImg/budget-management.png';
-import todoAppImg from '../assets/projetsImg/todoapp.png';
-import freshFruitsImg from '../assets/projetsImg/freshfruits.png';
-import eLearningImg from '../assets/projetsImg/e-learning.png';
-import smithPortfolioImg from '../assets/projetsImg/smithportfolio.png';
-import constructionImg from '../assets/projetsImg/construction.png';
-import ftcW1Img from '../assets/projetsImg/ftc-w1-elonm.png';
-import ftcW2Img from '../assets/projetsImg/ftc-w2-elonm.png';
-import ftcW3Img from '../assets/projetsImg/ftc-w3-elonm.png';
-import ftcW4Img from '../assets/projetsImg/ftc-w4-elonm.png';
-import hackathonIA2025Img from '../assets/projetsImg/hackathon-ia-2025.png';
-import devlab2025Img from '../assets/projetsImg/devlab-2025.png';
-import meDevlav2025Img from '../assets/projetsImg/me-devlav-2025.jpg';
-
-const projectsData = [
-  {
-    titleKey: "projects.items.devlab.title",
-    descKey: "projects.items.devlab.desc",
-    images: [devlab2025Img, meDevlav2025Img],
-    technologies: ["Vue.js", "Tailwind CSS", "Framer-motion", "Pinia", "Node.js", "Mojaloop"],
-    githubLink: "https://github.com/elonmelonm/devlab-2025-result",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.hackathon.title",
-    descKey: "projects.items.hackathon.desc",
-    images: [hackathonIA2025Img],
-    technologies: ["React.js", "Tailwind CSS", "Framer-motion", "FastApi"],
-    githubLink: "https://github.com/elonmelonm/les_mentats-luxdev-hackaton-ia-2025",
-    liveLink: "https://les-mentats-luxdev-hackaton-ia-2025.vercel.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.tototte.title",
-    descKey: "projects.items.tototte.desc",
-    images: [ftcW4Img],
-    technologies: ["React.js", "Tailwind CSS", "Framer-motion", "Figma"],
-    githubLink: "https://github.com/elonmelonm/ftc-w4-elonm.git",
-    liveLink: "https://ftc-w4-elonm.vercel.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.monito.title",
-    descKey: "projects.items.monito.desc",
-    images: [ftcW3Img],
-    technologies: ["React.js", "Tailwind CSS", "Framer-motion", "Figma"],
-    githubLink: "https://github.com/elonmelonm/FTC-W3-ELONM.git",
-    liveLink: "https://ftc-w3-elonm.vercel.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.spending.title",
-    descKey: "projects.items.spending.desc",
-    images: [ftcW2Img],
-    technologies: ["React.js", "Tailwind CSS"],
-    githubLink: "https://github.com/elonmelonm/spending-management-landing-page.git",
-    liveLink: "https://ftc-w2-elonm.vercel.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.saas.title",
-    descKey: "projects.items.saas.desc",
-    images: [ftcW1Img],
-    technologies: ["React.js", "Tailwind CSS"],
-    githubLink: "https://github.com/elonmelonm/SaaS-Futuristic-App.git",
-    liveLink: "https://ftc-w1-elonm.vercel.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.budget.title",
-    descKey: "projects.items.budget.desc",
-    images: [budgetManagementImg],
-    technologies: ["Next.js", "Tailwind CSS", "Node.js", "MySql"],
-    githubLink: "https://github.com/elonmelonm/BudgetManagement.git",
-    liveLink: "https://budget-management-liard.vercel.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.task.title",
-    descKey: "projects.items.task.desc",
-    images: [todoAppImg],
-    technologies: ["React.js", "Tailwind CSS", "Django", "PostgreSql"],
-    githubLink: "https://github.com/elonmelonm/Todo-App.git",
-    liveLink: "https://elonm-todo-app.vercel.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.fresh.title",
-    descKey: "projects.items.fresh.desc",
-    images: [freshFruitsImg],
-    technologies: ["React.js", "Framer-motion"],
-    githubLink: "https://github.com/elonmelonm/fresh-fruits.git",
-    liveLink: "https://fruits-selling-elm.netlify.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.elearning.title",
-    descKey: "projects.items.elearning.desc",
-    images: [eLearningImg],
-    technologies: ["React.js", "Framer-motion"],
-    githubLink: "https://github.com/elonmelonm/e-learning.git",
-    liveLink: "https://thecodingjourney-elm.netlify.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.smith.title",
-    descKey: "projects.items.smith.desc",
-    images: [smithPortfolioImg],
-    technologies: ["React.js", "CSS"],
-    githubLink: "https://github.com/elonmelonm/e-learning.git",
-    liveLink: "https://smith-portfolio-elm.netlify.app/",
-    category: "Web"
-  },
-  {
-    titleKey: "projects.items.construction.title",
-    descKey: "projects.items.construction.desc",
-    images: [constructionImg],
-    technologies: ["React.js", "Tailwind CSS"],
-    githubLink: "https://github.com/elonmelonm/construction-website.git",
-    liveLink: "https://construction-site-elm.netlify.app/",
-    category: "Web"
-  }
-];
-
-interface Project {
-  titleKey: string;
-  descKey: string;
-  images: string[];
-  technologies: string[];
-  githubLink: string;
-  liveLink?: string;
-  category: string;
-}
+import { useProjects } from "../hooks/useProjects";
+import { getLang } from "../lib/lang";
+import type { Project } from "../lib/database.types";
 
 interface ProjectCardProps {
   project: Project;
@@ -239,7 +107,12 @@ export const ProjectCarousel: React.FC<{ images: string[]; title: string; height
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '' }) => {
+  const { i18n } = useTranslation();
   const { t } = useTranslation();
+  const lang = getLang(i18n.language);
+  const title = lang === 'fr' ? project.title_fr : project.title_en;
+  const desc = lang === 'fr' ? project.desc_fr : project.desc_en;
+
   return (
     <motion.div
       key={index}
@@ -249,18 +122,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
       viewport={{ once: true }}
       className={`bg-light-bg dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/10 backdrop-blur-sm hover:bg-secondary/5 transition-all group ${className}`}
     >
-      <ProjectCarousel images={project.images} title={t(project.titleKey)} />
+      <ProjectCarousel images={project.images} title={title} />
       <div className="p-5">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-xl font-bold text-secondary dark:text-white transition-colors duration-300 truncate pr-2">
-            {t(project.titleKey)}
+            {title}
           </h3>
           <span className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-primary/10 text-primary rounded-md border border-primary/20">
             {project.category}
           </span>
         </div>
         <p className="text-gray-600 dark:text-gray-300 mb-4 min-h-12 text-sm transition-colors duration-300 line-clamp-2">
-          {t(project.descKey)}
+          {desc}
         </p>
         <div className="relative mb-4">
           <div className="flex flex-wrap gap-2">
@@ -279,7 +152,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
         </div>
         <div className="flex gap-4 pt-2">
           <motion.a
-            href={project.githubLink}
+            href={project.github_link}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
@@ -288,9 +161,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
             <Github size={18} className="mr-1.5" />
             {t('projects.ui.code')}
           </motion.a>
-          {project.liveLink && (
+          {project.live_link && (
             <motion.a
-              href={project.liveLink}
+              href={project.live_link}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
@@ -306,8 +179,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
   );
 }
 
+const ProjectCardSkeleton = () => (
+  <div className="bg-light-bg/50 dark:bg-dark-bg/50 rounded-xl overflow-hidden border border-secondary/10">
+    <div className="h-48 bg-primary/5 dark:bg-white/5 animate-pulse" />
+    <div className="p-5 space-y-3">
+      <div className="h-5 w-2/3 rounded bg-primary/5 dark:bg-white/5 animate-pulse" />
+      <div className="h-4 w-full rounded bg-primary/5 dark:bg-white/5 animate-pulse" />
+      <div className="h-4 w-1/2 rounded bg-primary/5 dark:bg-white/5 animate-pulse" />
+    </div>
+  </div>
+);
+
 const Projects = () => {
   const { t } = useTranslation();
+  const { projects, loading, error } = useProjects();
   const [filter, setFilter] = useState('All');
   const [showAllProjects, setShowAllProjects] = useState(false);
 
@@ -318,35 +203,15 @@ const Projects = () => {
     // { id: 'Design', label: t('projects.categories.design') }
   ];
 
-  const filteredProjects = projectsData.filter(p =>
+  const filteredProjects = projects.filter(p =>
     filter === 'All' ? true : p.category === filter
   );
 
   const displayedProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
 
-  const stats = [
-    { label: t('projects.stats.experience'), value: "3+" },
-    { label: t('projects.stats.recognition'), value: "2+" }
-  ];
-
   return (
     <section id="projets" className="lg:mx-32 xl:mx-16 py-16 mb-20 transition-colors duration-300">
       <div className="container mx-auto px-4">
-        {/* Statistics Bar */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 gap-4 mb-20 p-8 bg-secondary/5 dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10"
-        >
-          {stats.map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-primary mb-2">{stat.value}</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500 font-bold">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div> */}
-
         <div className="flex flex-col justify-between items-center mb-16 gap-8">
           <div className="max-w-2xl text-center">
             <motion.h2
@@ -362,6 +227,7 @@ const Projects = () => {
           </div>
 
           {/* Filtering Tabs */}
+          {(loading || projects.length > 0) && (
           <div className="flex flex-nowrap overflow-x-auto pb-4 sm:pb-0 sm:flex-wrap justify-start md:justify-center gap-3 no-scrollbar">
             {categories.map((cat) => (
               <button
@@ -376,15 +242,24 @@ const Projects = () => {
               </button>
             ))}
           </div>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedProjects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
-          ))}
-        </div>
+        {error ? (
+          <p className="text-center text-gray-500 dark:text-gray-400 py-16">{error}</p>
+        ) : loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[0, 1, 2].map((i) => <ProjectCardSkeleton key={i} />)}
+          </div>
+        ) : filteredProjects.length === 0 ? null : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {displayedProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        )}
 
-        {filteredProjects.length > 3 && (
+        {!loading && !error && filteredProjects.length > 3 && (
           <div className="flex justify-center mt-16">
             <motion.button
               onClick={() => setShowAllProjects(!showAllProjects)}
@@ -464,15 +339,6 @@ const Projects = () => {
                 {t('projects.cta.button_chat')}
                 <ArrowRight className="ml-2 w-4 h-4 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
               </motion.a>
-
-              {/* <motion.button
-                onClick={() => setShowAllProjects(true)}
-                className="px-8 py-4 bg-secondary/5 dark:bg-white/5 text-secondary dark:text-white font-bold rounded-2xl border border-secondary/10 dark:border-white/10 hover:bg-secondary/10 dark:hover:bg-white/10 transition-all"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {t('projects.cta.button_projects')}
-              </motion.button> */}
             </div>
           </div>
         </motion.div>

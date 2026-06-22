@@ -3,9 +3,11 @@ import Header from './Header';
 import Footer from './Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import { usePageView } from '../hooks/usePageView';
 
 const Layout = () => {
     const location = useLocation();
+    usePageView();
 
     return (
         <div className="min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-300">
