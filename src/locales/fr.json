@@ -354,7 +354,12 @@
         },
         "ui": {
             "code": "Code",
-            "live": "Démo Live"
+            "live": "Démo Live",
+            "details": "Voir les détails",
+            "close": "Fermer",
+            "technologies": "Technologies utilisées",
+            "description": "Description",
+            "more": "autres"
         }
     },
     "contact": {

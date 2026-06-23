@@ -354,7 +354,12 @@
         },
         "ui": {
             "code": "Code",
-            "live": "Live Demo"
+            "live": "Live Demo",
+            "details": "View details",
+            "close": "Close",
+            "technologies": "Technologies used",
+            "description": "Description",
+            "more": "more"
         }
     },
     "contact": {
