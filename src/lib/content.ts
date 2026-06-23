@@ -113,6 +113,36 @@ export async function reorderCertifications(orderedIds: string[]) {
   );
 }
 
+// ---------- Settings (clé/valeur) ----------
+export async function getSetting(key: string): Promise<string | null> {
+  const { data, error } = await supabase
+    .from('settings')
+    .select('value')
+    .eq('key', key)
+    .maybeSingle();
+  if (error) throw error;
+  return data?.value ?? null;
+}
+
+export async function setSetting(key: string, value: string) {
+  const { error } = await supabase
+    .from('settings')
+    .upsert({ key, value, updated_at: new Date().toISOString() });
+  if (error) throw error;
+}
+
+// Upload du CV (PDF) dans le bucket documents, retourne l'URL publique.
+export async function uploadCv(file: File, lang: 'fr' | 'en'): Promise<string> {
+  const path = `cv-${lang}-${Date.now()}.pdf`;
+  const { error } = await supabase.storage.from('documents').upload(path, file, {
+    cacheControl: '3600',
+    upsert: false,
+    contentType: 'application/pdf',
+  });
+  if (error) throw error;
+  return supabase.storage.from('documents').getPublicUrl(path).data.publicUrl;
+}
+
 // ---------- Storage : upload image projet ----------
 export async function uploadProjectImage(file: File): Promise<string> {
   const ext = file.name.split('.').pop() ?? 'png';

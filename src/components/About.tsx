@@ -1,12 +1,24 @@
 import { Files, Briefcase, MessageSquare, Award, Star, BookOpen, Code, Smartphone, ShieldCheck, Layout as LayoutIcon, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import shootMe from '../assets/ShootMe.png';
-import cv from '../cv/cv_LUC_ELONM_AKAKPO.pdf';
+import cvFallback from '../cv/cv_LUC_ELONM_AKAKPO.pdf';
 import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
+import { useSetting } from '../hooks/useSetting';
+import { getLang } from '../lib/lang';
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = getLang(i18n.language);
+  const { value: cvFr } = useSetting('cv_url_fr');
+  const { value: cvEn } = useSetting('cv_url_en');
+
+  // CV de la langue courante, repli sur l'autre langue puis sur le fichier bundlé.
+  const chosenCv = lang === 'fr' ? (cvFr ?? cvEn) : (cvEn ?? cvFr);
+  const downloadName = `cv-elonm-luc-akakpo-${lang}.pdf`;
+  const cv = chosenCv
+    ? `${chosenCv}${chosenCv.includes('?') ? '&' : '?'}download=${downloadName}`
+    : cvFallback;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -158,7 +170,7 @@ const About = () => {
               >
                 <motion.a
                   href={cv}
-                  download="LUC_ELONM_AKAKPO.pdf"
+                  download={downloadName}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-105 transition-all text-sm md:text-base"

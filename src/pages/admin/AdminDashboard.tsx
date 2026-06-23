@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogOut, FolderGit2, Briefcase, GraduationCap, Award, BarChart3 } from 'lucide-react';
+import { LogOut, FolderGit2, Briefcase, GraduationCap, Award, BarChart3, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import ThemeToggle from '../../components/ThemeToggle';
@@ -7,15 +7,17 @@ import ProjectsManager from '../../components/admin/ProjectsManager';
 import ExperiencesManager from '../../components/admin/ExperiencesManager';
 import EducationsManager from '../../components/admin/EducationsManager';
 import CertificationsManager from '../../components/admin/CertificationsManager';
+import SettingsManager from '../../components/admin/SettingsManager';
 import StatsView from '../../components/admin/StatsView';
 
-type Tab = 'projects' | 'experiences' | 'educations' | 'certifications' | 'stats';
+type Tab = 'projects' | 'experiences' | 'educations' | 'certifications' | 'cv' | 'stats';
 
 const tabs: { id: Tab; label: string; icon: typeof FolderGit2 }[] = [
   { id: 'projects', label: 'Projets', icon: FolderGit2 },
   { id: 'experiences', label: 'Expériences', icon: Briefcase },
   { id: 'educations', label: 'Éducation', icon: GraduationCap },
   { id: 'certifications', label: 'Certifications', icon: Award },
+  { id: 'cv', label: 'CV', icon: FileText },
   { id: 'stats', label: 'Statistiques', icon: BarChart3 },
 ];
 
@@ -70,6 +72,7 @@ export default function AdminDashboard() {
         {tab === 'experiences' && <ExperiencesManager />}
         {tab === 'educations' && <EducationsManager />}
         {tab === 'certifications' && <CertificationsManager />}
+        {tab === 'cv' && <SettingsManager />}
         {tab === 'stats' && <StatsView />}
       </div>
     </div>
