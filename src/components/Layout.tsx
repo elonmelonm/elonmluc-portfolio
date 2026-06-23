@@ -4,6 +4,7 @@ import Footer from './Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { usePageView } from '../hooks/usePageView';
+import Seo from './Seo';
 
 const Layout = () => {
     const location = useLocation();
@@ -11,6 +12,7 @@ const Layout = () => {
 
     return (
         <div className="min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-300">
+            <Seo />
             <Header />
             <main>
                 <AnimatePresence mode="wait">
