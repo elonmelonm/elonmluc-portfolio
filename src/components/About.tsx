@@ -1,6 +1,6 @@
 import { Files, Briefcase, MessageSquare, Award, Star, BookOpen, Code, Smartphone, ShieldCheck, Layout as LayoutIcon, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import shootMe from '../assets/ShootMe.png';
+import shootMe from '../assets/elonm-luc-akakpo.png';
 import cvFallback from '../cv/cv_LUC_ELONM_AKAKPO.pdf';
 import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';

@@ -2,7 +2,7 @@
 // sitemap.xml le jour où tu passes sur un domaine perso.
 export const SITE_URL = 'https://lucakakpo.com';
 
-export const OG_IMAGE = `${SITE_URL}/elonm-luc-akakpo.jpg`;
+export const OG_IMAGE = `${SITE_URL}/elonm-luc-akakpo.png`;
 
 interface RouteMeta {
   titleFr: string;
