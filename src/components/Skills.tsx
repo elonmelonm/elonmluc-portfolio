@@ -31,6 +31,7 @@ export default function Skills() {
                         <motion.h2
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
                             className="text-4xl md:text-5xl font-black mb-6 text-secondary dark:text-white"
                         >
                             {t('skills.title').split('<0>').map((part, i) => {
@@ -52,7 +53,7 @@ export default function Skills() {
                             <button
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat.id)}
-                                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeCategory === cat.id
+                                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg ${activeCategory === cat.id
                                     ? "bg-primary text-white shadow-lg shadow-primary/20"
                                     : "text-gray-500 hover:text-primary"
                                     }`}
@@ -67,10 +68,10 @@ export default function Skills() {
                     {filteredSkills.map((skill, index) => (
                         <motion.div
                             key={skill.title}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: Math.min(index, 5) * 0.06 }}
+                            viewport={{ once: true, amount: 0.2 }}
                             className="h-full"
                         >
                             <SkillCard skill={skill} />
@@ -83,6 +84,7 @@ export default function Skills() {
                     <motion.h3
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, amount: 0.2 }}
                         className="text-2xl font-bold mb-12 text-center text-secondary dark:text-white uppercase tracking-[0.3em]"
                     >
                         {t('skills.soft.title')}
@@ -93,8 +95,8 @@ export default function Skills() {
                                 key={i}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
-                                viewport={{ once: true }}
+                                transition={{ delay: Math.min(i, 5) * 0.06 }}
+                                viewport={{ once: true, amount: 0.2 }}
                                 className="h-full p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10 hover:border-primary/30 transition-colors"
                             >
                                 <h4 className="text-lg font-bold text-primary mb-2">{skill.title}</h4>
@@ -106,9 +108,9 @@ export default function Skills() {
 
                 {/* Learning Roadmap */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.2 }}
                     className="p-5 md:p-16 bg-primary text-white rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden"
                 >
                     <div className="relative z-10 flex flex-col items-center justify-between gap-10">

@@ -16,10 +16,10 @@ export default function SkillCard({ skill }: SkillCardProps) {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="h-full p-4 rounded-xl bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/30 backdrop-blur-sm hover:bg-secondary/10 hover:border-primary/30 transition-colors"
         >
             <div className="flex gap-6">

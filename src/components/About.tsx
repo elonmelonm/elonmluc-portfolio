@@ -32,7 +32,7 @@ const About = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
@@ -44,19 +44,17 @@ const About = () => {
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, scale: 0.9, rotate: -5 },
+    hidden: { opacity: 0, scale: 0.97 },
     visible: {
       opacity: 1,
       scale: 1,
-      rotate: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.4,
         ease: "easeOut"
       }
     },
     hover: {
       scale: 1.02,
-      rotate: 2,
       transition: {
         duration: 0.3
       }
@@ -152,7 +150,7 @@ const About = () => {
                 className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-light"
               >
                 <Trans i18nKey="about.p1">
-                  <span className="text-primary font-semibold">Full Stack Developer</span>
+                  <span className="text-primary font-semibold">{t('about.role')}</span>
                   <span className="text-primary font-bold">3 years of experience</span>
                 </Trans>
               </motion.p>
@@ -173,7 +171,7 @@ const About = () => {
                   download={downloadName}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-105 transition-all text-sm md:text-base"
+                  className="inline-flex items-center px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-105 transition-all text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                   whileTap={{ scale: 0.95 }}
                 >
                   {t('about.buttons.download_cv')}
@@ -183,7 +181,7 @@ const About = () => {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/contact"
-                    className="inline-flex items-center px-8 py-3 bg-transparent text-primary font-bold rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all text-sm md:text-base"
+                    className="inline-flex items-center px-8 py-3 bg-transparent text-primary font-bold rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                   >
                     {t('about.buttons.contact_me')}
                     <MessageSquare className="ml-2" size={18} />
@@ -192,7 +190,7 @@ const About = () => {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/projects"
-                    className="inline-flex items-center px-8 py-3 bg-secondary/10 dark:bg-white/10 text-secondary dark:text-white font-bold rounded-full border border-secondary/20 dark:border-white/20 hover:bg-secondary hover:text-white dark:hover:bg-white dark:hover:text-dark-bg transition-all text-sm md:text-base"
+                    className="inline-flex items-center px-8 py-3 bg-secondary/10 dark:bg-white/10 text-secondary dark:text-white font-bold rounded-full border border-secondary/20 dark:border-white/20 hover:bg-secondary hover:text-white dark:hover:bg-white dark:hover:text-dark-bg transition-all text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                   >
                     {t('about.buttons.my_projects')}
                     <Briefcase className="ml-2" size={18} />
@@ -208,10 +206,10 @@ const About = () => {
       <section className="lg:mx-32 xl:mx-20 py-16 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-2">
@@ -224,10 +222,10 @@ const About = () => {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: Math.min(index, 5) * 0.06 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="group p-8 rounded-3xl bg-secondary/5 dark:bg-white/5 border border-secondary/10 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 relative overflow-hidden"
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
@@ -239,7 +237,7 @@ const About = () => {
                 </h3>
                 <div className="flex flex-wrap gap-1.5 mb-2">
                   {(t(`about.what_i_do.${service.id}.tools`, { returnObjects: true }) as string[]).map((tool, i) => (
-                    <span key={i} className="px-2 py-0.5 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground text-[9px] sm:text-[10px] font-bold rounded-lg border border-primary/20 whitespace-normal">
+                    <span key={i} className="px-2 py-0.5 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground text-xs font-bold rounded-lg border border-primary/20 whitespace-normal">
                       {tool}
                     </span>
                   ))}
@@ -257,39 +255,35 @@ const About = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative p-4 md:p-20 rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-blue-600 text-center text-white shadow-2xl shadow-primary/30 group"
+            viewport={{ once: true, amount: 0.2 }}
+            className="relative p-4 md:p-20 rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-primary/70 text-center text-white shadow-2xl shadow-primary/30 group"
           >
             {/* Animated Background Elements */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            <div
               className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl"
-            />
+              />
+            <div
+              className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+              />
 
             <div className="relative z-10">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="flex justify-center mb-8"
               >
                 <div className="p-4 bg-white/20 backdrop-blur-md rounded-2xl">
-                  <Rocket className="w-12 h-12 text-white animate-bounce" />
+                  <Rocket className="w-12 h-12 text-white" />
                 </div>
               </motion.div>
 
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight"
               >
                 {t('about.fun_cta.title').split('<0>').map((part, i) => {
@@ -302,25 +296,25 @@ const About = () => {
               </motion.h2>
 
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
               >
                 {t('about.fun_cta.desc')}
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.16 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="flex flex-wrap justify-center gap-6"
               >
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center px-10 py-5 bg-white text-primary font-bold text-sm md:text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300"
+                  className="group inline-flex items-center px-10 py-5 bg-white text-primary font-bold text-sm md:text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                 >
                   {t('about.fun_cta.chat')}
                   <MessageSquare className="ml-3 group-hover:rotate-12 transition-transform" />
@@ -328,10 +322,10 @@ const About = () => {
 
                 <Link
                   to="/projects"
-                  className="group inline-flex items-center px-10 py-5 bg-transparent border-2 border-white/30 text-white font-bold text-sm md:text-xl rounded-full backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
+                  className="group inline-flex items-center px-10 py-5 bg-transparent border-2 border-white/30 text-white font-bold text-sm md:text-xl rounded-full backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                 >
                   {t('about.fun_cta.work')}
-                  <Sparkles className="ml-3 group-hover:animate-pulse" />
+                  <Sparkles className="ml-3 transition-transform group-hover:rotate-12" />
                 </Link>
               </motion.div>
             </div>

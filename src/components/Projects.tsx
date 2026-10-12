@@ -86,7 +86,7 @@ export const ProjectCarousel: React.FC<{ images: string[]; title: string; height
           key={currentIndex}
           src={images[currentIndex]}
           alt={`${title} - image ${currentIndex + 1}`}
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 12 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.3 }}
@@ -98,13 +98,13 @@ export const ProjectCarousel: React.FC<{ images: string[]; title: string; height
       <div className="absolute inset-0 flex items-center justify-between p-2 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
         <button
           onClick={prevSlide}
-          className="p-1.5 rounded-full bg-black/50 text-white hover:bg-primary transition-colors backdrop-blur-sm"
+          className="p-1.5 rounded-full bg-black/50 text-white hover:bg-primary transition-colors backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
         >
           <ChevronLeft size={20} />
         </button>
         <button
           onClick={nextSlide}
-          className="p-1.5 rounded-full bg-black/50 text-white hover:bg-primary transition-colors backdrop-blur-sm"
+          className="p-1.5 rounded-full bg-black/50 text-white hover:bg-primary transition-colors backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
         >
           <ChevronRight size={20} />
         </button>
@@ -136,10 +136,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
   return (
     <motion.div
       key={index}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: Math.min(index, 5) * 0.06 }}
+      viewport={{ once: true, amount: 0.2 }}
       className={`bg-light-bg dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/10 backdrop-blur-sm hover:bg-secondary/5 transition-all group ${className}`}
     >
       <ProjectCarousel images={project.images} title={title} />
@@ -149,12 +149,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
             <button
               type="button"
               onClick={() => onOpenDetails(project)}
-              className="block w-full text-left text-xl font-bold text-secondary dark:text-white transition-colors duration-300 truncate hover:text-primary dark:hover:text-primary"
+              className="block w-full text-left text-xl font-bold text-secondary dark:text-white transition-colors duration-300 truncate hover:text-primary dark:hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
             >
               {title}
             </button>
           </Tooltip>
-          <span className="shrink-0 text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-primary/10 text-primary rounded-md border border-primary/20">
+          <span className="shrink-0 text-xs uppercase tracking-wider font-bold px-2 py-1 bg-primary/10 text-primary rounded-md border border-primary/20">
             {project.category}
           </span>
         </div>
@@ -177,7 +177,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
               <button
                 type="button"
                 onClick={() => onOpenDetails(project)}
-                className="px-2 py-1 text-primary hover:text-primary/80 text-xs font-semibold transition-colors"
+                className="px-2 py-1 text-primary hover:text-primary/80 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
               >
                 +{project.technologies.length - 3} {t('projects.ui.more')}
               </button>
@@ -188,7 +188,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
           <button
             type="button"
             onClick={() => onOpenDetails(project)}
-            className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+            className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
           >
             <Maximize2 size={18} className="mr-1.5" />
             {t('projects.ui.details')}
@@ -198,7 +198,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
               href={project.github_link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+              className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
               whileHover={{ x: 3 }}
             >
               <Github size={18} className="mr-1.5" />
@@ -210,7 +210,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = '
               href={project.live_link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+              className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
               whileHover={{ x: 3 }}
             >
               <ExternalLink size={18} className="mr-1.5" />
@@ -261,7 +261,7 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
         >
           <motion.div
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto no-scrollbar bg-light-bg dark:bg-dark-bg rounded-2xl border border-secondary/10 dark:border-white/10 shadow-2xl"
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', duration: 0.4 }}
@@ -271,7 +271,7 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
               type="button"
               onClick={onClose}
               aria-label={t('projects.ui.close')}
-              className="absolute top-3 right-3 z-10 p-2 rounded-full bg-black/40 text-white hover:bg-primary transition-colors backdrop-blur-sm"
+              className="absolute top-3 right-3 z-10 p-2 rounded-full bg-black/40 text-white hover:bg-primary transition-colors backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
             >
               <X size={20} />
             </button>
@@ -283,19 +283,19 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
                 <h3 className="text-2xl font-bold text-secondary dark:text-white">
                   {lang === 'fr' ? project.title_fr : project.title_en}
                 </h3>
-                <span className="shrink-0 text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-primary/10 text-primary rounded-md border border-primary/20">
+                <span className="shrink-0 text-xs uppercase tracking-wider font-bold px-2 py-1 bg-primary/10 text-primary rounded-md border border-primary/20">
                   {project.category}
                 </span>
               </div>
 
-              <h4 className="text-xs uppercase tracking-wider font-bold text-gray-400 mb-2">
+              <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 dark:text-gray-400 mb-2">
                 {t('projects.ui.description')}
               </h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 whitespace-pre-line">
                 {lang === 'fr' ? project.desc_fr : project.desc_en}
               </p>
 
-              <h4 className="text-xs uppercase tracking-wider font-bold text-gray-400 mb-2">
+              <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 dark:text-gray-400 mb-2">
                 {t('projects.ui.technologies')}
               </h4>
               <div className="flex flex-wrap gap-2 mb-6">
@@ -315,7 +315,7 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
                     href={project.github_link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors mt-4"
+                    className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                   >
                     <Github size={18} className="mr-1.5" />
                     {t('projects.ui.code')}
@@ -326,7 +326,7 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
                     href={project.live_link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors mt-4"
+                    className="flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                   >
                     <ExternalLink size={18} className="mr-1.5" />
                     {t('projects.ui.live')}
@@ -370,6 +370,7 @@ const Projects = () => {
               className="text-4xl md:text-6xl font-black mb-6 text-primary dark:text-white transition-colors duration-300"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               {t('projects.title')}
             </motion.h2>
@@ -385,7 +386,7 @@ const Projects = () => {
               <button
                 key={cat.id}
                 onClick={() => { setFilter(cat.id); setShowAllProjects(false); }}
-                className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${filter === cat.id
+                className={`px-6 py-2 rounded-full font-bold text-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg ${filter === cat.id
                   ? "bg-primary text-white shadow-lg shadow-primary/20"
                   : "bg-light-bg dark:bg-dark-bg text-gray-500 border border-secondary/10 dark:border-white/10 hover:border-primary/30"
                   }`}
@@ -415,7 +416,7 @@ const Projects = () => {
           <div className="flex justify-center mt-16">
             <motion.button
               onClick={() => setShowAllProjects(!showAllProjects)}
-              className="inline-flex items-center px-10 py-4 bg-secondary text-white dark:bg-white dark:text-dark-bg font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl"
+              className="inline-flex items-center px-10 py-4 bg-secondary text-white dark:bg-white dark:text-dark-bg font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
               whileHover={{ y: -5 }}
             >
               {showAllProjects ? t('projects.buttons.show_less') : t('projects.buttons.view_all', { count: filteredProjects.length })}
@@ -427,9 +428,9 @@ const Projects = () => {
         {/* Workflow Section */}
         <div className="mt-40">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-black text-primary dark:text-white mb-4">{t('projects.workflow.title')}</h2>
@@ -447,8 +448,8 @@ const Projects = () => {
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ delay: Math.min(i, 5) * 0.06 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10 relative overflow-hidden group hover:border-primary/30 transition-colors"
               >
                 <div className="text-4xl font-black text-secondary dark:text-white/50 group-hover:text-primary/60 mb-4 transition-colors">{phase.step}</div>
@@ -461,9 +462,9 @@ const Projects = () => {
         </div>
         {/* CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="mt-40 relative group"
         >
           {/* Background Decorative Element */}
@@ -483,7 +484,7 @@ const Projects = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
                 href="#contact"
-                className="group/btn relative px-5 py-4 bg-primary text-white font-bold rounded-full flex items-center shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all"
+                className="group/btn relative px-5 py-4 bg-primary text-white font-bold rounded-full flex items-center shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

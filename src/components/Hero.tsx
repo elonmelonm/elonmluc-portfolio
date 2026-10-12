@@ -15,20 +15,20 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.08,
+        delayChildren: 0.05
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1]
       }
     }
   };
@@ -59,8 +59,8 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 + idx * 0.1 }}
-                whileHover={{ y: -5, color: '#0066FF' }}
-                className="text-gray-400 hover:text-primary transition-colors duration-300"
+                whileHover={{ y: -5 }}
+                className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
                 title={social.title}
               >
                 <social.Icon size={20} />
@@ -78,24 +78,8 @@ const Hero = () => {
 
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -70, 0],
-            y: [0, 50, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]"
-        />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -130,15 +114,15 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-8 py-8"
           >
-            <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500">
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
               <Code size={20} className="text-primary" />
               <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.web')}</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500">
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
               <Smartphone size={20} className="text-primary" />
               <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.mobile')}</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500">
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
               <Rocket size={20} className="text-primary" />
               <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.seo')}</span>
             </div>
@@ -148,7 +132,7 @@ const Hero = () => {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6">
             <Link
               to="/projects"
-              className="group inline-flex items-center px-10 py-5 bg-primary text-white text-xl font-bold rounded-full shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all"
+              className="group inline-flex items-center px-10 py-5 bg-primary text-white text-xl font-bold rounded-full shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
             >
               {t('home.hero.see_projects')}
               <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
@@ -156,7 +140,7 @@ const Hero = () => {
 
             <Link
               to="/contact"
-              className="inline-flex items-center px-10 py-5 bg-transparent text-secondary dark:text-white border-2 border-secondary/20 dark:border-white/20 text-xl font-bold rounded-full hover:bg-secondary hover:text-white dark:hover:bg-white dark:hover:text-dark-bg transition-all"
+              className="inline-flex items-center px-10 py-5 bg-transparent text-secondary dark:text-white border-2 border-secondary/20 dark:border-white/20 text-xl font-bold rounded-full hover:bg-secondary hover:text-white dark:hover:bg-white dark:hover:text-dark-bg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
             >
               {t('home.hero.lets_talk')}
             </Link>
@@ -173,7 +157,7 @@ const Hero = () => {
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">{t('home.hero.discover')}</span>
+          <span className="text-[11px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-bold">{t('home.hero.discover')}</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}

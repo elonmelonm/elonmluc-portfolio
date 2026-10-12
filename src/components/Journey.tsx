@@ -65,7 +65,7 @@ export default function Experience() {
                                 <button
                                     key={tab.id}
                                     onClick={() => setToggleState(tab.id)}
-                                    className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all ${toggleState === tab.id
+                                    className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg ${toggleState === tab.id
                                         ? "bg-primary text-white shadow-lg shadow-primary/20"
                                         : "text-gray-500 hover:text-primary"
                                         }`}
@@ -99,8 +99,8 @@ export default function Experience() {
                                 key={i}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
-                                viewport={{ once: true }}
+                                transition={{ delay: Math.min(i, 5) * 0.06 }}
+                                viewport={{ once: true, amount: 0.2 }}
                                 className="flex items-center gap-6 p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10"
                             >
                                 <div className="text-4xl">{lang.icon}</div>
