@@ -25,7 +25,9 @@
             },
             "see_projects": "See My Projects",
             "lets_talk": "Let's Talk",
-            "discover": "Discover"
+            "discover": "Discover",
+            "location": "Cotonou, Benin",
+            "now": "Currently"
         },
         "services": {
             "title": "What I Do?",
@@ -421,6 +423,8 @@
         "rights": "All rights reserved."
     },
     "ui": {
-        "scroll_top": "Back to top"
+        "scroll_top": "Back to top",
+        "whatsapp": "Message on WhatsApp",
+        "theme": "Toggle theme"
     }
 }

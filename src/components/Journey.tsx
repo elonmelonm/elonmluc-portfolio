@@ -1,10 +1,8 @@
-import { motion } from "framer-motion";
-import { Backpack, GraduationCap, Award } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import EducationPart from "./EducationPart";
 import ExperiencePart from "./ExperiencePart";
 import CertificationsPart from "./CertificationsPart";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useExperiences } from "../hooks/useExperiences";
 import { useEducations } from "../hooks/useEducations";
 import { useCertifications } from "../hooks/useCertifications";
@@ -18,10 +16,10 @@ export default function Experience() {
 
     // Onglets dont la section a du contenu uniquement.
     const tabs = [
-        experiences.length > 0 && { id: 1, icon: Backpack, label: t('journey.tabs.experience') },
-        educations.length > 0 && { id: 2, icon: GraduationCap, label: t('journey.tabs.education') },
-        certifications.length > 0 && { id: 3, icon: Award, label: t('journey.tabs.certs') },
-    ].filter(Boolean) as { id: number; icon: typeof Backpack; label: string }[];
+        experiences.length > 0 && { id: 1, label: t('journey.tabs.experience') },
+        educations.length > 0 && { id: 2, label: t('journey.tabs.education') },
+        certifications.length > 0 && { id: 3, label: t('journey.tabs.certs') },
+    ].filter(Boolean) as { id: number; label: string }[];
 
     // Sélectionne le premier onglet disponible si l'actif n'existe pas/plus.
     useEffect(() => {
@@ -31,87 +29,57 @@ export default function Experience() {
     }, [tabs, toggleState]);
 
     const languages = [
-        { name: t('journey.communication.french'), level: t('journey.communication.advanced'), icon: "🇫🇷" },
-        { name: t('journey.communication.english'), level: t('journey.communication.beginner'), icon: "🇬🇧" }
+        { name: t('journey.communication.french'), level: t('journey.communication.advanced') },
+        { name: t('journey.communication.english'), level: t('journey.communication.beginner') }
     ];
 
+    const title = t('journey.title').split('<0>').map((part, i) => {
+        if (!part.includes('</0>')) return part;
+        const [accent, rest] = part.split('</0>');
+        return <span key={i}><span className="text-indigo">{accent}</span>{rest}</span>;
+    });
+
     return (
-        <section id="journey" className="lg:mx-32 xl:mx-16 py-20 px-4 transition-colors duration-300">
-            <div className="container mx-auto">
-                <div className="flex flex-col justify-between items-center mb-16 gap-8">
-                    <div className="max-w-2xl text-center">
-                        <motion.h2
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="text-4xl md:text-6xl font-black mb-6 text-secondary dark:text-white"
+        <section id="journey" className="py-[clamp(40px,7vw,96px)]">
+            <div className="mb-[clamp(40px,6vw,80px)] grid items-end gap-[clamp(24px,5vw,72px)] md:grid-cols-[7fr_5fr]">
+                <h1 className="page-title">{title}<span className="text-indigo">.</span></h1>
+                <p className="lede">{t('journey.subtitle')}</p>
+            </div>
+
+            {tabs.length > 0 && (
+                <div className="mb-7 flex flex-wrap gap-2" role="group" aria-label={t('nav.journey')}>
+                    {tabs.map((tab) => (
+                        <button
+                            key={tab.id}
+                            type="button"
+                            aria-pressed={toggleState === tab.id}
+                            onClick={() => setToggleState(tab.id)}
+                            className="chip-btn"
                         >
-                            {t('journey.title').split('<0>').map((part, i) => {
-                                if (part.includes('</0>')) {
-                                    const [italic, rest] = part.split('</0>');
-                                    return <span key={i}><span className="text-primary italic">{italic}</span>{rest}</span>;
-                                }
-                                return part;
-                            })}
-                        </motion.h2>
-                        <p className="text-lg text-gray-500 dark:text-gray-400">
-                            {t('journey.subtitle')}
-                        </p>
-                    </div>
+                            {tab.label}
+                        </button>
+                    ))}
+                </div>
+            )}
 
-                    {/* Tab Selectors */}
-                    {tabs.length > 0 && (
-                        <div className="flex gap-2 p-1 bg-secondary/5 dark:bg-white/5 rounded-2xl border border-secondary/10 dark:border-white/10">
-                            {tabs.map((tab) => (
-                                <button
-                                    key={tab.id}
-                                    onClick={() => setToggleState(tab.id)}
-                                    className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg ${toggleState === tab.id
-                                        ? "bg-primary text-white shadow-lg shadow-primary/20"
-                                        : "text-gray-500 hover:text-primary"
-                                        }`}
-                                >
-                                    <tab.icon size={16} />
-                                    {tab.label}
-                                </button>
-                            ))}
+            <div className="min-h-[300px]">
+                {toggleState === 1 && <ExperiencePart />}
+                {toggleState === 2 && <EducationPart />}
+                {toggleState === 3 && <CertificationsPart />}
+            </div>
+
+            <div className="mt-[clamp(56px,8vw,112px)]">
+                <div className="sec-head">
+                    <h2 className="sec-title">{t('journey.communication.title')}</h2>
+                </div>
+                <dl className="max-w-[520px] border-t border-rule">
+                    {languages.map((lang) => (
+                        <div key={lang.name} className="flex justify-between gap-4 border-b border-rule py-3.5">
+                            <dt className="text-muted">{lang.name}</dt>
+                            <dd className="font-display text-xl font-semibold">{lang.level}</dd>
                         </div>
-                    )}
-                </div>
-
-                <div className="min-h-[400px]">
-                    {toggleState === 1 && <ExperiencePart />}
-                    {toggleState === 2 && <EducationPart />}
-                    {toggleState === 3 && <CertificationsPart />}
-                </div>
-
-                {/* Languages Section */}
-                <div className="mt-40">
-                    <motion.h3
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="text-2xl font-bold mb-12 text-center text-secondary dark:text-white uppercase tracking-[0.3em]"
-                    >
-                        {t('journey.communication.title')}
-                    </motion.h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {languages.map((lang, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: Math.min(i, 5) * 0.06 }}
-                                viewport={{ once: true, amount: 0.2 }}
-                                className="flex items-center gap-6 p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10"
-                            >
-                                <div className="text-4xl">{lang.icon}</div>
-                                <div>
-                                    <h4 className="text-xl font-bold text-secondary dark:text-white">{lang.name}</h4>
-                                    <p className="text-sm text-gray-500 font-medium">{lang.level}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
+                    ))}
+                </dl>
             </div>
         </section>
     );

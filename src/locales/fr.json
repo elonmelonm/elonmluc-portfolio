@@ -25,7 +25,9 @@
             },
             "see_projects": "Voir Mes Projets",
             "lets_talk": "Discutons",
-            "discover": "Découvrir"
+            "discover": "Découvrir",
+            "location": "Cotonou, Bénin",
+            "now": "En ce moment"
         },
         "services": {
             "title": "Qu'est ce que je fais ?",
@@ -421,6 +423,8 @@
         "rights": "Tous droits réservés."
     },
     "ui": {
-        "scroll_top": "Retour en haut"
+        "scroll_top": "Retour en haut",
+        "whatsapp": "Écrire sur WhatsApp",
+        "theme": "Changer de thème"
     }
 }

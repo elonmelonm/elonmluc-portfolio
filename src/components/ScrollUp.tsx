@@ -6,36 +6,23 @@ export default function ScrollUp() {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
-  // Détecter le défilement
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      setIsVisible(scrollTop > 650); // Affiche le bouton après 300px de défilement
-    };
-
+    const handleScroll = () => setIsVisible(window.scrollY > 650);
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Retour en haut de la page
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  if (!isVisible) return null;
 
+  // Placé au-dessus du bouton WhatsApp flottant.
   return (
-    <div>
-      {isVisible && (
-        <button
-          onClick={scrollToTop}
-          type="button"
-          aria-label={t('ui.scroll_top')}
-          className="fixed right-8 bottom-8 p-4 bg-primary text-white rounded-2xl shadow-2xl hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg transition-all duration-300 z-[60] group"
-        >
-          <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
-        </button>
-      )}
-    </div>
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      type="button"
+      aria-label={t('ui.scroll_top')}
+      className="fixed right-5 sm:right-9 bottom-[5.5rem] sm:bottom-28 z-50 grid size-11 place-items-center rounded-full border border-rule bg-surface text-ink shadow-[0_8px_20px_-8px_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 focus-ring"
+    >
+      <ArrowUp size={18} />
+    </button>
   );
 }

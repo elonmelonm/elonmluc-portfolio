@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import ExperienceCard from "./ExperienceCard";
+import ExperienceCard, { Timeline } from "./ExperienceCard";
 import { useEducations } from "../hooks/useEducations";
 import { getLang } from "../lib/lang";
 
@@ -12,18 +12,18 @@ export default function EducationPart() {
         return (
             <div className="flex flex-col gap-6 max-w-xl mx-auto">
                 {[0, 1].map((i) => (
-                    <div key={i} className="h-32 rounded-xl bg-primary/5 dark:bg-white/5 animate-pulse" />
+                    <div key={i} className="h-32 rounded-xl bg-indigo-soft animate-pulse" />
                 ))}
             </div>
         );
     }
 
     if (error) {
-        return <p className="text-center text-gray-500 dark:text-gray-400">{error}</p>;
+        return <p className="text-muted">{error}</p>;
     }
 
     return (
-        <div className="mx-auto">
+        <Timeline>
             {educations.map((edu, index) => (
                 <ExperienceCard
                     key={edu.id}
@@ -36,6 +36,6 @@ export default function EducationPart() {
                     }}
                 />
             ))}
-        </div>
+        </Timeline>
     )
 }

@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import WhatsAppButton from './WhatsAppButton';
 import { usePageView } from '../hooks/usePageView';
 import Seo from './Seo';
 
@@ -11,23 +11,26 @@ const Layout = () => {
     usePageView();
 
     return (
-        <div className="min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-300">
+        <div className="site min-h-screen px-4 sm:px-6 lg:px-14 transition-colors duration-300">
             <Seo />
-            <Header />
-            <main>
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={location.pathname}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <Outlet />
-                    </motion.div>
-                </AnimatePresence>
-            </main>
-            <Footer />
+            <div className="mx-auto max-w-[1200px]">
+                <Header />
+                <main>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={location.pathname}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <Outlet />
+                        </motion.div>
+                    </AnimatePresence>
+                </main>
+                <Footer />
+            </div>
+            <WhatsAppButton />
         </div>
     );
 };

@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
-import { useState } from 'react';
 import { skills } from "../data/skills";
 import SkillCard from "./SkillCard";
 import { useTranslation } from "react-i18next";
 
 export default function Skills() {
     const { t } = useTranslation();
-    const [activeCategory, setActiveCategory] = useState("Frontend");
 
     const categories = [
         { id: "Frontend", label: t('skills.categories.frontend') },
@@ -14,126 +12,70 @@ export default function Skills() {
         { id: "Tools", label: t('skills.categories.tools') }
     ];
 
-    const filteredSkills = skills.filter(skill => skill.category === activeCategory);
+    const softSkills = ['adaptability', 'teamwork', 'problem_solving', 'communication'];
+    const learning = ['threejs', 'web3', 'cloud', 'native'];
 
-    const softSkills = [
-        { title: t('skills.soft.adaptability.title'), desc: t('skills.soft.adaptability.desc') },
-        { title: t('skills.soft.teamwork.title'), desc: t('skills.soft.teamwork.desc') },
-        { title: t('skills.soft.problem_solving.title'), desc: t('skills.soft.problem_solving.desc') },
-        { title: t('skills.soft.communication.title'), desc: t('skills.soft.communication.desc') }
-    ];
+    const title = t('skills.title').split('<0>').map((part, i) => {
+        if (!part.includes('</0>')) return part;
+        const [accent, rest] = part.split('</0>');
+        return <span key={i}><span className="text-indigo">{accent}</span>{rest}</span>;
+    });
 
     return (
-        <section id="skills" className="lg:mx-32 xl:mx-16 py-20 px-4 transition-colors duration-300">
-            <div className="container mx-auto">
-                <div className="flex flex-col items-center justify-between mb-16 gap-8">
-                    <div className="flex flex-col text-center max-w-xl">
-                        <motion.h2
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            className="text-4xl md:text-5xl font-black mb-6 text-secondary dark:text-white"
-                        >
-                            {t('skills.title').split('<0>').map((part, i) => {
-                                if (part.includes('</0>')) {
-                                    const [italic, rest] = part.split('</0>');
-                                    return <span key={i}><span className="text-primary italic">{italic}</span>{rest}</span>;
-                                }
-                                return part;
-                            })}
-                        </motion.h2>
-                        <p className="text-lg text-gray-500 dark:text-gray-400">
-                            {t('skills.subtitle')}
-                        </p>
-                    </div>
+        <section id="skills" className="py-[clamp(40px,7vw,96px)]">
+            <div className="mb-[clamp(40px,6vw,80px)] grid items-end gap-[clamp(24px,5vw,72px)] md:grid-cols-[7fr_5fr]">
+                <h1 className="page-title">{title}<span className="text-indigo">.</span></h1>
+                <p className="lede">{t('skills.subtitle')}</p>
+            </div>
 
-                    {/* Category Selector */}
-                    <div className="flex gap-4 p-1 bg-secondary/5 dark:bg-white/5 rounded-2xl border border-secondary/10 dark:border-white/10">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat.id}
-                                onClick={() => setActiveCategory(cat.id)}
-                                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg ${activeCategory === cat.id
-                                    ? "bg-primary text-white shadow-lg shadow-primary/20"
-                                    : "text-gray-500 hover:text-primary"
-                                    }`}
-                            >
-                                {cat.label}
-                            </button>
-                        ))}
-                    </div>
+            <div className="space-y-[clamp(40px,6vw,64px)]">
+                {categories.map((cat) => {
+                    const list = skills.filter((skill) => skill.category === cat.id);
+                    return (
+                        <div key={cat.id}>
+                            <h2 className="mb-[18px] flex items-baseline gap-3 font-display text-[clamp(1.5rem,2.8vw,2rem)] font-semibold tracking-[-0.02em]">
+                                {cat.label} <span className="label">{list.length}</span>
+                            </h2>
+                            <div className="grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(260px,1fr))]">
+                                {list.map((skill, index) => (
+                                    <motion.div
+                                        key={skill.title}
+                                        initial={{ opacity: 0, y: 12 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.4, delay: Math.min(index, 5) * 0.06 }}
+                                        viewport={{ once: true, amount: 0.2 }}
+                                    >
+                                        <SkillCard skill={skill} />
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <div className="mt-[clamp(56px,8vw,112px)]">
+                <div className="sec-head">
+                    <h2 className="sec-title">{t('skills.soft.title')}</h2>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
-                    {filteredSkills.map((skill, index) => (
-                        <motion.div
-                            key={skill.title}
-                            initial={{ opacity: 0, y: 12 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: Math.min(index, 5) * 0.06 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            className="h-full"
-                        >
-                            <SkillCard skill={skill} />
-                        </motion.div>
+                <div className="grid gap-x-14 gap-y-7 md:grid-cols-2">
+                    {softSkills.map((id) => (
+                        <div key={id}>
+                            <h3 className="mb-1 font-display text-xl font-semibold">{t(`skills.soft.${id}.title`)}</h3>
+                            <p className="text-muted">{t(`skills.soft.${id}.desc`)}</p>
+                        </div>
                     ))}
                 </div>
+            </div>
 
-                {/* Soft Skills Section */}
-                <div className="mb-32">
-                    <motion.h3
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        className="text-2xl font-bold mb-12 text-center text-secondary dark:text-white uppercase tracking-[0.3em]"
-                    >
-                        {t('skills.soft.title')}
-                    </motion.h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {softSkills.map((skill, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: Math.min(i, 5) * 0.06 }}
-                                viewport={{ once: true, amount: 0.2 }}
-                                className="h-full p-8 bg-white dark:bg-white/5 rounded-3xl border border-secondary/10 dark:border-white/10 hover:border-primary/30 transition-colors"
-                            >
-                                <h4 className="text-lg font-bold text-primary mb-2">{skill.title}</h4>
-                                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{skill.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
+            <div className="mt-[clamp(56px,8vw,112px)]">
+                <div className="sec-head">
+                    <h2 className="sec-title">{t('skills.learning.title')}</h2>
                 </div>
-
-                {/* Learning Roadmap */}
-                <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    className="p-5 md:p-16 bg-primary text-white rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden"
-                >
-                    <div className="relative z-10 flex flex-col items-center justify-between gap-10">
-                        <div className="max-w-2xl text-center">
-                            <h3 className="text-3xl md:text-4xl font-black mb-4">{t('skills.learning.title')}</h3>
-                            <p className="text-primary-foreground/80 font-medium">{t('skills.learning.desc')}</p>
-                        </div>
-                        <div className="flex flex-wrap overflow-x-auto pb-4 sm:pb-0 justify-center gap-2 md:gap-4 no-scrollbar">
-                            {[
-                                t('skills.learning.items.threejs'),
-                                t('skills.learning.items.web3'),
-                                t('skills.learning.items.cloud'),
-                                t('skills.learning.items.native')
-                            ].map((item, i) => (
-                                <span key={i} className="px-6 py-3 bg-white/20 backdrop-blur-md rounded-2xl font-bold text-sm border border-white/20">
-                                    {item}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    {/* Decorative Background Icons/Shapes */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                </motion.div>
+                <p className="lede mb-5">{t('skills.learning.desc')}</p>
+                <div className="flex flex-wrap gap-2.5">
+                    {learning.map((id) => <span key={id} className="tag">{t(`skills.learning.items.${id}`)}</span>)}
+                </div>
             </div>
         </section>
     );

@@ -1,169 +1,115 @@
-import { useRef } from 'react';
-import { Github, Linkedin, Mail, Sparkles, Code, Smartphone, Rocket, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import portrait from '../assets/elonm-luc-akakpo.png';
+import { useExperiences } from '../hooks/useExperiences';
+import { getLang } from '../lib/lang';
+
+const socials = [
+  { Icon: Github, href: "https://github.com/elonmelonm", title: "GitHub" },
+  { Icon: Linkedin, href: "https://linkedin.com/in/luc-elonm-akakpo/", title: "LinkedIn" },
+  { Icon: FaWhatsapp, href: "https://wa.me/22957113810", title: "WhatsApp" },
+  { Icon: Mail, href: "mailto:elonmlucakakpo@gmail.com", title: "Email" },
+];
+
+// Heure locale de Cotonou, rafraîchie toutes les 30 s.
+function useCotonouTime() {
+  const format = () => new Date().toLocaleTimeString('fr-FR', { timeZone: 'Africa/Porto-Novo', hour: '2-digit', minute: '2-digit' });
+  const [time, setTime] = useState(format);
+  useEffect(() => {
+    const id = setInterval(() => setTime(format()), 30000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
 
 const Hero = () => {
-  const { t } = useTranslation();
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { amount: 0.1 });
+  const { t, i18n } = useTranslation();
+  const lang = getLang(i18n.language);
+  const time = useCotonouTime();
+  const { experiences } = useExperiences();
+  const current = experiences[0];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.05
-      }
-    }
-  };
-
-  const itemVariants = {
+  const item = {
     hidden: { opacity: 0, y: 12 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
-    <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-light-bg dark:bg-dark-bg transition-colors duration-300 pt-28 pb-32">
-      {/* Social Links Sidebar - Fixed on left */}
-      <AnimatePresence>
-        {isInView && (
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5 }}
-            className="fixed left-8 bottom-0 z-50 hidden lg:flex flex-col items-center gap-6"
+    <section id="home" className="py-[clamp(40px,7vw,96px)]">
+      {/* Réseaux sociaux : sortent du bas vers le haut */}
+      <div className="fixed left-[clamp(12px,2vw,32px)] bottom-0 z-30 hidden xl:flex flex-col items-center gap-5">
+        {socials.map(({ Icon, href, title }, idx) => (
+          <motion.a
+            key={title}
+            href={href}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            rel="noopener noreferrer"
+            aria-label={title}
+            title={title}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 + idx * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -4 }}
+            className="text-muted hover:text-indigo transition-colors rounded focus-ring"
           >
-            {[
-              { Icon: Github, href: "https://github.com/elonmelonm", title: "GitHub" },
-              { Icon: Linkedin, href: "https://linkedin.com/in/luc-elonm-akakpo/", title: "LinkedIn" },
-              { Icon: FaWhatsapp, href: "https://wa.me/22957113810", title: "WhatsApp" },
-              { Icon: Mail, href: "mailto:elonmlucakakpo@gmail.com", title: "Email" }
-            ].map((social, idx) => (
-              <motion.a
-                key={idx}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 + idx * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-                title={social.title}
-              >
-                <social.Icon size={20} />
-              </motion.a>
-            ))}
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: 100 }}
-              transition={{ delay: 0.7, duration: 1 }}
-              className="w-px bg-gray-300 dark:bg-gray-700 mt-2"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
+            <Icon size={20} />
+          </motion.a>
+        ))}
+        <motion.span
+          aria-hidden="true"
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="block h-24 w-px origin-bottom bg-rule"
+        />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="flex flex-col items-center text-center space-y-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Badge */}
-          <motion.div
-            variants={itemVariants}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm uppercase tracking-wider mb-4"
-          >
-            <Sparkles size={16} className="mr-2" />
-            {t('home.hero.available')}
-          </motion.div>
-
-          {/* Main Title */}
-          <motion.div variants={itemVariants} className="max-w-4xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-secondary dark:text-white leading-[1.1] mb-6 tracking-tight">
-              {t('home.hero.crafting')} <span className="text-primary italic">{t('home.hero.modern')}</span> <br />
-              {t('home.hero.digital_experiences')}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-              {t('home.hero.hello')} <span className="text-primary font-bold">{t('home.hero.name')}</span>. {t('home.hero.subtitle')}
-            </p>
-          </motion.div>
-
-          {/* Features / Services Icons (Typographic) */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-8 py-8"
-          >
-            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-              <Code size={20} className="text-primary" />
-              <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.web')}</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-              <Smartphone size={20} className="text-primary" />
-              <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.mobile')}</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-              <Rocket size={20} className="text-primary" />
-              <span className="font-semibold uppercase tracking-widest text-xs">{t('home.hero.specialization.seo')}</span>
-            </div>
-          </motion.div>
-
-          {/* CTA Group */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6">
-            <Link
-              to="/projects"
-              className="group inline-flex items-center px-10 py-5 bg-primary text-white text-xl font-bold rounded-full shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-            >
-              {t('home.hero.see_projects')}
-              <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
-            </Link>
-
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-10 py-5 bg-transparent text-secondary dark:text-white border-2 border-secondary/20 dark:border-white/20 text-xl font-bold rounded-full hover:bg-secondary hover:text-white dark:hover:bg-white dark:hover:text-dark-bg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-            >
-              {t('home.hero.lets_talk')}
-            </Link>
-          </motion.div>
-
-        </motion.div>
-      </div>
-
-      {/* Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="grid items-end gap-[clamp(24px,5vw,72px)] lg:grid-cols-[7fr_5fr]"
+        initial="hidden"
+        animate="visible"
+        variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[11px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-bold">{t('home.hero.discover')}</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-8 bg-gradient-to-b from-primary to-transparent rounded-full"
-          />
+        <div>
+          <motion.p variants={item} className="label mb-7">
+            {t('home.hero.location')} · <span>{time}</span>
+          </motion.p>
+          <motion.h1 variants={item} className="page-title">
+            {t('home.hero.crafting')} <span className="text-indigo">{t('home.hero.modern')}.</span>
+          </motion.h1>
+          <motion.p variants={item} className="lede my-7 text-[1.12rem]">
+            {t('home.hero.hello')} <b className="font-medium text-ink">{t('home.hero.name')}</b>. {t('home.hero.subtitle')}
+          </motion.p>
+          <motion.div variants={item} className="flex flex-wrap gap-3">
+            <Link to="/projects" className="btn-primary">
+              {t('home.hero.see_projects')} <ArrowRight size={16} />
+            </Link>
+            <Link to="/contact" className="btn-ghost">{t('home.hero.lets_talk')}</Link>
+          </motion.div>
+          {current && (
+            <motion.div variants={item} className="mt-11 max-w-[520px] rounded bg-indigo-soft px-[18px] py-3.5 text-[0.95rem]">
+              <strong className="block font-mono text-[0.78rem] font-medium text-indigo">{t('home.hero.now')}</strong>
+              {lang === 'fr' ? current.title_fr : current.title_en}
+              {current.company && ` · ${current.company}`}
+            </motion.div>
+          )}
         </div>
+
+        <motion.figure variants={item} className="m-0 max-w-[420px] lg:max-w-none">
+          <img
+            src={portrait}
+            alt="Elonm Luc Akakpo"
+            className="block aspect-[4/5] w-full rounded object-cover object-[35%_center]"
+          />
+          <figcaption className="label mt-2.5 flex justify-between">
+            <span>{t('home.hero.specialization.web')} · {t('home.hero.specialization.mobile')} · {t('home.hero.specialization.seo')}</span>
+            <span>{t('about.stats.years_val')}</span>
+          </figcaption>
+        </motion.figure>
       </motion.div>
     </section>
   );
