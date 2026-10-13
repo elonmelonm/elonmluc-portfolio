@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import portrait from '../assets/elonm-luc-akakpo.png';
 import { useExperiences } from '../hooks/useExperiences';
 import { getLang } from '../lib/lang';
+import GlyphPortrait from './GlyphPortrait';
 
 const socials = [
   { Icon: Github, href: "https://github.com/elonmelonm", title: "GitHub" },
@@ -69,7 +70,7 @@ const Hero = () => {
       </div>
 
       <motion.div
-        className="grid items-end gap-[clamp(24px,5vw,72px)] lg:grid-cols-[7fr_5fr]"
+        className="grid items-center gap-[clamp(24px,5vw,72px)] lg:grid-cols-[1fr_1.05fr]"
         initial="hidden"
         animate="visible"
         variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
@@ -99,17 +100,9 @@ const Hero = () => {
           )}
         </div>
 
-        <motion.figure variants={item} className="m-0 max-w-[420px] lg:max-w-none">
-          <img
-            src={portrait}
-            alt="Elonm Luc Akakpo"
-            className="block aspect-[4/5] w-full rounded object-cover object-[35%_center]"
-          />
-          <figcaption className="label mt-2.5 flex justify-between">
-            <span>{t('home.hero.specialization.web')} · {t('home.hero.specialization.mobile')} · {t('home.hero.specialization.seo')}</span>
-            <span>{t('about.stats.years_val')}</span>
-          </figcaption>
-        </motion.figure>
+        <motion.div variants={item} className="mx-auto w-full max-w-[520px] lg:max-w-none">
+          <GlyphPortrait src={portrait} alt="Elonm Luc Akakpo" />
+        </motion.div>
       </motion.div>
     </section>
   );

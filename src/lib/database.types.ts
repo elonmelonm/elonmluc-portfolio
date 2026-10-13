@@ -15,6 +15,21 @@ export interface Project {
   category: Category;
   display_order: number;
   is_visible: boolean;
+  // Étude de cas (page /projects/:slug). Chaînes vides = section masquée.
+  slug: string | null;
+  year: string;
+  role_fr: string;
+  role_en: string;
+  pitch_fr: string;
+  pitch_en: string;
+  problem_fr: string;
+  problem_en: string;
+  design_fr: string;
+  design_en: string;
+  build_fr: string;
+  build_en: string;
+  result_fr: string;
+  result_en: string;
   created_at: string;
   updated_at: string;
 }

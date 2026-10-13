@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ProjectCarousel } from './ProjectCarousel';
+import GlyphReveal from './GlyphReveal';
 
 interface ProjectFeatureProps {
   images: string[];
@@ -14,6 +16,7 @@ interface ProjectFeatureProps {
 // Projet en grand format : capture et texte alternés gauche/droite.
 export default function ProjectFeature({ images, title, desc, kind, tags, index, action }: ProjectFeatureProps) {
   const flipped = index % 2 === 1;
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.article
@@ -23,8 +26,13 @@ export default function ProjectFeature({ images, title, desc, kind, tags, index,
       viewport={{ once: true, amount: 0.2 }}
       className="group grid items-center gap-[clamp(20px,4vw,56px)] md:grid-cols-[7fr_5fr]"
     >
-      <div className={`overflow-hidden rounded border border-rule bg-surface ${flipped ? 'md:order-2' : ''}`}>
+      <div
+        className={`relative overflow-hidden rounded border border-rule bg-surface ${flipped ? 'md:order-2' : ''}`}
+        onPointerEnter={() => setHovered(true)}
+        onPointerLeave={() => setHovered(false)}
+      >
         <ProjectCarousel images={images} title={title} height="aspect-[16/10]" />
+        {images[0] && <GlyphReveal src={images[0]} hovered={images.length === 1 && hovered} />}
       </div>
       <div className="min-w-0">
         {kind && <span className="label">{kind}</span>}

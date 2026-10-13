@@ -175,9 +175,15 @@ const Projects = () => {
               tags={project.technologies.slice(0, 4)}
               action={
                 <div className="flex flex-wrap items-center gap-5">
-                  <button type="button" onClick={() => setSelectedProject(project)} className="link-arrow">
-                    {t('projects.ui.details')}
-                  </button>
+                  {project.slug ? (
+                    <Link to={`/projects/${project.slug}`} className="link-arrow">
+                      {t('case.read')}
+                    </Link>
+                  ) : (
+                    <button type="button" onClick={() => setSelectedProject(project)} className="link-arrow">
+                      {t('projects.ui.details')}
+                    </button>
+                  )}
                   {project.github_link && (
                     <a href={project.github_link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-indigo focus-ring">
                       <Github size={16} /> {t('projects.ui.code')}

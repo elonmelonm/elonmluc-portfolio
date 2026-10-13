@@ -3,22 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import portrait from '../assets/elonm-luc-akakpo.png';
-import cvFallback from '../cv/cv_LUC_ELONM_AKAKPO.pdf';
-import { useSetting } from '../hooks/useSetting';
+import { useCv } from '../hooks/useCv';
 import { getLang } from '../lib/lang';
 
 const About = () => {
   const { t, i18n } = useTranslation();
   const lang = getLang(i18n.language);
-  const { value: cvFr } = useSetting('cv_url_fr');
-  const { value: cvEn } = useSetting('cv_url_en');
-
-  // CV de la langue courante, repli sur l'autre langue puis sur le fichier bundlé.
-  const chosenCv = lang === 'fr' ? (cvFr ?? cvEn) : (cvEn ?? cvFr);
-  const downloadName = `cv-elonm-luc-akakpo-${lang}.pdf`;
-  const cv = chosenCv
-    ? `${chosenCv}${chosenCv.includes('?') ? '&' : '?'}download=${downloadName}`
-    : cvFallback;
+  const { url: cv, downloadName } = useCv(lang);
 
   const facts = [
     { label: t('about.stats.experience'), value: t('about.stats.years_val') },
