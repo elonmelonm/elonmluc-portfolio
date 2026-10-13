@@ -65,6 +65,17 @@
             "subtitle": "Unissons votre vision à mon expertise pour créer quelque chose de vraiment exceptionnel.",
             "hire_me": "On en parle ici",
             "learn_more": "En savoir plus"
+        },
+        "portrait": {
+            "label": "Portrait d'Elonm Luc Akakpo dessiné avec des caractères de code",
+            "code": "Code",
+            "photo": "Photo",
+            "show_photo": "Afficher la vraie photo",
+            "mode": "Mode",
+            "density": "densité",
+            "code_chars": "code",
+            "hint": "Passe la souris sur le portrait pour voir la photo",
+            "hint_photo": "Passe la souris sur la photo pour voir le code"
         }
     },
     "about": {

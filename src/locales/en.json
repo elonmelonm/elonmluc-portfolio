@@ -65,6 +65,17 @@
             "subtitle": "Let's unite your vision with my expertise to create something truly exceptional. High-performance, secure, and uniquely designed.",
             "hire_me": "Let's Talk",
             "learn_more": "Learn More"
+        },
+        "portrait": {
+            "label": "Portrait of Elonm Luc Akakpo drawn with code characters",
+            "code": "Code",
+            "photo": "Photo",
+            "show_photo": "Show the real photo",
+            "mode": "Mode",
+            "density": "density",
+            "code_chars": "code",
+            "hint": "Hover the portrait to peek at the photo",
+            "hint_photo": "Hover the photo to peek at the code"
         }
     },
     "about": {
