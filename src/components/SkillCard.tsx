@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next";
 
 interface SkillCardProps {
@@ -15,26 +14,15 @@ export default function SkillCard({ skill }: SkillCardProps) {
     const { t } = useTranslation();
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="h-full p-4 rounded-xl bg-light-bg/50 dark:bg-dark-bg/50 border border-secondary/30 backdrop-blur-sm hover:bg-secondary/10 hover:border-primary/30 transition-colors"
-        >
-            <div className="flex gap-6">
-                <div className="py-4 flex items-center justify-center">
-                    <img
-                        className="size-16 lg:size-10 rounded-lg"
-                        src={skill.icon}
-                        alt={skill.title.toLowerCase()}
-                    />
-                </div>
-                <div className="flex-1 -ml-3">
-                    <h3 className="text-xl text-secondary dark:text-white font-semibold mb-2">{skill.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{t(skill.descKey)}</p>
-                </div>
+        <div className="flex h-full items-start gap-4 rounded-lg border border-rule bg-surface p-[18px] transition-[border-color,transform] duration-200 hover:-translate-y-[3px] hover:border-indigo">
+            {/* Fond blanc fixe : certaines icônes (Next.js, Express) sont noires */}
+            <span className="grid size-[52px] flex-none place-items-center rounded-[10px] border border-rule bg-white">
+                <img className="size-[30px]" src={skill.icon} alt="" aria-hidden="true" loading="lazy" />
+            </span>
+            <div className="min-w-0">
+                <h3 className="mb-1 font-display text-lg font-semibold">{skill.title}</h3>
+                <p className="text-sm leading-normal text-muted">{t(skill.descKey)}</p>
             </div>
-        </motion.div>
+        </div>
     )
 }

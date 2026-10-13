@@ -5,7 +5,9 @@
         "projects": "Projects",
         "skills": "Skills",
         "journey": "Journey",
-        "contact": "Contact"
+        "contact": "Contact",
+        "open_menu": "Open menu",
+        "close_menu": "Close menu"
     },
     "home": {
         "hero": {
@@ -23,7 +25,9 @@
             },
             "see_projects": "See My Projects",
             "lets_talk": "Let's Talk",
-            "discover": "Discover"
+            "discover": "Discover",
+            "location": "Cotonou, Benin",
+            "now": "Currently"
         },
         "services": {
             "title": "What I Do?",
@@ -137,7 +141,8 @@
             "desc": "Currently available for new projects and collaborations. If you have a great idea, let's turn it into reality!",
             "chat": "Start a Chat",
             "work": "View My Works"
-        }
+        },
+        "role": "Full Stack Developer"
     },
     "journey": {
         "title": "My <0>Journey</0>",
@@ -416,5 +421,10 @@
     "footer": {
         "desc": "Full Stack Web Developer crafting modern digital experiences.",
         "rights": "All rights reserved."
+    },
+    "ui": {
+        "scroll_top": "Back to top",
+        "whatsapp": "Message on WhatsApp",
+        "theme": "Toggle theme"
     }
 }

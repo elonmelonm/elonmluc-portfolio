@@ -1,25 +1,21 @@
-import React from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+    <button
+      type="button"
       onClick={toggleTheme}
-      className="p-2 rounded-full"
-      aria-label="Toggle theme"
+      aria-label={t('ui.theme')}
+      title={t('ui.theme')}
+      className="grid size-9 place-items-center rounded-full border border-rule bg-surface text-ink transition-transform duration-300 hover:-rotate-12 focus-ring"
     >
-      {theme === 'light' ? (
-        <Moon className="w-5 h-5 text-gray-800" />
-      ) : (
-        <Sun className="w-5 h-5 text-yellow-400" />
-      )}
-    </motion.button>
+      {theme === 'light' ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+    </button>
   );
 };
 

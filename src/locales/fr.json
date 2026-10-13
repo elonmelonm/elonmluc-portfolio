@@ -5,7 +5,9 @@
         "projects": "Projets",
         "skills": "Compétences",
         "journey": "Parcours",
-        "contact": "Contact"
+        "contact": "Contact",
+        "open_menu": "Ouvrir le menu",
+        "close_menu": "Fermer le menu"
     },
     "home": {
         "hero": {
@@ -23,7 +25,9 @@
             },
             "see_projects": "Voir Mes Projets",
             "lets_talk": "Discutons",
-            "discover": "Découvrir"
+            "discover": "Découvrir",
+            "location": "Cotonou, Bénin",
+            "now": "En ce moment"
         },
         "services": {
             "title": "Qu'est ce que je fais ?",
@@ -137,7 +141,8 @@
             "desc": "Actuellement disponible pour de nouveaux projets et collaborations. Si vous avez une excellente idée, transformons-la en réalité !",
             "chat": "Démarrer une Discussion",
             "work": "Voir Mes Travaux"
-        }
+        },
+        "role": "Développeur Full Stack"
     },
     "journey": {
         "title": "Mon <0>Parcours</0>",
@@ -416,5 +421,10 @@
     "footer": {
         "desc": "Développeur Web Full Stack créant des expériences numériques modernes.",
         "rights": "Tous droits réservés."
+    },
+    "ui": {
+        "scroll_top": "Retour en haut",
+        "whatsapp": "Écrire sur WhatsApp",
+        "theme": "Changer de thème"
     }
 }

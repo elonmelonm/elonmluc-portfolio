@@ -2,7 +2,7 @@ import Skills from '../components/Skills';
 
 const SkillsPage = () => {
     return (
-        <div className="py-10">
+        <div>
             <Skills />
         </div>
     );

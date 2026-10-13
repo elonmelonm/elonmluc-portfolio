@@ -1,5 +1,5 @@
+import type { ReactNode } from "react";
 import { motion } from "framer-motion"
-import { Briefcase } from "lucide-react"
 
 interface ExperienceCardProps {
     experience: {
@@ -9,44 +9,41 @@ interface ExperienceCardProps {
         desc: string;
     };
     index: number;
+    current?: boolean;
 }
 
-export default function ExperienceCard({ experience, index }: ExperienceCardProps) {
-    return (
-        <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`relative flex w-full mb-12 last:mb-0 ${index % 2 === 0 ? "lg:justify-start" : "lg:justify-end"
-                }`}
-        >
-            {/* Mobile/Tablet Timeline line (hidden on lg) */}
-            <div className="lg:hidden absolute left-[23px] top-1 bottom-[-3rem] w-px bg-primary group-last:hidden" />
-            {/* Timeline dot - Positioned left on mobile, centered on lg */}
-            <div className={`absolute top-1 w-[23px] h-[23px] rounded-full bg-primary flex items-center justify-center z-10
-                left-3 lg:left-1/2 lg:-translate-x-1/2`}
-            >
-                <Briefcase className="w-3 h-3 text-white" />
-            </div>
+// Une étape de la timeline : la date d'un côté de la ligne, la carte de l'autre, en alternance.
+export default function ExperienceCard({ experience, index, current = false }: ExperienceCardProps) {
+    const flipped = index % 2 === 1;
 
-            {/* Card Content - Occupies full width on mobile, ~45% on lg */}
-            <div className={`w-full lg:w-[45%] bg-primary/10 dark:bg-white/5 backdrop-blur-sm rounded-xl p-6
-                ${index % 2 === 0
-                    ? "ml-8 lg:ml-0 lg:text-right lg:pr-10"
-                    : "ml-8 lg:ml-0 lg:text-left lg:pl-10"
-                }`}
-            >
-                <span className="text-sm font-semibold text-primary">
-                    {experience.period}
-                </span>
-                <h3 className="text-xl text-gray-700 dark:text-primary/80 font-bold mt-1 mb-2">{experience.title}</h3>
-                {experience.company && (
-                    <h4 className="text-lg text-gray-600 dark:text-gray-400 mb-3">{experience.company}</h4>
-                )}
-                <p className="text-gray-600 dark:text-gray-300">{experience.desc}</p>
+    return (
+        <motion.li
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: Math.min(index, 5) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+            className="relative grid gap-1.5 py-[18px] pl-9 md:grid-cols-2 md:gap-x-14 md:pl-0"
+        >
+            <span
+                aria-hidden="true"
+                className={`absolute left-[7px] top-[26px] size-3.5 -translate-x-1/2 rounded-full border-[3px] border-indigo md:left-1/2 ${current ? 'bg-indigo ring-[5px] ring-indigo-soft' : 'bg-paper'}`}
+            />
+            <span className={`label pt-1 ${current ? 'text-live' : ''} ${flipped ? 'md:order-2' : 'md:text-right'}`}>
+                {experience.period}
+            </span>
+            <div className={`rounded-lg border border-rule bg-surface px-[18px] py-4 ${flipped ? 'md:order-1' : ''}`}>
+                <h3 className="mb-0.5 font-display text-xl font-semibold">{experience.title}</h3>
+                {experience.company && <p className="text-[0.95rem] text-muted">{experience.company}</p>}
+                {experience.desc && <p className="mt-2 text-[0.95rem] text-muted">{experience.desc}</p>}
             </div>
-        </motion.div>
+        </motion.li>
     )
+}
+
+export function Timeline({ children }: { children: ReactNode }) {
+    return (
+        <ol className="relative before:absolute before:bottom-1.5 before:left-[7px] before:top-1.5 before:w-0.5 before:-translate-x-1/2 before:bg-rule md:before:left-1/2">
+            {children}
+        </ol>
+    );
 }

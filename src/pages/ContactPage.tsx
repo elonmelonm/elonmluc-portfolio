@@ -2,7 +2,7 @@ import Contact from '../components/Contact';
 
 const ContactPage = () => {
     return (
-        <div className="py-10">
+        <div>
             <Contact />
         </div>
     );
