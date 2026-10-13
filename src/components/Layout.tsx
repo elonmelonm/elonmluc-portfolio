@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useLocation, useOutlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -21,6 +21,19 @@ const Layout = () => {
     const running = useRef(false);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const mainRef = useRef<HTMLElement>(null);
+
+    // Chargement / rechargement : l'écran part couvert puis se dissout sur la page.
+    const revealed = useRef(false);
+    useLayoutEffect(() => {
+        // Une seule fois, même si React rejoue l'effet en développement (StrictMode).
+        if (!canvasRef.current || revealed.current) return;
+        revealed.current = true;
+        running.current = true;
+        dissolve(canvasRef.current, () => {}, true).then(() => {
+            running.current = false;
+            decodeHeading(mainRef.current?.querySelector('h1') ?? null);
+        });
+    }, []);
 
     useEffect(() => {
         if (location.pathname === shownPath.current) return;

@@ -14,8 +14,9 @@ const cssVar = (name: string) => getComputedStyle(document.documentElement).getP
 /**
  * Dissolution en caractères : les cases couvrent l'écran dans le désordre,
  * `onCovered` change la page sous le calque, puis les cases se retirent.
+ * Avec `revealOnly`, l'écran part déjà couvert (chargement de la page) et se découvre seulement.
  */
-export function dissolve(canvas: HTMLCanvasElement, onCovered: () => void): Promise<void> {
+export function dissolve(canvas: HTMLCanvasElement, onCovered: () => void, revealOnly = false): Promise<void> {
   const ctx = canvas.getContext('2d');
   if (!ctx || prefersReducedMotion()) {
     onCovered();
@@ -40,8 +41,15 @@ export function dissolve(canvas: HTMLCanvasElement, onCovered: () => void): Prom
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
+  // Premier rendu synchrone : écran plein, pour ne jamais montrer la page avant la dissolution.
+  if (revealOnly) {
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, w, h);
+  }
+
   return new Promise((resolve) => {
-    const start = performance.now();
+    // Au chargement, on démarre directement après la phase de couverture.
+    const start = performance.now() - (revealOnly ? IN : 0);
     let swapped = false;
 
     const frame = (now: number) => {
