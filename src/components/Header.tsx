@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, TerminalSquare } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from './ThemeToggle';
@@ -45,6 +45,16 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-2.5">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event('open-terminal'))}
+            aria-label={t('terminal.open')}
+            aria-controls="terminal"
+            title={`${t('terminal.open')} ( \` )`}
+            className="grid size-9 place-items-center rounded-full border border-rule bg-surface text-ink transition-colors hover:border-indigo hover:text-indigo focus-ring"
+          >
+            <TerminalSquare size={18} aria-hidden="true" />
+          </button>
           <ThemeToggle />
           <button
             type="button"

@@ -11,6 +11,7 @@ import {
 } from '../../lib/content';
 import type { Project, ProjectInput, Category } from '../../lib/database.types';
 import { Field, inputClass, TagInput } from './ui';
+import { slugify } from '../../lib/slug';
 
 const empty: ProjectInput = {
   title_en: '',
@@ -24,7 +25,30 @@ const empty: ProjectInput = {
   category: 'Web',
   display_order: 0,
   is_visible: true,
+  slug: null,
+  year: '',
+  role_fr: '',
+  role_en: '',
+  pitch_fr: '',
+  pitch_en: '',
+  problem_fr: '',
+  problem_en: '',
+  design_fr: '',
+  design_en: '',
+  build_fr: '',
+  build_en: '',
+  result_fr: '',
+  result_en: '',
 };
+
+// Champs bilingues de l'étude de cas, dans l'ordre du récit.
+const caseFields = [
+  { key: 'pitch', label: "Phrase d'accroche", rows: 2 },
+  { key: 'problem', label: '1 · Le problème', rows: 4 },
+  { key: 'design', label: '2 · La conception', rows: 4 },
+  { key: 'build', label: '3 · Le build', rows: 4 },
+  { key: 'result', label: '4 · Le résultat', rows: 4 },
+] as const;
 
 export default function ProjectsManager() {
   const { projects, loading, error, refetch } = useProjects(true);
@@ -69,19 +93,8 @@ export default function ProjectsManager() {
 
   const startEdit = (p: Project) => {
     setEditingId(p.id);
-    setForm({
-      title_en: p.title_en,
-      title_fr: p.title_fr,
-      desc_en: p.desc_en,
-      desc_fr: p.desc_fr,
-      technologies: p.technologies,
-      images: p.images,
-      github_link: p.github_link,
-      live_link: p.live_link,
-      category: p.category,
-      display_order: p.display_order,
-      is_visible: p.is_visible,
-    });
+    const { id: _id, created_at: _c, updated_at: _u, ...input } = p;
+    setForm({ ...empty, ...input });
     setOpen(true);
     setFormError(null);
   };
@@ -107,7 +120,13 @@ export default function ProjectsManager() {
     setSaving(true);
     setFormError(null);
     try {
-      const payload = { ...form, github_link: form.github_link || null, live_link: form.live_link || null };
+      const payload = {
+        ...form,
+        github_link: form.github_link || null,
+        live_link: form.live_link || null,
+        // Adresse de la page : saisie, sinon dérivée du titre.
+        slug: slugify(form.slug || form.title_fr) || null,
+      };
       if (editingId) await updateProject(editingId, payload);
       else await createProject(payload);
       setOpen(false);
@@ -272,6 +291,40 @@ export default function ProjectsManager() {
                 <input type="file" accept="image/*" multiple className="hidden" onChange={(e) => handleUpload(e.target.files)} />
               </label>
             </Field>
+
+            <details className="rounded-xl border border-secondary/10 dark:border-white/10 p-4" open={Boolean(form.problem_fr)}>
+              <summary className="cursor-pointer text-sm font-bold text-secondary dark:text-white">
+                Étude de cas <span className="font-normal text-gray-500">(page /projects/{slugify(form.slug || form.title_fr) || '…'})</span>
+              </summary>
+              <p className="mt-2 mb-4 text-xs text-gray-500">
+                Chaque chapitre vide est masqué sur la page. Sépare les paragraphes par une ligne vide.
+                Ne décris pas le fonctionnement interne du système (flux, services, sécurité).
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Field label="Adresse (slug)">
+                  <input className={inputClass} value={form.slug ?? ''} placeholder={slugify(form.title_fr)} onChange={(e) => setForm({ ...form, slug: e.target.value })} />
+                </Field>
+                <Field label="Année">
+                  <input className={inputClass} value={form.year} placeholder="2025" onChange={(e) => setForm({ ...form, year: e.target.value })} />
+                </Field>
+                <Field label="Rôle (FR)">
+                  <input className={inputClass} value={form.role_fr} placeholder="Lead développeur full stack" onChange={(e) => setForm({ ...form, role_fr: e.target.value })} />
+                </Field>
+                <Field label="Rôle (EN)">
+                  <input className={inputClass} value={form.role_en} placeholder="Lead full stack developer" onChange={(e) => setForm({ ...form, role_en: e.target.value })} />
+                </Field>
+                {caseFields.map(({ key, label, rows }) => (
+                  <React.Fragment key={key}>
+                    <Field label={`${label} (FR)`}>
+                      <textarea className={inputClass} rows={rows} value={form[`${key}_fr`]} onChange={(e) => setForm({ ...form, [`${key}_fr`]: e.target.value })} />
+                    </Field>
+                    <Field label={`${label} (EN)`}>
+                      <textarea className={inputClass} rows={rows} value={form[`${key}_en`]} onChange={(e) => setForm({ ...form, [`${key}_en`]: e.target.value })} />
+                    </Field>
+                  </React.Fragment>
+                ))}
+              </div>
+            </details>
 
             {formError && <p className="text-sm text-red-500">{formError}</p>}
 

@@ -14,13 +14,14 @@ export const prefersReducedMotion = () =>
 /**
  * Échantillonne une image en grille de luminances (0..1).
  * `crop` sélectionne une zone de l'image source en fractions de sa taille.
+ * En mode `contain`, les cellules hors de l'image valent NaN (rien à dessiner).
  */
 export function sampleLuminance(
   img: HTMLImageElement,
   cols: number,
   rows: number,
   crop = { x: 0, y: 0, w: 1, h: 1 },
-  fit: 'stretch' | 'cover' = 'stretch'
+  fit: 'stretch' | 'cover' | 'contain' = 'stretch'
 ): number[] {
   const canvas = document.createElement('canvas');
   canvas.width = cols;
@@ -37,6 +38,10 @@ export function sampleLuminance(
     // Comme object-fit: cover; object-position: top
     const scale = Math.max(cols / sw, rows / sh);
     ctx.drawImage(img, sx, sy, sw, sh, (cols - sw * scale) / 2, 0, sw * scale, sh * scale);
+  } else if (fit === 'contain') {
+    // Comme object-fit: contain, centré
+    const scale = Math.min(cols / sw, rows / sh);
+    ctx.drawImage(img, sx, sy, sw, sh, (cols - sw * scale) / 2, (rows - sh * scale) / 2, sw * scale, sh * scale);
   } else {
     ctx.drawImage(img, sx, sy, sw, sh, 0, 0, cols, rows);
   }
@@ -44,7 +49,7 @@ export function sampleLuminance(
   const data = ctx.getImageData(0, 0, cols, rows).data;
   const out: number[] = [];
   for (let i = 0; i < data.length; i += 4) {
-    out.push((data[i] * 0.3 + data[i + 1] * 0.59 + data[i + 2] * 0.11) / 255);
+    out.push(data[i + 3] < 128 ? NaN : (data[i] * 0.3 + data[i + 1] * 0.59 + data[i + 2] * 0.11) / 255);
   }
   return out;
 }

@@ -6,6 +6,8 @@ interface GlyphRevealProps {
   src: string;
   // Repasse en code au survol de l'élément parent marqué `group`.
   hovered?: boolean;
+  // Doit correspondre à l'object-fit de l'image recouverte.
+  fit?: 'cover' | 'contain';
 }
 
 const CELL_W = 9;
@@ -21,7 +23,7 @@ const pageBackground = () =>
  * Calque posé sur une capture : la capture arrive en caractères,
  * se résout en image quand elle entre à l'écran, et repasse en code au survol.
  */
-export default function GlyphReveal({ src, hovered = false }: GlyphRevealProps) {
+export default function GlyphReveal({ src, hovered = false, fit = 'cover' }: GlyphRevealProps) {
   const { theme } = useTheme();
   const themeRef = useRef(theme);
   const renderRef = useRef<() => void>(() => {});
@@ -53,7 +55,7 @@ export default function GlyphReveal({ src, hovered = false }: GlyphRevealProps) 
       cols = Math.floor(rect.width / CELL_W);
       rows = Math.floor(rect.height / CELL_H);
       try {
-        lum = sampleLuminance(img, cols, rows, undefined, 'cover');
+        lum = sampleLuminance(img, cols, rows, undefined, fit);
         return true;
       } catch {
         // Image d'un autre domaine sans CORS : on affiche l'image directement.
@@ -77,7 +79,9 @@ export default function GlyphReveal({ src, hovered = false }: GlyphRevealProps) 
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
           // Clair : la densité suit l'obscurité (encre sur papier).
-          const v = light ? 1 - lum[y * cols + x] : lum[y * cols + x];
+          const raw = lum[y * cols + x];
+          if (Number.isNaN(raw)) continue;
+          const v = light ? 1 - raw : raw;
           const glyph = chars[Math.round(v * n)];
           if (glyph === ' ') continue;
           ctx.fillStyle = `rgba(${GLYPHS[light ? 'light' : 'dark']},${0.25 + v * 0.75})`;
@@ -134,7 +138,7 @@ export default function GlyphReveal({ src, hovered = false }: GlyphRevealProps) 
       observer?.disconnect();
       window.removeEventListener('resize', onResize);
     };
-  }, [src]);
+  }, [src, fit]);
 
   useEffect(() => {
     themeRef.current = theme;

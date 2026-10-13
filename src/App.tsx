@@ -8,6 +8,7 @@ import ProjectsPage from './pages/ProjectsPage';
 import SkillsPage from './pages/SkillsPage';
 import JourneyPage from './pages/JourneyPage';
 import ContactPage from './pages/ContactPage';
+import ProjectCaseStudy from './pages/ProjectCaseStudy';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -25,6 +26,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="about" element={<AboutPage />} />
               <Route path="projects" element={<ProjectsPage />} />
+              <Route path="projects/:slug" element={<ProjectCaseStudy />} />
               <Route path="skills" element={<SkillsPage />} />
               <Route path="journey" element={<JourneyPage />} />
               <Route path="contact" element={<ContactPage />} />

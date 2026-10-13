@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
 import WhatsAppButton from './WhatsAppButton';
+import Terminal from './Terminal';
 import { usePageView } from '../hooks/usePageView';
 import Seo from './Seo';
 
@@ -31,6 +32,7 @@ const Layout = () => {
                 <Footer />
             </div>
             <WhatsAppButton />
+            <Terminal />
         </div>
     );
 };
