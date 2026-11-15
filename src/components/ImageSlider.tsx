@@ -17,7 +17,6 @@ export default function ImageSlider({ images, title, className = '' }: ImageSlid
   const { t } = useTranslation();
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
-  const [hovered, setHovered] = useState(false);
   const count = images.length;
 
   // Diapositive courante, déduite de la position de défilement.
@@ -52,8 +51,6 @@ export default function ImageSlider({ images, title, className = '' }: ImageSlid
       className={`group/slider relative ${className}`}
       aria-roledescription="carousel"
       aria-label={title}
-      onPointerEnter={() => setHovered(true)}
-      onPointerLeave={() => setHovered(false)}
     >
       <div
         ref={trackRef}
@@ -75,7 +72,7 @@ export default function ImageSlider({ images, title, className = '' }: ImageSlid
               loading={i === 0 ? 'eager' : 'lazy'}
               className="absolute inset-0 h-full w-full object-contain"
             />
-            <GlyphReveal src={src} fit="contain" hovered={hovered && i === index} />
+            <GlyphReveal src={src} fit="contain" />
           </div>
         ))}
       </div>

@@ -4,8 +4,6 @@ import { useTheme } from '../context/ThemeContext';
 
 interface GlyphRevealProps {
   src: string;
-  // Repasse en code au survol de l'élément parent marqué `group`.
-  hovered?: boolean;
   // Doit correspondre à l'object-fit de l'image recouverte.
   fit?: 'cover' | 'contain';
 }
@@ -21,9 +19,9 @@ const pageBackground = () =>
 
 /**
  * Calque posé sur une capture : la capture arrive en caractères,
- * se résout en image quand elle entre à l'écran, et repasse en code au survol.
+ * se résout en image quand elle entre à l'écran.
  */
-export default function GlyphReveal({ src, hovered = false, fit = 'cover' }: GlyphRevealProps) {
+export default function GlyphReveal({ src, fit = 'cover' }: GlyphRevealProps) {
   const { theme } = useTheme();
   const themeRef = useRef(theme);
   const renderRef = useRef<() => void>(() => {});
@@ -146,13 +144,6 @@ export default function GlyphReveal({ src, hovered = false, fit = 'cover' }: Gly
     const id = requestAnimationFrame(() => renderRef.current());
     return () => cancelAnimationFrame(id);
   }, [theme]);
-
-  useEffect(() => {
-    // Le survol ne compte qu'une fois l'image révélée une première fois.
-    if (progressRef.current === 0 && targetRef.current === 0) return;
-    targetRef.current = hovered ? 0 : 1;
-    animateRef.current();
-  }, [hovered]);
 
   return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />;
 }
